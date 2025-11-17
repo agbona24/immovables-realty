@@ -42,8 +42,8 @@ const Contact = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone",
-      content: "+234 XXX XXX XXXX",
-      link: "tel:+234",
+      content: "+234 813 283 3083",
+      link: "tel:+2348132833083",
     },
     {
       icon: <Mail className="w-6 h-6" />,
@@ -54,7 +54,7 @@ const Contact = () => {
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Office",
-      content: "Lagos, Nigeria",
+      content: "12, Obasanjo Way off Akin Olugbade, Ita Eko, Abeokuta",
       link: "#",
     },
     {

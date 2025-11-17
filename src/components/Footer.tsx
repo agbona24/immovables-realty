@@ -18,11 +18,12 @@ const Footer = () => {
   };
 
   const quickLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About Us", href: "#about" },
-    { name: "Properties", href: "#properties" },
-    { name: "Why Choose Us", href: "#why-us" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/#about" },
+    { name: "Properties", href: "/#properties" },
+    { name: "Blog", href: "/blog" },
+    { name: "Why Choose Us", href: "/#why-us" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   const services = [
@@ -168,7 +169,7 @@ const Footer = () => {
             </h3>
             <div className="space-y-4">
               <a
-                href="tel:+234"
+                href="tel:+2348132833083"
                 className="flex items-start gap-3 text-gray-300 hover:text-brand-orange transition group"
               >
                 <Phone
@@ -177,7 +178,7 @@ const Footer = () => {
                 />
                 <div>
                   <div className="text-sm text-gray-400">Phone</div>
-                  <div>+234 XXX XXX XXXX</div>
+                  <div>+234 813 283 3083</div>
                 </div>
               </a>
 
@@ -199,7 +200,7 @@ const Footer = () => {
                 <MapPin size={20} className="mt-1" />
                 <div>
                   <div className="text-sm text-gray-400">Office</div>
-                  <div>Lagos, Nigeria</div>
+                  <div>12, Obasanjo Way off Akin Olugbade,<br />Ita Eko, Abeokuta, Ogun State</div>
                 </div>
               </div>
             </div>

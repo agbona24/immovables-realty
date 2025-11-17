@@ -17,11 +17,12 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Properties", href: "#properties" },
-    { name: "Why Us", href: "#why-us" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/#about" },
+    { name: "Properties", href: "/#properties" },
+    { name: "Blog", href: "/blog" },
+    { name: "Why Us", href: "/#why-us" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -34,9 +35,9 @@ const Navbar = () => {
       >
         <div className="container mx-auto flex justify-between items-center text-sm">
           <div className="flex items-center gap-6">
-            <a href="tel:+234" className="flex items-center gap-2 hover:text-brand-orange transition">
+            <a href="tel:+2348132833083" className="flex items-center gap-2 hover:text-brand-orange transition">
               <Phone size={16} />
-              <span>+234 XXX XXX XXXX</span>
+              <span>+234 813 283 3083</span>
             </a>
             <a href="mailto:info@immovablesrealty.com" className="flex items-center gap-2 hover:text-brand-orange transition">
               <Mail size={16} />
@@ -157,9 +158,9 @@ const Navbar = () => {
                 Book Consultation
               </motion.a>
               <div className="pt-4 border-t space-y-2 text-sm text-gray-600">
-                <a href="tel:+234" className="flex items-center gap-2">
+                <a href="tel:+2348132833083" className="flex items-center gap-2">
                   <Phone size={16} />
-                  <span>+234 XXX XXX XXXX</span>
+                  <span>+234 813 283 3083</span>
                 </a>
                 <a href="mailto:info@immovablesrealty.com" className="flex items-center gap-2">
                   <Mail size={16} />
