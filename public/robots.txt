@@ -1,0 +1,14 @@
+# robots.txt for IMMOVABLES REALTY
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://immovablesrealty.com/sitemap.xml
+
+# Crawl-delay for well-behaved bots
+Crawl-delay: 1
+
+# Block specific paths if needed (currently none)
+# Disallow: /admin
+# Disallow: /api
