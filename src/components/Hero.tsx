@@ -80,24 +80,23 @@ const Hero = () => {
               variants={fadeInUp}
               className="font-montserrat font-extrabold text-5xl md:text-6xl lg:text-7xl leading-tight mb-6"
             >
-              Own Your{" "}
-              <span className="text-brand-orange">Dream Property</span> Today
+              Smart Real Estate Solutions:{" "}
+              <span className="text-brand-orange">Invest, Buy, or Sell</span> with Confidence
             </motion.h1>
 
             <motion.p
               variants={fadeInUp}
               className="text-xl md:text-2xl mb-8 text-gray-200 font-allura"
             >
-              ...providing affordable landed properties
+              Your trusted partner for all things real estate.
             </motion.p>
 
             <motion.p
               variants={fadeInUp}
               className="text-lg mb-10 text-gray-300 max-w-xl"
             >
-              Secure your future with affordable land investments. We make
-              property ownership simple, transparent, and accessible for
-              everyone.
+              We connect you with exceptional real estate opportunities designed to grow your wealth.
+              Make informed, strategic investment decisions with our expert guidance.
             </motion.p>
 
             <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
@@ -107,7 +106,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
               >
-                View Properties
+                Explore Investments
                 <ArrowRight className="group-hover:translate-x-1 transition" />
               </motion.a>
               <motion.a
@@ -116,7 +115,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05, y: -3 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Book Inspection
+                Get Started
               </motion.a>
             </motion.div>
 

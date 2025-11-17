@@ -122,8 +122,8 @@ const WhyUs = () => {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 0.4 }}
           >
-            We're committed to providing exceptional service and helping you
-            achieve your property ownership dreams with integrity and excellence.
+            We're committed to empowering investors with exceptional service, detailed analytics,
+            and expert guidance to help you build wealth through strategic real estate investments.
           </motion.p>
         </motion.div>
 
@@ -249,7 +249,7 @@ const WhyUs = () => {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 1.6 }}
             >
-              Ready to Own Your Dream Property?
+              Ready to Grow Your Wealth with Real Estate?
             </motion.h3>
             <motion.p
               className="text-xl mb-8 text-gray-200"
@@ -257,7 +257,7 @@ const WhyUs = () => {
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ delay: 1.7 }}
             >
-              Join thousands of satisfied property owners today
+              Join thousands of successful investors building wealth through strategic property investments
             </motion.p>
             <motion.a
               href="#contact"

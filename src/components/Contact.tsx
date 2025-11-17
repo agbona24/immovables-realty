@@ -118,7 +118,7 @@ const Contact = () => {
             transition={{ delay: 0.3 }}
           >
             Let's Discuss Your{" "}
-            <span className="text-brand-orange">Property Goals</span>
+            <span className="text-brand-orange">Investment Goals</span>
           </motion.h2>
           <motion.p
             className="text-gray-600 text-lg"
@@ -126,8 +126,8 @@ const Contact = () => {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 0.4 }}
           >
-            Have questions? We're here to help you find the perfect property.
-            Reach out today and let's make your dreams a reality.
+            Have questions? We're here to help you identify the perfect investment opportunities.
+            Reach out today and let's build your wealth together.
           </motion.p>
         </motion.div>
 
@@ -182,18 +182,18 @@ const Contact = () => {
               <div className="relative z-10">
                 <MessageSquare className="w-12 h-12 mb-4" />
                 <h3 className="font-montserrat font-bold text-2xl mb-3">
-                  Schedule a Site Inspection
+                  Schedule a Consultation
                 </h3>
                 <p className="text-gray-200 mb-6">
-                  Visit our properties in person and see the quality for yourself.
-                  Book your free inspection today!
+                  Get personalized investment advice from our expert advisors.
+                  Book your free consultation today and discover the best opportunities!
                 </p>
                 <motion.button
                   className="bg-brand-orange text-white px-6 py-3 rounded-full font-montserrat font-bold hover:bg-white hover:text-brand-orange transition"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Book Now
+                  Book Consultation
                 </motion.button>
               </div>
             </motion.div>
@@ -297,7 +297,7 @@ const Contact = () => {
                     onChange={handleChange}
                     rows={5}
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:border-brand-orange focus:outline-none transition resize-none"
-                    placeholder="Tell us about your property needs..."
+                    placeholder="Tell us about your investment goals and preferences..."
                     required
                     whileFocus={{ scale: 1.01 }}
                   />

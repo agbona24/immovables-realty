@@ -5,7 +5,7 @@ import { useRef } from "react";
 import {
   Shield,
   DollarSign,
-  FileCheck,
+  TrendingUp,
   Users,
   Building2,
   Award,
@@ -18,39 +18,39 @@ const About = () => {
   const services = [
     {
       icon: <Building2 className="w-8 h-8" />,
-      title: "Land Sales",
+      title: "Investment Properties",
       description:
-        "Premium plots of land in choice locations, perfect for residential or commercial development.",
+        "Access a wide range of investment-ready properties in prime locations with high growth potential.",
     },
     {
-      icon: <FileCheck className="w-8 h-8" />,
-      title: "Documentation",
+      icon: <TrendingUp className="w-8 h-8" />,
+      title: "Market Analytics",
       description:
-        "Complete legal documentation and title verification for secure property transactions.",
+        "Detailed market insights and property analytics to help you make data-driven investment decisions.",
     },
     {
       icon: <Shield className="w-8 h-8" />,
-      title: "Secure Investment",
+      title: "Secure Transactions",
       description:
-        "Government-approved estates with verified documents for your peace of mind.",
-    },
-    {
-      icon: <DollarSign className="w-8 h-8" />,
-      title: "Flexible Payment",
-      description:
-        "Affordable payment plans tailored to fit your budget and financial goals.",
+        "Government-approved properties with verified legal documentation for your peace of mind.",
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Expert Consultation",
+      title: "Expert Advisory",
       description:
-        "Professional guidance from experienced real estate consultants throughout your journey.",
+        "Professional guidance from experienced real estate advisors throughout your investment journey.",
+    },
+    {
+      icon: <DollarSign className="w-8 h-8" />,
+      title: "Flexible Financing",
+      description:
+        "Customized payment plans and financing options tailored to fit your investment strategy.",
     },
     {
       icon: <Award className="w-8 h-8" />,
-      title: "After-Sales Support",
+      title: "Portfolio Management",
       description:
-        "Comprehensive support even after purchase, ensuring your satisfaction.",
+        "Comprehensive support to help you manage and grow your real estate investment portfolio.",
     },
   ];
 
@@ -110,7 +110,7 @@ const About = () => {
             transition={{ delay: 0.3 }}
           >
             Your Trusted Partner in{" "}
-            <span className="text-brand-orange">Property Ownership</span>
+            <span className="text-brand-orange">Real Estate Investments</span>
           </motion.h2>
           <motion.p
             className="text-gray-600 text-lg"
@@ -118,10 +118,9 @@ const About = () => {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 0.4 }}
           >
-            At <span className="font-bold text-brand-blue">IMMOVABLES REALTY</span> (RC: 7466982), we specialize in providing
-            affordable landed properties that help you build wealth and secure
-            your future. With transparency, integrity, and excellence, we've
-            helped thousands achieve their property ownership dreams.
+            At <span className="font-bold text-brand-blue">Immovable Realty</span> (RC: 7466982), we connect you with exceptional real estate opportunities designed to grow your wealth.
+            Our intuitive platform provides seamless access to a wide range of investment-ready properties, detailed analytics, and expert advisory services.
+            Whether you're a first-time investor or a seasoned professional, Immovable Realty empowers you to make informed, strategic investment decisions.
           </motion.p>
         </motion.div>
 
@@ -183,7 +182,7 @@ const About = () => {
             whileHover={{ scale: 1.05, y: -3 }}
             whileTap={{ scale: 0.95 }}
           >
-            Start Your Property Journey
+            Start Your Investment Journey
           </motion.a>
         </motion.div>
       </div>

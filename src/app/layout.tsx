@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "IMMOVABLES REALTY - Providing Affordable Landed Properties",
-  description: "Your trusted partner for affordable property ownership. Secure your future with land investments.",
-  keywords: ["real estate", "landed properties", "affordable housing", "property investment", "land for sale"],
+  title: "Immovable Realty - Smart Real Estate Solutions: Invest, Buy, or Sell with Confidence",
+  description: "Your trusted partner for all things real estate. Connect with exceptional real estate opportunities designed to grow your wealth with expert guidance and detailed analytics.",
+  keywords: ["real estate", "property investment", "real estate analytics", "investment properties", "real estate advisory", "property portfolio", "wealth building"],
 };
 
 export default function RootLayout({

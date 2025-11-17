@@ -107,7 +107,7 @@ const Navbar = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Book Inspection
+                Book Consultation
               </motion.a>
             </div>
 
@@ -154,7 +154,7 @@ const Navbar = () => {
                 transition={{ delay: 0.25 }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Book Inspection
+                Book Consultation
               </motion.a>
               <div className="pt-4 border-t space-y-2 text-sm text-gray-600">
                 <a href="tel:+234" className="flex items-center gap-2">

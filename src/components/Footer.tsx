@@ -26,12 +26,12 @@ const Footer = () => {
   ];
 
   const services = [
-    "Land Sales",
-    "Property Documentation",
-    "Real Estate Consultation",
-    "Investment Advisory",
-    "Site Inspection",
-    "After-Sales Support",
+    "Investment Properties",
+    "Market Analytics",
+    "Expert Advisory",
+    "Portfolio Management",
+    "Flexible Financing",
+    "Property Consultation",
   ];
 
   const socialLinks = [
@@ -76,11 +76,11 @@ const Footer = () => {
                 </div>
               </div>
               <p className="font-allura text-lg text-gray-300 mb-4">
-                ...providing affordable landed properties
+                Your trusted partner for all things real estate.
               </p>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Your trusted partner in property ownership. We make real estate
-                investment simple, transparent, and accessible for everyone.
+                Connecting you with exceptional real estate opportunities to grow your wealth.
+                We make strategic investment simple, transparent, and accessible for everyone.
               </p>
             </div>
 
