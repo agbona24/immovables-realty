@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Building2, TrendingUp, Users, MessageSquare, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import StructuredData from "@/components/StructuredData";
@@ -250,6 +251,9 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Testimonials */}
+      <Testimonials />
 
       <Footer />
       <WhatsAppButton />

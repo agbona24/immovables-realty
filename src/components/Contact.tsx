@@ -224,13 +224,16 @@ const Contact = () => {
                   Get personalized investment advice from our expert advisors.
                   Book your free consultation today and discover the best opportunities!
                 </p>
-                <motion.button
-                  className="bg-brand-orange text-white px-6 py-3 rounded-full font-montserrat font-bold hover:bg-white hover:text-brand-orange transition"
+                <motion.a
+                  href="https://wa.me/2348132833083?text=Hello%20IMMOVABLES%20REALTY,%20I%20would%20like%20to%20schedule%20a%20free%20consultation%20to%20discuss%20real%20estate%20investment%20opportunities."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-brand-orange text-white px-6 py-3 rounded-full font-montserrat font-bold hover:bg-white hover:text-brand-orange transition text-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Book Consultation
-                </motion.button>
+                  Book Consultation via WhatsApp
+                </motion.a>
               </div>
             </motion.div>
           </motion.div>
@@ -394,6 +397,121 @@ const Contact = () => {
             </form>
           </motion.div>
         </div>
+
+        {/* FAQ Section */}
+        <motion.div
+          className="mt-20 max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="text-center mb-12">
+            <h3 className="font-montserrat font-extrabold text-3xl md:text-4xl text-brand-blue mb-4">
+              Frequently Asked <span className="text-brand-orange">Questions</span>
+            </h3>
+            <p className="text-gray-600 text-lg">
+              Quick answers to common questions about working with us
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: "How quickly do you respond to inquiries?",
+                a: "We typically respond within 1-2 hours during business hours (Mon-Sat, 9AM-6PM). Urgent inquiries via WhatsApp often get faster responses!",
+              },
+              {
+                q: "Do you offer virtual consultations?",
+                a: "Absolutely! We offer virtual consultations via video call, phone, or WhatsApp for clients who can't visit our office. Schedule one through the contact form or WhatsApp.",
+              },
+              {
+                q: "Can I visit properties before making a decision?",
+                a: "Yes! We encourage property inspections. We arrange site visits and provide virtual tours for out-of-state clients. Contact us to schedule your viewing.",
+              },
+              {
+                q: "What documentation do you need from me?",
+                a: "For initial inquiries, just your contact information. For property transactions, we'll guide you through the required documentation during consultation.",
+              },
+              {
+                q: "Do you provide after-sales support?",
+                a: "Yes! Our relationship doesn't end at purchase. We provide ongoing support, property management referrals, and investment advice for all our clients.",
+              },
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <h4 className="font-montserrat font-bold text-lg text-brand-blue mb-3">
+                  {faq.q}
+                </h4>
+                <p className="text-gray-600 leading-relaxed">{faq.a}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Map Section */}
+        <motion.div
+          className="mt-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="text-center mb-8">
+            <h3 className="font-montserrat font-extrabold text-3xl md:text-4xl text-brand-blue mb-4">
+              Find Our <span className="text-brand-orange">Office</span>
+            </h3>
+            <p className="text-gray-600 text-lg">
+              Visit us in Abeokuta for a personalized consultation
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl overflow-hidden shadow-2xl">
+            <div className="aspect-video bg-gradient-to-br from-brand-blue to-blue-800 relative">
+              {/* Google Maps Embed */}
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.2!2d3.3619!3d7.1475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMDgnNTEuMCJOIDPCsDIxJzQyLjgiRQ!5e0!3m2!1sen!2sng!4v1234567890"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0"
+                title="IMMOVABLES REALTY Office Location"
+              ></iframe>
+            </div>
+            <div className="p-6 md:p-8">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                  <h4 className="font-montserrat font-bold text-xl text-brand-blue mb-2">
+                    IMMOVABLES REALTY Office
+                  </h4>
+                  <p className="text-gray-600 flex items-start gap-2">
+                    <MapPin className="w-5 h-5 text-brand-orange flex-shrink-0 mt-1" />
+                    <span>12, Obasanjo Way off Akin Olugbade, Ita Eko, Abeokuta, Ogun State</span>
+                  </p>
+                </div>
+                <motion.a
+                  href="https://maps.google.com/?q=7.1475,3.3619"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-brand-orange text-white px-6 py-3 rounded-full font-montserrat font-semibold hover:bg-brand-blue transition whitespace-nowrap"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Get Directions
+                </motion.a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
