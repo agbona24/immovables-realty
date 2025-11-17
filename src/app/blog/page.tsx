@@ -7,6 +7,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { blogPosts } from "@/data/blogPosts";
 
 const BlogPage = () => {
   const ref = useRef(null);
@@ -293,17 +294,27 @@ const BlogPage = () => {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.6 }}
           >
-            {blogPosts.map((post, index) => (
-              <motion.article
-                key={post.id}
-                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
-                initial={{ opacity: 0, y: 50 }}
-                animate={
-                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
-                }
-                transition={{ delay: index * 0.05, duration: 0.5 }}
-                whileHover={{ y: -10 }}
-              >
+            {blogPosts.map((post, index) => {
+              // Map post ID to blog detail slugs
+              const postSlugMap: Record<number, string> = {
+                1: "ogun-state-airport-opportunities",
+                2: "ogun-state-booming-opportunities",
+                3: "ogun-state-investment-guide",
+              };
+              const hasDetailPage = post.id in postSlugMap;
+              const postSlug = hasDetailPage ? postSlugMap[post.id] : null;
+
+              const ArticleContent = (
+                <motion.article
+                  key={post.id}
+                  className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer h-full"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+                  }
+                  transition={{ delay: index * 0.05, duration: 0.5 }}
+                  whileHover={{ y: -10 }}
+                >
                 {/* Card Header */}
                 <div className={`h-48 bg-gradient-to-br ${post.color} relative overflow-hidden p-6 flex items-end`}>
                   {/* Pattern */}
@@ -358,7 +369,16 @@ const BlogPage = () => {
                   </div>
                 </div>
               </motion.article>
-            ))}
+            );
+
+            return hasDetailPage && postSlug ? (
+              <Link key={post.id} href={`/blog/${postSlug}`}>
+                {ArticleContent}
+              </Link>
+            ) : (
+              <div key={post.id}>{ArticleContent}</div>
+            );
+          })}
           </motion.div>
         </div>
       </section>
