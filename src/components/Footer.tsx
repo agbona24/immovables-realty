@@ -36,10 +36,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: <Facebook size={20} />, href: "#", label: "Facebook" },
-    { icon: <Twitter size={20} />, href: "#", label: "Twitter" },
-    { icon: <Instagram size={20} />, href: "#", label: "Instagram" },
-    { icon: <Linkedin size={20} />, href: "#", label: "LinkedIn" },
+    { icon: <Facebook size={20} />, href: "https://www.facebook.com/immovablesrealty?mibextid=kFxxJD", label: "Facebook" },
+    { icon: <Twitter size={20} />, href: "https://x.com/immovablesrealt?t=MmJjqxvf3GmMUkZtIIF8UQ&s=09", label: "Twitter" },
+    { icon: <Instagram size={20} />, href: "https://www.instagram.com/immovables_realty/profilecard/?igsh=MTZ2NnFvY2cwNzlvZA==", label: "Instagram" },
+    { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/", label: "LinkedIn" },
   ];
 
   return (
@@ -91,6 +91,8 @@ const Footer = () => {
                 <motion.a
                   key={index}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={social.label}
                   className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-brand-orange transition"
                   whileHover={{ scale: 1.1, rotate: 5 }}
