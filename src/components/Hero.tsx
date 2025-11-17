@@ -27,19 +27,19 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-brand-blue via-blue-800 to-brand-blue">
       {/* Animated Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}></div>
       </div>
 
-      {/* Floating Shapes */}
+      {/* Floating Shapes - More Visible */}
       <motion.div
-        className="absolute top-20 left-10 w-72 h-72 bg-brand-orange rounded-full opacity-20 blur-3xl"
+        className="absolute top-20 left-10 w-72 h-72 bg-brand-orange rounded-full opacity-30 blur-3xl"
         animate={{
           scale: [1, 1.2, 1],
-          x: [0, 30, 0],
-          y: [0, -30, 0],
+          x: [0, 50, 0],
+          y: [0, -50, 0],
         }}
         transition={{
           duration: 8,
@@ -48,7 +48,7 @@ const Hero = () => {
         }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-96 h-96 bg-white rounded-full opacity-10 blur-3xl"
+        className="absolute bottom-20 right-10 w-96 h-96 bg-white rounded-full opacity-20 blur-3xl"
         animate={{
           scale: [1, 1.3, 1],
           x: [0, -40, 0],
@@ -60,6 +60,66 @@ const Hero = () => {
           ease: "easeInOut",
         }}
       />
+      <motion.div
+        className="absolute top-1/2 left-1/2 w-64 h-64 bg-brand-orange rounded-full opacity-15 blur-2xl"
+        animate={{
+          scale: [1, 1.5, 1],
+          rotate: [0, 180, 360],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+
+      {/* Animated Geometric Shapes */}
+      <motion.div
+        className="absolute top-40 right-1/4 w-20 h-20 border-4 border-brand-orange opacity-30"
+        animate={{
+          rotate: [0, 360],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+      <motion.div
+        className="absolute bottom-40 left-1/4 w-16 h-16 border-4 border-white opacity-20 rounded-full"
+        animate={{
+          rotate: [0, -360],
+          scale: [1, 1.3, 1],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+
+      {/* Floating Dots */}
+      {[...Array(8)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-2 h-2 bg-brand-orange rounded-full opacity-40"
+          style={{
+            top: `${20 + i * 10}%`,
+            left: `${10 + i * 11}%`,
+          }}
+          animate={{
+            y: [0, -30, 0],
+            opacity: [0.4, 0.8, 0.4],
+          }}
+          transition={{
+            duration: 3 + i * 0.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.2,
+          }}
+        />
+      ))}
 
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">

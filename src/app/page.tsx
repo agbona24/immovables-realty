@@ -48,8 +48,34 @@ export default function Home() {
       <Hero />
 
       {/* Quick Links Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Decorative Background Elements */}
+        <motion.div
+          className="absolute top-10 right-10 w-64 h-64 bg-brand-blue rounded-full opacity-5 blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            x: [0, -30, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-10 left-10 w-72 h-72 bg-brand-orange rounded-full opacity-5 blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            y: [0, -40, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -97,8 +123,34 @@ export default function Home() {
       </section>
 
       {/* Featured Properties Preview */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        {/* Animated Circles */}
+        <motion.div
+          className="absolute top-20 left-1/4 w-32 h-32 border-4 border-brand-blue opacity-10 rounded-full"
+          animate={{
+            scale: [1, 1.5, 1],
+            rotate: [0, 360],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-1/4 w-24 h-24 border-4 border-brand-orange opacity-15"
+          animate={{
+            rotate: [0, -360],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-12"
             initial={{ opacity: 0, y: 20 }}
