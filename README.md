@@ -194,6 +194,10 @@ Plus 17 additional article previews covering infrastructure, market trends, and 
 Before deploying:
 
 - [ ] Add environment variables to hosting platform
+- [ ] Upload logo files to `/public/images/` (see LOGO_UPLOAD_GUIDE.md)
+  - `logo.png` - Main logo for navbar
+  - `logo-white.png` - White version for footer (optional)
+  - `og-image.jpg` - Social sharing image (1200x630px)
 - [ ] Upload property images to `/public/images/properties/`
 - [ ] Create and upload favicon files
 - [ ] Configure EmailJS account

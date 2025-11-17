@@ -11,8 +11,12 @@ import {
   MapPin,
   ArrowUp,
 } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 const Footer = () => {
+  const [logoError, setLogoError] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -64,18 +68,33 @@ const Footer = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="mb-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="bg-white text-brand-blue font-montserrat font-bold text-xl px-3 py-2 rounded">
-                  IR
-                </div>
-                <div>
-                  <div className="font-montserrat font-extrabold text-lg leading-tight">
-                    <span className="text-white">IMMOVABLES</span>{" "}
-                    <span className="text-brand-orange">REALTY</span>
+              {!logoError ? (
+                <div className="mb-4">
+                  <div className="relative h-12 w-48 mb-2">
+                    <Image
+                      src="/images/logo-white.png"
+                      alt="IMMOVABLES REALTY"
+                      fill
+                      className="object-contain object-left"
+                      onError={() => setLogoError(true)}
+                    />
                   </div>
                   <p className="text-xs text-gray-300">RC: 7466982</p>
                 </div>
-              </div>
+              ) : (
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="bg-white text-brand-blue font-montserrat font-bold text-xl px-3 py-2 rounded">
+                    IR
+                  </div>
+                  <div>
+                    <div className="font-montserrat font-extrabold text-lg leading-tight">
+                      <span className="text-white">IMMOVABLES</span>{" "}
+                      <span className="text-brand-orange">REALTY</span>
+                    </div>
+                    <p className="text-xs text-gray-300">RC: 7466982</p>
+                  </div>
+                </div>
+              )}
               <p className="font-allura text-lg text-gray-300 mb-4">
                 Your trusted partner for all things real estate.
               </p>

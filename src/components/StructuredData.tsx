@@ -9,7 +9,7 @@ export default function StructuredData() {
     description:
       "Smart Real Estate Solutions: Invest, Buy, or Sell with Confidence. Your trusted partner for real estate investment in Ogun State.",
     url: "https://immovablesrealty.com",
-    logo: "https://immovablesrealty.com/logo.png",
+    logo: "https://immovablesrealty.com/images/logo.png",
     image: "https://immovablesrealty.com/og-image.jpg",
     telephone: "+234-813-283-3083",
     email: "info@immovablesrealty.com",

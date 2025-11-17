@@ -3,10 +3,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail } from "lucide-react";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [logoError, setLogoError] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,20 +72,33 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <div className="flex items-center">
-                <div className="bg-brand-blue text-white font-montserrat font-bold text-xl px-3 py-2 rounded">
-                  IR
+              {!logoError ? (
+                <div className="relative h-12 w-48">
+                  <Image
+                    src="/images/logo.png"
+                    alt="IMMOVABLES REALTY"
+                    fill
+                    className="object-contain"
+                    priority
+                    onError={() => setLogoError(true)}
+                  />
                 </div>
-                <div className="ml-3">
-                  <div className="font-montserrat font-extrabold text-xl leading-tight">
-                    <span className="text-brand-blue">IMMOVABLES</span>{" "}
-                    <span className="text-brand-orange">REALTY</span>
+              ) : (
+                <div className="flex items-center">
+                  <div className="bg-brand-blue text-white font-montserrat font-bold text-xl px-3 py-2 rounded">
+                    IR
                   </div>
-                  <p className="font-allura text-sm text-gray-600 -mt-1">
-                    ...providing affordable landed properties
-                  </p>
+                  <div className="ml-3">
+                    <div className="font-montserrat font-extrabold text-xl leading-tight">
+                      <span className="text-brand-blue">IMMOVABLES</span>{" "}
+                      <span className="text-brand-orange">REALTY</span>
+                    </div>
+                    <p className="font-allura text-sm text-gray-600 -mt-1">
+                      ...providing affordable landed properties
+                    </p>
+                  </div>
                 </div>
-              </div>
+              )}
             </motion.a>
 
             {/* Desktop Navigation */}
