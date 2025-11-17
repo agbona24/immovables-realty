@@ -410,7 +410,7 @@ const BlogPage = () => {
             transition={{ delay: 0.4 }}
           >
             <Link
-              href="/#contact"
+              href="/contact"
               className="inline-block bg-brand-orange text-white px-10 py-4 rounded-full font-montserrat font-bold text-lg hover:bg-white hover:text-brand-orange transition shadow-xl"
             >
               Contact Us Today

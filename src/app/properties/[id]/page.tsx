@@ -39,7 +39,7 @@ export default function PropertyDetailPage() {
               Property Not Found
             </h1>
             <Link
-              href="/#properties"
+              href="/properties"
               className="text-brand-orange hover:underline"
             >
               Back to Properties
@@ -338,7 +338,7 @@ export default function PropertyDetailPage() {
                     </motion.a>
 
                     <motion.a
-                      href="/#contact"
+                      href="/contact"
                       className="w-full bg-brand-orange text-white py-4 rounded-full font-montserrat font-bold flex items-center justify-center gap-2 hover:bg-orange-600 transition shadow-lg"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}

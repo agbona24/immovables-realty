@@ -182,7 +182,7 @@ export default function BlogPostPage() {
                       about property investments in Ogun State and beyond.
                     </p>
                     <Link
-                      href="/#contact"
+                      href="/contact"
                       className="inline-block bg-brand-orange text-white px-6 py-3 rounded-full font-montserrat font-bold hover:bg-white hover:text-brand-orange transition"
                     >
                       Get Expert Advice
@@ -238,7 +238,7 @@ export default function BlogPostPage() {
                         Get personalized investment advice from our expert advisors.
                       </p>
                       <Link
-                        href="/#contact"
+                        href="/contact"
                         className="block w-full bg-white text-brand-orange text-center py-3 rounded-full font-montserrat font-bold hover:bg-brand-blue hover:text-white transition"
                       >
                         Contact Us
@@ -338,7 +338,7 @@ export default function BlogPostPage() {
               transition={{ delay: 0.4 }}
             >
               <Link
-                href="/#contact"
+                href="/contact"
                 className="inline-block bg-brand-orange text-white px-10 py-4 rounded-full font-montserrat font-bold text-lg hover:bg-white hover:text-brand-orange transition shadow-xl"
               >
                 Contact Us Today

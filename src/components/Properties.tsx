@@ -230,7 +230,7 @@ const Properties = () => {
             available!
           </p>
           <motion.a
-            href="/#contact"
+            href="/contact"
             className="inline-block bg-gradient-to-r from-brand-blue to-blue-800 text-white px-8 py-4 rounded-full font-montserrat font-bold shadow-xl hover:from-brand-orange hover:to-orange-600 transition-all"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}

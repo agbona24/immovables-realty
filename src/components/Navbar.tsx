@@ -18,11 +18,11 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/#about" },
-    { name: "Properties", href: "/#properties" },
+    { name: "About", href: "/about" },
+    { name: "Properties", href: "/properties" },
     { name: "Blog", href: "/blog" },
-    { name: "Why Us", href: "/#why-us" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Why Us", href: "/why-us" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
@@ -65,7 +65,7 @@ const Navbar = () => {
           <div className="flex justify-between items-center">
             {/* Logo */}
             <motion.a
-              href="#home"
+              href="/"
               className="flex items-center gap-3"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
