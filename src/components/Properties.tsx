@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { MapPin, Maximize, TrendingUp, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const Properties = () => {
   const ref = useRef(null);
@@ -18,6 +19,7 @@ const Properties = () => {
       status: "Hot Deal",
       features: ["Fastest-Growing Estate", "Prime Location", "Secure Investment"],
       color: "from-blue-600 to-brand-blue",
+      image: "/images/properties/prime-haven-grove.jpg",
     },
     {
       title: "Wura Gardens Estate",
@@ -28,6 +30,7 @@ const Properties = () => {
       status: "New",
       features: ["Affordable Plots", "Growing Community", "Flexible Payment"],
       color: "from-brand-orange to-orange-600",
+      image: "/images/properties/wura-gardens.jpg",
     },
     {
       title: "Prime Haven Groven - 4BR Detached",
@@ -38,6 +41,7 @@ const Properties = () => {
       status: "Featured",
       features: ["Detached House", "Modern Design", "Prime Location"],
       color: "from-indigo-600 to-purple-600",
+      image: "/images/properties/prime-haven-4br.jpg",
     },
     {
       title: "Prime Haven Groven - Semi-Detached",
@@ -48,6 +52,7 @@ const Properties = () => {
       status: "Available",
       features: ["Semi-Detached Flat", "Quality Finishing", "Estate Living"],
       color: "from-teal-600 to-green-600",
+      image: "/images/properties/prime-haven-semi.jpg",
     },
     {
       title: "House in Olomore",
@@ -58,6 +63,7 @@ const Properties = () => {
       status: "Available",
       features: ["Established Area", "Good Access Roads", "Residential Zone"],
       color: "from-rose-600 to-pink-600",
+      image: "/images/properties/olomore-house.jpg",
     },
     {
       title: "3 Units - 2 Bedroom Flats + Self-Con",
@@ -68,6 +74,7 @@ const Properties = () => {
       status: "Investment",
       features: ["Multiple Units", "Rental Income", "Well Located"],
       color: "from-amber-600 to-yellow-600",
+      image: "/images/properties/3-units.jpg",
     },
     {
       title: "Blocks of Flats - Prime Area",
@@ -78,6 +85,7 @@ const Properties = () => {
       status: "Investment",
       features: ["Prime Location", "Multiple Flats", "High Demand Area"],
       color: "from-purple-600 to-pink-600",
+      image: "/images/properties/blocks-of-flats.jpg",
     },
     {
       title: "3 Plots at Gbokoniyi",
@@ -88,6 +96,7 @@ const Properties = () => {
       status: "Available",
       features: ["Large Land Size", "Ideal for Development", "Growing Area"],
       color: "from-cyan-600 to-blue-600",
+      image: "/images/properties/gbokoniyi-plots.jpg",
     },
     {
       title: "2 Plots for Sale",
@@ -98,6 +107,7 @@ const Properties = () => {
       status: "Available",
       features: ["Twin Plots", "Investment Ready", "Prime for Building"],
       color: "from-green-600 to-teal-600",
+      image: "/images/properties/2-plots.jpg",
     },
   ];
 
@@ -171,7 +181,7 @@ const Properties = () => {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 0.4 }}
           >
-            Discover prime properties in strategic locations across Lagos with
+            Discover prime properties in strategic locations across Abeokuta, Ogun State with
             excellent growth potential and affordable payment plans.
           </motion.p>
         </motion.div>
@@ -191,28 +201,26 @@ const Properties = () => {
               whileHover={{ y: -10 }}
             >
               {/* Image/Gradient Header */}
-              <div
-                className={`h-48 bg-gradient-to-br ${property.color} relative overflow-hidden`}
-              >
-                {/* Animated Pattern */}
-                <motion.div
-                  className="absolute inset-0 opacity-20"
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                  }}
-                  animate={{
-                    backgroundPosition: ["0% 0%", "100% 100%"],
-                  }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear",
+              <div className={`h-48 bg-gradient-to-br ${property.color} relative overflow-hidden`}>
+                {/* Property Image */}
+                <Image
+                  src={property.image}
+                  alt={property.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  onError={(e) => {
+                    // Hide image on error to show gradient fallback
+                    e.currentTarget.style.display = 'none';
                   }}
                 />
 
+                {/* Gradient Overlay for better text visibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
+
                 {/* Status Badge */}
                 <motion.div
-                  className="absolute top-4 right-4 bg-white text-brand-blue px-4 py-1 rounded-full text-sm font-bold shadow-lg"
+                  className="absolute top-4 right-4 bg-white text-brand-blue px-4 py-1 rounded-full text-sm font-bold shadow-lg z-20"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.2 + index * 0.1 }}
@@ -221,7 +229,7 @@ const Properties = () => {
                 </motion.div>
 
                 {/* ROI Badge */}
-                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm text-green-600 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm text-green-600 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 z-20">
                   <TrendingUp size={14} />
                   {property.roi}
                 </div>
