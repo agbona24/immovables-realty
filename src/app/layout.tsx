@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://immovablesrealty.com"),
@@ -111,7 +112,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-poppins antialiased">{children}</body>
+      <body className="font-poppins antialiased">
+        <GoogleAnalytics />
+        {children}
+      </body>
     </html>
   );
 }
