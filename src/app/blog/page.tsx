@@ -6,6 +6,7 @@ import { Calendar, Clock, ArrowRight, TrendingUp, Building2, Lightbulb } from "l
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const BlogPage = () => {
   const ref = useRef(null);
@@ -399,6 +400,7 @@ const BlogPage = () => {
       </section>
       </div>
       <Footer />
+      <WhatsAppButton />
     </>
   );
 };

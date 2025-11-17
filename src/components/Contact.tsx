@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import {
   Mail,
   Phone,
@@ -10,10 +11,13 @@ import {
   Clock,
   MessageSquare,
   User,
+  CheckCircle,
+  AlertCircle,
 } from "lucide-react";
 
 const Contact = () => {
   const ref = useRef(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [formState, setFormState] = useState({
     name: "",
@@ -21,12 +25,44 @@ const Contact = () => {
     phone: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form submitted:", formState);
-    alert("Thank you for contacting us! We'll get back to you soon.");
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      // EmailJS configuration
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+
+      // If EmailJS is not configured, show success message anyway
+      if (!serviceId || !templateId || !publicKey) {
+        console.log("EmailJS not configured. Form data:", formState);
+        setSubmitStatus("success");
+        setFormState({ name: "", email: "", phone: "", message: "" });
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Send email using EmailJS
+      if (formRef.current) {
+        await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
+      }
+
+      setSubmitStatus("success");
+      setFormState({ name: "", email: "", phone: "", message: "" });
+    } catch (error) {
+      console.error("Email submission error:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+      // Reset status after 5 seconds
+      setTimeout(() => setSubmitStatus("idle"), 5000);
+    }
   };
 
   const handleChange = (
@@ -206,9 +242,37 @@ const Contact = () => {
             transition={{ delay: 0.7 }}
           >
             <form
+              ref={formRef}
               onSubmit={handleSubmit}
               className="bg-white rounded-3xl p-8 shadow-2xl"
             >
+              {/* Success Message */}
+              {submitStatus === "success" && (
+                <motion.div
+                  className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <p className="text-green-800 font-medium">
+                    Thank you! We'll get back to you soon.
+                  </p>
+                </motion.div>
+              )}
+
+              {/* Error Message */}
+              {submitStatus === "error" && (
+                <motion.div
+                  className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <AlertCircle className="w-5 h-5 text-red-600" />
+                  <p className="text-red-800 font-medium">
+                    Oops! Something went wrong. Please try again.
+                  </p>
+                </motion.div>
+              )}
               <div className="space-y-6">
                 {/* Name Field */}
                 <motion.div
@@ -306,15 +370,25 @@ const Contact = () => {
                 {/* Submit Button */}
                 <motion.button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-brand-blue to-blue-800 text-white py-4 rounded-full font-montserrat font-bold text-lg flex items-center justify-center gap-2 hover:from-brand-orange hover:to-orange-600 transition-all duration-300 shadow-xl"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-brand-blue to-blue-800 text-white py-4 rounded-full font-montserrat font-bold text-lg flex items-center justify-center gap-2 hover:from-brand-orange hover:to-orange-600 transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ delay: 1.2 }}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={!isSubmitting ? { scale: 1.02, y: -2 } : {}}
+                  whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                 >
-                  Send Message
-                  <Send className="w-5 h-5" />
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="w-5 h-5" />
+                    </>
+                  )}
                 </motion.button>
               </div>
             </form>

@@ -4,112 +4,31 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { MapPin, Maximize, TrendingUp, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { properties } from "@/data/properties";
 
 const Properties = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const properties = [
-    {
-      title: "Prime Haven Grove Estate",
-      location: "Abeokuta, Ogun State",
-      size: "Plot",
-      price: "Price Updated",
-      roi: "High Growth Area",
-      status: "Hot Deal",
-      features: ["Fastest-Growing Estate", "Prime Location", "Secure Investment"],
-      color: "from-blue-600 to-brand-blue",
-      image: "/images/properties/prime-haven-grove.jpg",
-    },
-    {
-      title: "Wura Gardens Estate",
-      location: "Abeokuta, Ogun State",
-      size: "Plots Available",
-      price: "Affordable Pricing",
-      roi: "New Development",
-      status: "New",
-      features: ["Affordable Plots", "Growing Community", "Flexible Payment"],
-      color: "from-brand-orange to-orange-600",
-      image: "/images/properties/wura-gardens.jpg",
-    },
-    {
-      title: "Prime Haven Groven - 4BR Detached",
-      location: "Abeokuta, Ogun State",
-      size: "4-Bedroom",
-      price: "Contact for Price",
-      roi: "Luxury Living",
-      status: "Featured",
-      features: ["Detached House", "Modern Design", "Prime Location"],
-      color: "from-indigo-600 to-purple-600",
-      image: "/images/properties/prime-haven-4br.jpg",
-    },
-    {
-      title: "Prime Haven Groven - Semi-Detached",
-      location: "Abeokuta, Ogun State",
-      size: "Semi-Detached",
-      price: "Contact for Price",
-      roi: "Family Home",
-      status: "Available",
-      features: ["Semi-Detached Flat", "Quality Finishing", "Estate Living"],
-      color: "from-teal-600 to-green-600",
-      image: "/images/properties/prime-haven-semi.jpg",
-    },
-    {
-      title: "House in Olomore",
-      location: "Olomore, Abeokuta",
-      size: "Residential",
-      price: "Contact for Price",
-      roi: "Ready to Move",
-      status: "Available",
-      features: ["Established Area", "Good Access Roads", "Residential Zone"],
-      color: "from-rose-600 to-pink-600",
-      image: "/images/properties/olomore-house.jpg",
-    },
-    {
-      title: "3 Units - 2 Bedroom Flats + Self-Con",
-      location: "Abeokuta, Ogun State",
-      size: "3 Units",
-      price: "Contact for Price",
-      roi: "Income Property",
-      status: "Investment",
-      features: ["Multiple Units", "Rental Income", "Well Located"],
-      color: "from-amber-600 to-yellow-600",
-      image: "/images/properties/3-units.jpg",
-    },
-    {
-      title: "Blocks of Flats - Prime Area",
-      location: "Abeokuta, Ogun State",
-      size: "Multi-Unit",
-      price: "Contact for Price",
-      roi: "High Rental Yield",
-      status: "Investment",
-      features: ["Prime Location", "Multiple Flats", "High Demand Area"],
-      color: "from-purple-600 to-pink-600",
-      image: "/images/properties/blocks-of-flats.jpg",
-    },
-    {
-      title: "3 Plots at Gbokoniyi",
-      location: "Gbokoniyi, Abeokuta",
-      size: "3 Plots",
-      price: "Contact for Price",
-      roi: "Development Opportunity",
-      status: "Available",
-      features: ["Large Land Size", "Ideal for Development", "Growing Area"],
-      color: "from-cyan-600 to-blue-600",
-      image: "/images/properties/gbokoniyi-plots.jpg",
-    },
-    {
-      title: "2 Plots for Sale",
-      location: "Abeokuta, Ogun State",
-      size: "2 Plots",
-      price: "Contact for Price",
-      roi: "Land Investment",
-      status: "Available",
-      features: ["Twin Plots", "Investment Ready", "Prime for Building"],
-      color: "from-green-600 to-teal-600",
-      image: "/images/properties/2-plots.jpg",
-    },
+  // Color gradients for property cards
+  const gradients = [
+    "from-blue-600 to-brand-blue",
+    "from-brand-orange to-orange-600",
+    "from-indigo-600 to-purple-600",
+    "from-teal-600 to-green-600",
+    "from-rose-600 to-pink-600",
+    "from-amber-600 to-yellow-600",
+    "from-purple-600 to-pink-600",
+    "from-cyan-600 to-blue-600",
+    "from-emerald-600 to-teal-600",
   ];
+
+  // Enhance properties with display data
+  const displayProperties = properties.map((property, index) => ({
+    ...property,
+    color: gradients[index % gradients.length],
+  }));
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -145,6 +64,18 @@ const Properties = () => {
           x: [0, -50, 0],
         }}
         transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div
+        className="absolute bottom-20 left-0 w-96 h-96 bg-brand-orange rounded-full opacity-5 blur-3xl"
+        animate={{
+          scale: [1, 1.3, 1],
+          x: [0, 50, 0],
+        }}
+        transition={{
           duration: 10,
           repeat: Infinity,
           ease: "easeInOut",
@@ -173,7 +104,8 @@ const Properties = () => {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.3 }}
           >
-            Explore Our <span className="text-brand-orange">Premium Listings</span>
+            Explore Our{" "}
+            <span className="text-brand-orange">Investment Opportunities</span>
           </motion.h2>
           <motion.p
             className="text-gray-600 text-lg"
@@ -181,8 +113,9 @@ const Properties = () => {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 0.4 }}
           >
-            Discover prime properties in strategic locations across Abeokuta, Ogun State with
-            excellent growth potential and affordable payment plans.
+            From prime estates to income-generating properties, discover our
+            curated selection of exceptional real estate investments across
+            Ogun State.
           </motion.p>
         </motion.div>
 
@@ -193,131 +126,117 @@ const Properties = () => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {properties.map((property, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500"
-              whileHover={{ y: -10 }}
-            >
-              {/* Image/Gradient Header */}
-              <div className={`h-48 bg-gradient-to-br ${property.color} relative overflow-hidden`}>
-                {/* Property Image */}
-                <Image
-                  src={property.image}
-                  alt={property.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  onError={(e) => {
-                    // Hide image on error to show gradient fallback
-                    e.currentTarget.style.display = 'none';
-                  }}
-                />
+          {displayProperties.map((property, index) => (
+            <motion.div key={property.id} variants={cardVariants}>
+              <Link href={`/properties/${property.id}`}>
+                <div className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col cursor-pointer">
+                  {/* Image Section */}
+                  <div className="relative h-64 overflow-hidden">
+                    {/* Gradient Background Fallback */}
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${property.color}`}
+                    />
 
-                {/* Gradient Overlay for better text visibility */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
+                    {/* Property Image */}
+                    <Image
+                      src={property.image}
+                      alt={property.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                      }}
+                    />
 
-                {/* Status Badge */}
-                <motion.div
-                  className="absolute top-4 right-4 bg-white text-brand-blue px-4 py-1 rounded-full text-sm font-bold shadow-lg z-20"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.2 + index * 0.1 }}
-                >
-                  {property.status}
-                </motion.div>
+                    {/* Status Badge */}
+                    <div className="absolute top-4 right-4">
+                      <motion.div
+                        className="bg-brand-orange text-white px-4 py-2 rounded-full text-sm font-bold shadow-xl"
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5 + index * 0.1 }}
+                      >
+                        {property.status}
+                      </motion.div>
+                    </div>
 
-                {/* ROI Badge */}
-                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm text-green-600 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 z-20">
-                  <TrendingUp size={14} />
-                  {property.roi}
-                </div>
-              </div>
+                    {/* Overlay on Hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="font-montserrat font-bold text-xl text-brand-blue mb-2">
-                  {property.title}
-                </h3>
+                  {/* Content Section */}
+                  <div className="p-6 flex-1 flex flex-col">
+                    {/* Title */}
+                    <h3 className="font-montserrat font-bold text-xl text-brand-blue mb-3 group-hover:text-brand-orange transition line-clamp-2">
+                      {property.title}
+                    </h3>
 
-                {/* Location */}
-                <div className="flex items-center gap-2 text-gray-600 mb-4">
-                  <MapPin size={16} className="text-brand-orange" />
-                  <span className="text-sm">{property.location}</span>
-                </div>
+                    {/* Location */}
+                    <div className="flex items-center gap-2 text-gray-600 mb-4">
+                      <MapPin size={18} className="flex-shrink-0" />
+                      <span className="text-sm">{property.location}</span>
+                    </div>
 
-                {/* Size & Price */}
-                <div className="flex justify-between items-center mb-4 pb-4 border-b border-gray-200">
-                  <div>
-                    <div className="text-xs text-gray-500">Size</div>
-                    <div className="font-bold text-brand-blue flex items-center gap-1">
-                      <Maximize size={14} />
-                      {property.size}
+                    {/* Features */}
+                    <div className="space-y-2 mb-4 flex-1">
+                      {property.features.slice(0, 3).map((feature, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-2 text-sm text-gray-700"
+                        >
+                          <div className="w-1.5 h-1.5 bg-brand-orange rounded-full" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Bottom Section */}
+                    <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
+                      {/* Price */}
+                      <div>
+                        <div className="text-xs text-gray-500 mb-1">Price</div>
+                        <div className="font-montserrat font-bold text-2xl text-brand-orange">
+                          {property.price}
+                        </div>
+                      </div>
+
+                      {/* View Details Button */}
+                      <motion.div
+                        className="w-12 h-12 bg-gradient-to-br from-brand-blue to-blue-800 rounded-full flex items-center justify-center text-white group-hover:from-brand-orange group-hover:to-orange-600 transition-all"
+                        whileHover={{ scale: 1.1, rotate: 90 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <ArrowRight size={20} />
+                      </motion.div>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="text-xs text-gray-500">Price</div>
-                    <div className="font-bold text-brand-orange text-lg">
-                      {property.price}
-                    </div>
-                  </div>
                 </div>
-
-                {/* Features */}
-                <div className="space-y-2 mb-6">
-                  {property.features.map((feature, idx) => (
-                    <motion.div
-                      key={idx}
-                      className="flex items-center gap-2 text-sm text-gray-600"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 + idx * 0.1 }}
-                    >
-                      <div className="w-1.5 h-1.5 bg-brand-orange rounded-full"></div>
-                      {feature}
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* CTA Button */}
-                <motion.button
-                  className="w-full bg-gradient-to-r from-brand-blue to-blue-800 text-white py-3 rounded-full font-montserrat font-bold flex items-center justify-center gap-2 group-hover:from-brand-orange group-hover:to-orange-600 transition-all duration-300"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  View Details
-                  <ArrowRight
-                    size={18}
-                    className="group-hover:translate-x-1 transition"
-                  />
-                </motion.button>
-              </div>
-
-              {/* Hover Border Effect */}
-              <motion.div
-                className="absolute inset-0 border-2 border-brand-orange rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                initial={{ scale: 0.95 }}
-                whileHover={{ scale: 1 }}
-              />
+              </Link>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* View More Button */}
+        {/* CTA Section */}
         <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ delay: 1.2 }}
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <motion.button
-            className="bg-white text-brand-blue border-2 border-brand-blue px-10 py-4 rounded-full font-montserrat font-bold text-lg hover:bg-brand-blue hover:text-white transition shadow-xl"
-            whileHover={{ scale: 1.05, y: -3 }}
+          <p className="text-gray-600 mb-6">
+            Can't find what you're looking for? We have more properties
+            available!
+          </p>
+          <motion.a
+            href="/#contact"
+            className="inline-block bg-gradient-to-r from-brand-blue to-blue-800 text-white px-8 py-4 rounded-full font-montserrat font-bold shadow-xl hover:from-brand-orange hover:to-orange-600 transition-all"
+            whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >
-            View All Properties
-          </motion.button>
+            Request Custom Property Search
+          </motion.a>
         </motion.div>
       </div>
     </section>
