@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Building2, TrendingUp, Users, MessageSquare, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -182,18 +183,21 @@ export default function Home() {
                 price: "₦4.5M",
                 location: "Abeokuta, Ogun State",
                 type: "Estate",
+                image: "/images/properties/prime-haven-grove.jpg",
               },
               {
                 title: "Wura Gardens Estate",
                 price: "₦3.2M",
                 location: "Abeokuta, Ogun State",
                 type: "Estate",
+                image: "/images/properties/wura-gardens.jpg",
               },
               {
                 title: "Prime Haven 4BR Detached",
                 price: "₦45M",
                 location: "Abeokuta, Ogun State",
                 type: "House",
+                image: "/images/properties/prime-haven-4br.jpg",
               },
             ].map((property, index) => (
               <motion.div
@@ -205,7 +209,14 @@ export default function Home() {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
               >
-                <div className="h-48 bg-gradient-to-br from-brand-blue to-blue-800" />
+                <div className="relative h-48 bg-gray-200 overflow-hidden">
+                  <Image
+                    src={property.image}
+                    alt={property.title}
+                    fill
+                    className="object-cover transition-transform duration-300 hover:scale-110"
+                  />
+                </div>
                 <div className="p-6">
                   <div className="text-xs font-bold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full inline-block mb-3">
                     {property.type}

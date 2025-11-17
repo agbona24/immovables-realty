@@ -18,94 +18,66 @@ const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Gallery images - using placeholder images with instructions for upload
+  // Gallery images - Real property images
   const galleryImages: GalleryImage[] = [
     // Properties
     {
       id: 1,
       src: "/images/gallery/property-1.jpg",
-      alt: "Prime Haven Grove Estate",
+      alt: "Prime Haven Groven",
       category: "Properties",
-      title: "Prime Haven Grove Estate",
+      title: "Prime Haven Groven",
     },
     {
       id: 2,
       src: "/images/gallery/property-2.jpg",
-      alt: "Wura Gardens Estate",
+      alt: "Prime Haven Groven - Updated Pricing",
       category: "Properties",
-      title: "Wura Gardens Estate",
+      title: "Prime Haven Groven - New Price",
     },
     {
       id: 3,
       src: "/images/gallery/property-3.jpg",
-      alt: "Luxury 4BR Detached Duplex",
+      alt: "Prive Haven Estate",
       category: "Properties",
-      title: "Luxury 4BR Detached Duplex",
+      title: "Prive Haven Estate",
     },
     {
       id: 4,
       src: "/images/gallery/property-4.jpg",
-      alt: "Modern Semi-Detached Home",
+      alt: "Land Investment Opportunity",
       category: "Properties",
-      title: "Modern Semi-Detached Home",
+      title: "Land That Sells Itself",
     },
     {
       id: 5,
       src: "/images/gallery/property-5.jpg",
-      alt: "Prime Investment Property",
+      alt: "Prime Location Property",
       category: "Properties",
-      title: "Prime Investment Property",
+      title: "Strategic Location",
     },
     {
       id: 6,
       src: "/images/gallery/property-6.jpg",
-      alt: "Commercial Development",
+      alt: "Investment Property",
       category: "Properties",
-      title: "Commercial Development",
+      title: "Smart Investment Opportunity",
     },
     // Office
     {
       id: 7,
       src: "/images/gallery/office-1.jpg",
-      alt: "IMMOVABLES REALTY Office Exterior",
+      alt: "IMMOVABLES REALTY Office",
       category: "Office",
-      title: "Our Office - Exterior View",
-    },
-    {
-      id: 8,
-      src: "/images/gallery/office-2.jpg",
-      alt: "Office Reception Area",
-      category: "Office",
-      title: "Reception Area",
-    },
-    {
-      id: 9,
-      src: "/images/gallery/office-3.jpg",
-      alt: "Consultation Room",
-      category: "Office",
-      title: "Client Consultation Room",
+      title: "Our Office Location",
     },
     // Community
     {
-      id: 10,
+      id: 8,
       src: "/images/gallery/community-1.jpg",
-      alt: "Abeokuta City View",
+      alt: "Abeokuta Community",
       category: "Community",
-      title: "Beautiful Abeokuta",
-    },
-    {
-      id: 11,
-      src: "/images/gallery/community-2.jpg",
-      alt: "Local Infrastructure",
-      category: "Community",
-      title: "Developing Infrastructure",
-    },
-    {
-      id: 12,
-      src: "/images/gallery/community-3.jpg",
-      alt: "Neighborhood Amenities",
-      category: "Community",
-      title: "Community Amenities",
+      title: "Thriving Community",
     },
   ];
 
@@ -276,26 +248,6 @@ const Gallery = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Upload Instructions Notice */}
-        <motion.div
-          className="mt-12 bg-blue-50 border-2 border-blue-200 rounded-xl p-6 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <h3 className="font-montserrat font-bold text-lg text-brand-blue mb-2">
-            📸 Upload Your Gallery Images
-          </h3>
-          <p className="text-gray-700 text-sm">
-            To display your actual images, upload them to{" "}
-            <code className="bg-white px-2 py-1 rounded text-brand-orange">
-              /public/images/gallery/
-            </code>
-            . Name them as: property-1.jpg, property-2.jpg, office-1.jpg, etc.
-            The placeholders will automatically be replaced with your images.
-          </p>
-        </motion.div>
       </div>
 
       {/* Lightbox Modal */}
