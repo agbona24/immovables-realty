@@ -26,16 +26,9 @@ const MobileFAB = () => {
     },
     {
       icon: Phone,
-      label: "Call Us",
+      label: "Call",
       color: "from-blue-500 to-blue-600",
       href: "tel:+2348023050052",
-      external: false,
-    },
-    {
-      icon: Mail,
-      label: "Email",
-      color: "from-purple-500 to-purple-600",
-      href: "mailto:immovablesrealty@gmail.com",
       external: false,
     },
     {
@@ -48,12 +41,12 @@ const MobileFAB = () => {
   ];
 
   return (
-    <div className="md:hidden fixed bottom-24 right-6 z-40">
+    <div className="md:hidden fixed bottom-24 right-4 z-40">
       {/* Action Buttons */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute bottom-20 right-0 flex flex-col gap-3"
+            className="absolute bottom-16 right-0 flex flex-col gap-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -63,7 +56,7 @@ const MobileFAB = () => {
               const content = (
                 <motion.div
                   key={index}
-                  className="flex items-center gap-3"
+                  className="flex items-center gap-2"
                   initial={{ x: 100, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   exit={{ x: 100, opacity: 0 }}
@@ -71,21 +64,21 @@ const MobileFAB = () => {
                 >
                   {/* Label */}
                   <motion.div
-                    className="bg-white px-4 py-2 rounded-full shadow-lg"
+                    className="bg-white px-3 py-1.5 rounded-full shadow-lg"
                     whileTap={{ scale: 0.95 }}
                   >
-                    <span className="text-sm font-semibold text-gray-700 whitespace-nowrap">
+                    <span className="text-xs font-semibold text-gray-700 whitespace-nowrap">
                       {action.label}
                     </span>
                   </motion.div>
 
                   {/* Icon Button */}
                   <motion.div
-                    className={`w-14 h-14 rounded-full bg-gradient-to-br ${action.color} shadow-xl flex items-center justify-center`}
+                    className={`w-11 h-11 rounded-full bg-gradient-to-br ${action.color} shadow-xl flex items-center justify-center`}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
-                    <Icon size={24} className="text-white" strokeWidth={2.5} />
+                    <Icon size={20} className="text-white" strokeWidth={2.5} />
                   </motion.div>
                 </motion.div>
               );
@@ -115,10 +108,10 @@ const MobileFAB = () => {
 
       {/* Main FAB */}
       <motion.button
-        className={`w-16 h-16 rounded-full shadow-2xl flex items-center justify-center relative overflow-hidden ${
+        className={`w-12 h-12 rounded-full shadow-xl flex items-center justify-center relative overflow-hidden ${
           isOpen
             ? "bg-gradient-to-br from-red-500 to-red-600"
-            : "bg-gradient-to-br from-brand-orange to-orange-600"
+            : "bg-gradient-to-br from-green-500 to-green-600"
         }`}
         onClick={() => setIsOpen(!isOpen)}
         whileTap={{ scale: 0.9 }}
@@ -127,17 +120,6 @@ const MobileFAB = () => {
         }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
       >
-        {/* Ripple Effect */}
-        <motion.div
-          className="absolute inset-0 bg-white rounded-full"
-          initial={{ scale: 0, opacity: 0.5 }}
-          animate={{
-            scale: isOpen ? [0, 2] : 0,
-            opacity: isOpen ? [0.5, 0] : 0,
-          }}
-          transition={{ duration: 0.6 }}
-        />
-
         <AnimatePresence mode="wait">
           {isOpen ? (
             <motion.div
@@ -147,7 +129,7 @@ const MobileFAB = () => {
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <X size={28} className="text-white" strokeWidth={3} />
+              <X size={20} className="text-white" strokeWidth={3} />
             </motion.div>
           ) : (
             <motion.div
@@ -157,42 +139,11 @@ const MobileFAB = () => {
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <Send size={28} className="text-white" strokeWidth={2.5} />
+              <MessageCircle size={20} className="text-white" strokeWidth={2.5} />
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Pulse Animation */}
-        {!isOpen && (
-          <motion.div
-            className="absolute inset-0 rounded-full bg-brand-orange"
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.5, 0, 0.5],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        )}
       </motion.button>
-
-      {/* Helper Text - Shows on first visit */}
-      <AnimatePresence>
-        {!isOpen && (
-          <motion.div
-            className="absolute -top-12 right-0 bg-brand-blue text-white px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap shadow-lg"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-          >
-            Need help? Tap here!
-            <div className="absolute -bottom-1 right-6 w-2 h-2 bg-brand-blue rotate-45" />
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };

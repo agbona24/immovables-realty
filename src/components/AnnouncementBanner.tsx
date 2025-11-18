@@ -32,7 +32,7 @@ const AnnouncementBanner = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-brand-blue via-blue-600 to-brand-blue shadow-2xl border-b-4 border-brand-orange"
+          className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-brand-blue via-blue-600 to-brand-blue shadow-2xl border-b-4 border-brand-orange"
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -100, opacity: 0 }}
