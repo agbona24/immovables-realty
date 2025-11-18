@@ -265,6 +265,12 @@ const Footer = () => {
               >
                 Refund Policy
               </a>
+              <a
+                href="/website-disclaimer"
+                className="text-gray-400 hover:text-brand-orange transition"
+              >
+                Disclaimer
+              </a>
             </div>
           </div>
         </motion.div>
