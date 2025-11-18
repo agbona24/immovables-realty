@@ -246,7 +246,7 @@ const Footer = () => {
               © {new Date().getFullYear()} IMMOVABLES REALTY. All rights
               reserved. | RC: 7466982
             </p>
-            <div className="flex gap-6 text-sm">
+            <div className="flex flex-wrap gap-4 md:gap-6 text-sm justify-center md:justify-end">
               <a
                 href="/privacy-policy"
                 className="text-gray-400 hover:text-brand-orange transition"
@@ -258,6 +258,12 @@ const Footer = () => {
                 className="text-gray-400 hover:text-brand-orange transition"
               >
                 Terms of Service
+              </a>
+              <a
+                href="/refund-policy"
+                className="text-gray-400 hover:text-brand-orange transition"
+              >
+                Refund Policy
               </a>
             </div>
           </div>
