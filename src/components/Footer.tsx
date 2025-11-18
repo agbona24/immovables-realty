@@ -32,12 +32,12 @@ const Footer = () => {
   ];
 
   const services = [
-    "Investment Properties",
-    "Market Analytics",
-    "Expert Advisory",
-    "Portfolio Management",
-    "Flexible Financing",
-    "Property Consultation",
+    { name: "Flexible Financing", href: "/flexible-financing" },
+    { name: "Portfolio Management", href: "/portfolio-management" },
+    { name: "Expert Advisory", href: "/expert-advisory" },
+    { name: "Market Analytics", href: "/market-analytics" },
+    { name: "Investment Properties", href: "/properties" },
+    { name: "Property Consultation", href: "/contact" },
   ];
 
   const socialLinks = [
@@ -170,10 +170,13 @@ const Footer = () => {
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <span className="text-gray-300 flex items-center gap-2">
+                  <a
+                    href={service.href}
+                    className="text-gray-300 hover:text-brand-orange transition flex items-center gap-2"
+                  >
                     <span className="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                    {service}
-                  </span>
+                    {service.name}
+                  </a>
                 </motion.li>
               ))}
             </ul>
