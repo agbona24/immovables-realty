@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,8 +12,72 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import StructuredData from "@/components/StructuredData";
 import AnnouncementBanner from "@/components/AnnouncementBanner";
+import MobileHero from "@/components/MobileHero";
+import MobileBottomNav from "@/components/MobileBottomNav";
+import MobilePropertyCards from "@/components/MobilePropertyCards";
+import MobileFAB from "@/components/MobileFAB";
+import PullToRefresh from "@/components/PullToRefresh";
 
 export default function Home() {
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  const handleRefresh = async () => {
+    // Simulate refresh
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setRefreshKey((prev) => prev + 1);
+  };
+
+  const mobileProperties = [
+    {
+      id: 1,
+      title: "3 Units of 2 Bedroom Flat + Room & Parlour",
+      price: "₦37M",
+      location: "Asabi Olomore, Abeokuta",
+      type: "House for Sale",
+      image: "/images/properties/house-sale-1.jpg",
+      badge: "NEW LISTING",
+      features: ["3 Units", "2 Bedrooms", "Modern"],
+    },
+    {
+      id: 2,
+      title: "Massive Building for Sale",
+      price: "₦75M",
+      location: "Abeokuta, Ogun State",
+      type: "House for Sale",
+      image: "/images/properties/house-sale-2.jpg",
+      badge: "NEW LISTING",
+      features: ["Commercial", "Prime Location"],
+    },
+    {
+      id: 3,
+      title: "Prime Land for Sale",
+      price: "₦45M",
+      location: "Rykra GRA Extension, Abeokuta",
+      type: "Land for Sale",
+      image: "/images/properties/land-sale-3.jpg",
+      badge: "HOT DEAL",
+      features: ["GRA", "Investment"],
+    },
+    {
+      id: 4,
+      title: "Prime Haven Grove Estate",
+      price: "₦4.5M",
+      location: "Abeokuta, Ogun State",
+      type: "Estate",
+      image: "/images/properties/prime-haven-grove.jpg",
+      features: ["Estate", "Affordable"],
+    },
+    {
+      id: 5,
+      title: "Wura Gardens Estate",
+      price: "₦3.2M",
+      location: "Abeokuta, Ogun State",
+      type: "Estate",
+      image: "/images/properties/wura-gardens.jpg",
+      features: ["Garden", "Family Home"],
+    },
+  ];
+
   const features = [
     {
       icon: <Building2 className="w-8 h-8" />,
@@ -45,11 +110,19 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen">
-      <StructuredData />
-      <AnnouncementBanner />
-      <Navbar />
-      <Hero />
+    <PullToRefresh onRefresh={handleRefresh}>
+      <main className="min-h-screen" key={refreshKey}>
+        <StructuredData />
+        <AnnouncementBanner />
+        <Navbar />
+
+        {/* Desktop Hero - Hidden on Mobile */}
+        <div className="hidden md:block">
+          <Hero />
+        </div>
+
+        {/* Mobile Hero - Only visible on Mobile */}
+        <MobileHero />
 
       {/* Investment Opportunity Banner */}
       <section className="relative bg-gradient-to-br from-brand-blue via-blue-900 to-brand-blue py-16 overflow-hidden">
@@ -252,33 +325,38 @@ export default function Home() {
 
       {/* Featured Properties Preview */}
       <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-        {/* Animated Circles */}
-        <motion.div
-          className="absolute top-20 left-1/4 w-32 h-32 border-4 border-brand-blue opacity-10 rounded-full"
-          animate={{
-            scale: [1, 1.5, 1],
-            rotate: [0, 360],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-1/4 w-24 h-24 border-4 border-brand-orange opacity-15"
-          animate={{
-            rotate: [0, -360],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
+        {/* Mobile Property Cards - Only visible on Mobile */}
+        <MobilePropertyCards properties={mobileProperties} />
 
-        <div className="container mx-auto px-4 relative z-10">
+        {/* Desktop Version - Hidden on Mobile */}
+        <div className="hidden md:block">
+          {/* Animated Circles */}
+          <motion.div
+            className="absolute top-20 left-1/4 w-32 h-32 border-4 border-brand-blue opacity-10 rounded-full"
+            animate={{
+              scale: [1, 1.5, 1],
+              rotate: [0, 360],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 right-1/4 w-24 h-24 border-4 border-brand-orange opacity-15"
+            animate={{
+              rotate: [0, -360],
+              scale: [1, 1.3, 1],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+
+          <div className="container mx-auto px-4 relative z-10">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-12"
             initial={{ opacity: 0, y: 20 }}
@@ -367,6 +445,7 @@ export default function Home() {
             ))}
           </div>
         </div>
+        </div>
       </section>
 
       {/* Latest Blog Posts Preview */}
@@ -401,7 +480,18 @@ export default function Home() {
       <Testimonials />
 
       <Footer />
-      <WhatsAppButton />
+
+      {/* Desktop WhatsApp Button - Hidden on Mobile */}
+      <div className="hidden md:block">
+        <WhatsAppButton />
+      </div>
+
+      {/* Mobile FAB - Only visible on Mobile */}
+      <MobileFAB />
+
+      {/* Mobile Bottom Navigation - Only visible on Mobile */}
+      <MobileBottomNav />
     </main>
+    </PullToRefresh>
   );
 }
