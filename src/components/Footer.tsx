@@ -308,7 +308,7 @@ const Footer = () => {
             </div>
 
             <motion.a
-              href="https://wa.me/2347069716822?text=Hello%20Harzotech!%20I'm%20interested%20in%20your%20web%20development%20services."
+              href="https://wa.me/2347069716822?text=Hey%20Harzotech!%20%F0%9F%91%8B%20I%20saw%20the%20*amazing%20job*%20you%20did%20on%20the%20IMMOVABLES%20REALTY%20website%20%E2%9C%A8%20%0A%0AI%20would%20love%20to%20discuss%20a%20project%20with%20you.%20When%20can%20we%20talk%3F%20%F0%9F%9A%80"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2 bg-gradient-to-r from-brand-blue to-blue-800 hover:from-brand-orange hover:to-orange-600 text-white px-6 py-2.5 rounded-full font-montserrat font-bold shadow-lg transition-all"
