@@ -20,65 +20,116 @@ const Gallery = () => {
 
   // Gallery images - Real property images
   const galleryImages: GalleryImage[] = [
-    // Properties
+    // Houses for Sale - NEW
     {
       id: 1,
+      src: "/images/gallery/house-for-sale-1.jpg",
+      alt: "House for Sale 1",
+      category: "Houses for Sale",
+      title: "Beautiful House for Sale",
+    },
+    {
+      id: 2,
+      src: "/images/gallery/house-for-sale-2.jpg",
+      alt: "House for Sale 2",
+      category: "Houses for Sale",
+      title: "Modern House for Sale",
+    },
+    {
+      id: 3,
+      src: "/images/gallery/house-for-sale-3.jpg",
+      alt: "House for Sale 3",
+      category: "Houses for Sale",
+      title: "Premium House for Sale",
+    },
+    // Land for Sale - NEW
+    {
+      id: 4,
+      src: "/images/gallery/land-for-sale-1.jpg",
+      alt: "Land for Sale 1",
+      category: "Land for Sale",
+      title: "Prime Land for Sale",
+    },
+    {
+      id: 5,
+      src: "/images/gallery/land-for-sale-2.jpg",
+      alt: "Land for Sale 2",
+      category: "Land for Sale",
+      title: "Commercial Land for Sale",
+    },
+    {
+      id: 6,
+      src: "/images/gallery/land-for-sale-3.jpg",
+      alt: "Land for Sale 3",
+      category: "Land for Sale",
+      title: "Investment Land for Sale",
+    },
+    {
+      id: 7,
+      src: "/images/gallery/land-for-sale-4.jpg",
+      alt: "Land for Sale 4",
+      category: "Land for Sale",
+      title: "Premium Land for Sale",
+    },
+    // Properties
+    {
+      id: 8,
       src: "/images/gallery/property-1.jpg",
       alt: "Prime Haven Groven",
       category: "Properties",
       title: "Prime Haven Groven",
     },
     {
-      id: 2,
+      id: 9,
       src: "/images/gallery/property-2.jpg",
       alt: "Prime Haven Groven - Updated Pricing",
       category: "Properties",
       title: "Prime Haven Groven - New Price",
     },
     {
-      id: 3,
+      id: 10,
       src: "/images/gallery/property-3.jpg",
       alt: "Prive Haven Estate",
       category: "Properties",
       title: "Prive Haven Estate",
     },
     {
-      id: 4,
+      id: 11,
       src: "/images/gallery/land-investment.jpg",
       alt: "Land Investment Opportunity",
       category: "Properties",
       title: "Land That Sells Itself",
     },
     {
-      id: 5,
+      id: 12,
       src: "/images/gallery/location-feature.jpg",
       alt: "Prime Location Property",
       category: "Properties",
       title: "Strategic Location",
     },
     {
-      id: 6,
+      id: 13,
       src: "/images/gallery/smart-investors.jpg",
       alt: "Smart Investors Property",
       category: "Properties",
       title: "Smart Investment Opportunity",
     },
     {
-      id: 7,
+      id: 14,
       src: "/images/gallery/property-4.jpg",
       alt: "Prime Property",
       category: "Properties",
       title: "Prime Investment",
     },
     {
-      id: 8,
+      id: 15,
       src: "/images/gallery/property-5.jpg",
       alt: "Quality Estate",
       category: "Properties",
       title: "Premium Estate",
     },
     {
-      id: 9,
+      id: 16,
       src: "/images/gallery/property-6.jpg",
       alt: "Investment Opportunity",
       category: "Properties",
@@ -86,7 +137,7 @@ const Gallery = () => {
     },
     // Office
     {
-      id: 10,
+      id: 17,
       src: "/images/gallery/office-1.jpg",
       alt: "IMMOVABLES REALTY Office",
       category: "Office",
@@ -94,7 +145,7 @@ const Gallery = () => {
     },
     // Community
     {
-      id: 11,
+      id: 18,
       src: "/images/gallery/community-1.jpg",
       alt: "Abeokuta Community",
       category: "Community",
@@ -102,7 +153,7 @@ const Gallery = () => {
     },
   ];
 
-  const categories = ["All", "Properties", "Office", "Community"];
+  const categories = ["All", "Houses for Sale", "Land for Sale", "Properties", "Office", "Community"];
 
   const filteredImages =
     selectedCategory === "All"

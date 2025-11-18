@@ -10,6 +10,7 @@ import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import StructuredData from "@/components/StructuredData";
+import AnnouncementBanner from "@/components/AnnouncementBanner";
 
 export default function Home() {
   const features = [
@@ -46,6 +47,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <StructuredData />
+      <AnnouncementBanner />
       <Navbar />
       <Hero />
 
@@ -303,25 +305,28 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Prime Haven Grove Estate",
-                price: "₦4.5M",
-                location: "Abeokuta, Ogun State",
-                type: "Estate",
-                image: "/images/properties/prime-haven-grove.jpg",
+                title: "3 Units of 2 Bedroom Flat + Room & Parlour",
+                price: "₦37M",
+                location: "Asabi Olomore, Abeokuta",
+                type: "House for Sale",
+                image: "/images/properties/house-sale-1.jpg",
+                badge: "NEW LISTING",
               },
               {
-                title: "Wura Gardens Estate",
-                price: "₦3.2M",
+                title: "Massive Building for Sale",
+                price: "₦75M",
                 location: "Abeokuta, Ogun State",
-                type: "Estate",
-                image: "/images/properties/wura-gardens.jpg",
+                type: "House for Sale",
+                image: "/images/properties/house-sale-2.jpg",
+                badge: "NEW LISTING",
               },
               {
-                title: "Prime Haven 4BR Detached",
+                title: "Prime Land for Sale",
                 price: "₦45M",
-                location: "Abeokuta, Ogun State",
-                type: "House",
-                image: "/images/properties/prime-haven-4br.jpg",
+                location: "Rykra GRA Extension, Abeokuta",
+                type: "Land for Sale",
+                image: "/images/properties/land-sale-3.jpg",
+                badge: "HOT DEAL",
               },
             ].map((property, index) => (
               <motion.div
@@ -340,6 +345,11 @@ export default function Home() {
                     fill
                     className="object-cover transition-transform duration-300 hover:scale-110"
                   />
+                  {property.badge && (
+                    <div className="absolute top-4 right-4 bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">
+                      {property.badge}
+                    </div>
+                  )}
                 </div>
                 <div className="p-6">
                   <div className="text-xs font-bold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full inline-block mb-3">
