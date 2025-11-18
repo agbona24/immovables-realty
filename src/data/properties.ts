@@ -17,6 +17,11 @@ export interface Property {
   amenities: string[];
   image: string;
   gallery?: string[];
+  coordinates?: {
+    lat: number;
+    lng: number;
+  };
+  address?: string;
   contactInfo: {
     phone: string;
     whatsapp: string;

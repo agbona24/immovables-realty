@@ -28,6 +28,7 @@ const Footer = () => {
     { name: "Gallery", href: "/gallery" },
     { name: "Blog", href: "/blog" },
     { name: "Why Choose Us", href: "/why-us" },
+    { name: "Downloads & Resources", href: "/downloads" },
     { name: "Contact", href: "/contact" },
   ];
 

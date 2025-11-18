@@ -20,6 +20,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import PropertyMap from "@/components/PropertyMap";
 import { getPropertyById, getRelatedProperties } from "@/data/properties";
 
 export default function PropertyDetailPage() {
@@ -295,6 +296,20 @@ export default function PropertyDetailPage() {
                     ))}
                   </div>
                 </motion.div>
+
+                {/* Location Map */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.0 }}
+                >
+                  <PropertyMap
+                    title={property.title}
+                    location={property.location}
+                    coordinates={property.coordinates}
+                    address={property.address}
+                  />
+                </motion.div>
               </div>
 
               {/* Right Column - Contact Card */}
@@ -338,7 +353,7 @@ export default function PropertyDetailPage() {
                     </motion.a>
 
                     <motion.a
-                      href="/contact"
+                      href="/schedule-inspection"
                       className="w-full bg-brand-orange text-white py-4 rounded-full font-montserrat font-bold flex items-center justify-center gap-2 hover:bg-orange-600 transition shadow-lg"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}

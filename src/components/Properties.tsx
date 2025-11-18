@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { MapPin, Maximize, TrendingUp, ArrowRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { MapPin, Maximize, TrendingUp, ArrowRight, Search, Filter, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { properties } from "@/data/properties";
@@ -10,6 +10,13 @@ import { properties } from "@/data/properties";
 const Properties = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  // Filter states
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedType, setSelectedType] = useState<string>("All");
+  const [selectedStatus, setSelectedStatus] = useState<string>("All");
+  const [priceRange, setPriceRange] = useState<string>("All");
+  const [showFilters, setShowFilters] = useState(false);
 
   // Color gradients for property cards
   const gradients = [
@@ -24,11 +31,82 @@ const Properties = () => {
     "from-emerald-600 to-teal-600",
   ];
 
-  // Enhance properties with display data
-  const displayProperties = properties.map((property, index) => ({
+  // Filter options
+  const propertyTypes = ["All", "Estate", "House", "Land", "Commercial"];
+  const statusOptions = ["All", "Available", "Selling Fast", "Few Units Left"];
+  const priceRanges = [
+    "All",
+    "Under ₦5M",
+    "₦5M - ₦20M",
+    "₦20M - ₦50M",
+    "Above ₦50M",
+  ];
+
+  // Parse price string to number for comparison
+  const parsePrice = (priceStr: string): number => {
+    const cleanPrice = priceStr.replace(/[₦,M]/g, "");
+    return parseFloat(cleanPrice) * 1000000;
+  };
+
+  // Filter properties
+  const filteredProperties = properties.filter((property) => {
+    // Search query filter
+    const matchesSearch =
+      searchQuery === "" ||
+      property.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      property.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      property.description.toLowerCase().includes(searchQuery.toLowerCase());
+
+    // Type filter
+    const matchesType = selectedType === "All" || property.type === selectedType;
+
+    // Status filter
+    const matchesStatus =
+      selectedStatus === "All" || property.status === selectedStatus;
+
+    // Price range filter
+    let matchesPrice = true;
+    if (priceRange !== "All") {
+      const price = parsePrice(property.price);
+      switch (priceRange) {
+        case "Under ₦5M":
+          matchesPrice = price < 5000000;
+          break;
+        case "₦5M - ₦20M":
+          matchesPrice = price >= 5000000 && price <= 20000000;
+          break;
+        case "₦20M - ₦50M":
+          matchesPrice = price > 20000000 && price <= 50000000;
+          break;
+        case "Above ₦50M":
+          matchesPrice = price > 50000000;
+          break;
+      }
+    }
+
+    return matchesSearch && matchesType && matchesStatus && matchesPrice;
+  });
+
+  // Enhance filtered properties with display data
+  const displayProperties = filteredProperties.map((property, index) => ({
     ...property,
     color: gradients[index % gradients.length],
   }));
+
+  // Clear all filters
+  const clearFilters = () => {
+    setSearchQuery("");
+    setSelectedType("All");
+    setSelectedStatus("All");
+    setPriceRange("All");
+  };
+
+  // Count active filters
+  const activeFiltersCount =
+    (selectedType !== "All" ? 1 : 0) +
+    (selectedStatus !== "All" ? 1 : 0) +
+    (priceRange !== "All" ? 1 : 0) +
+    (searchQuery !== "" ? 1 : 0);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -119,14 +197,235 @@ const Properties = () => {
           </motion.p>
         </motion.div>
 
-        {/* Properties Grid */}
+        {/* Search and Filter Section */}
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          className="mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ delay: 0.5 }}
         >
-          {displayProperties.map((property, index) => (
+          {/* Search Bar */}
+          <div className="flex flex-col md:flex-row gap-4 mb-6">
+            <div className="flex-1 relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+              <input
+                type="text"
+                placeholder="Search by property name, location, or features..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-12 pr-4 py-4 rounded-2xl border-2 border-gray-200 focus:border-brand-blue focus:outline-none transition-colors"
+              />
+            </div>
+            <motion.button
+              onClick={() => setShowFilters(!showFilters)}
+              className={`flex items-center gap-2 px-6 py-4 rounded-2xl font-montserrat font-bold transition-all ${
+                showFilters || activeFiltersCount > 0
+                  ? "bg-brand-orange text-white"
+                  : "bg-white border-2 border-gray-200 text-gray-700 hover:border-brand-blue"
+              }`}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Filter size={20} />
+              <span>Filters</span>
+              {activeFiltersCount > 0 && (
+                <span className="bg-white text-brand-orange rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+                  {activeFiltersCount}
+                </span>
+              )}
+            </motion.button>
+          </div>
+
+          {/* Filter Panel */}
+          {showFilters && (
+            <motion.div
+              className="bg-white rounded-2xl p-6 border-2 border-gray-100 shadow-lg"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+            >
+              <div className="grid md:grid-cols-3 gap-4 mb-4">
+                {/* Property Type Filter */}
+                <div>
+                  <label className="block text-sm font-montserrat font-bold text-gray-700 mb-2">
+                    Property Type
+                  </label>
+                  <select
+                    value={selectedType}
+                    onChange={(e) => setSelectedType(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-brand-blue focus:outline-none transition-colors"
+                  >
+                    {propertyTypes.map((type) => (
+                      <option key={type} value={type}>
+                        {type}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Status Filter */}
+                <div>
+                  <label className="block text-sm font-montserrat font-bold text-gray-700 mb-2">
+                    Availability Status
+                  </label>
+                  <select
+                    value={selectedStatus}
+                    onChange={(e) => setSelectedStatus(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-brand-blue focus:outline-none transition-colors"
+                  >
+                    {statusOptions.map((status) => (
+                      <option key={status} value={status}>
+                        {status}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Price Range Filter */}
+                <div>
+                  <label className="block text-sm font-montserrat font-bold text-gray-700 mb-2">
+                    Price Range
+                  </label>
+                  <select
+                    value={priceRange}
+                    onChange={(e) => setPriceRange(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-brand-blue focus:outline-none transition-colors"
+                  >
+                    {priceRanges.map((range) => (
+                      <option key={range} value={range}>
+                        {range}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Clear Filters Button */}
+              {activeFiltersCount > 0 && (
+                <motion.button
+                  onClick={clearFilters}
+                  className="flex items-center gap-2 px-4 py-2 text-brand-orange hover:text-orange-700 font-montserrat font-semibold transition-colors"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <X size={18} />
+                  <span>Clear all filters</span>
+                </motion.button>
+              )}
+            </motion.div>
+          )}
+
+          {/* Active Filters and Results Count */}
+          <div className="flex flex-wrap items-center gap-3 mt-4">
+            {/* Results Count */}
+            <div className="text-gray-600 font-montserrat">
+              Showing <span className="font-bold text-brand-blue">{filteredProperties.length}</span> of{" "}
+              <span className="font-bold">{properties.length}</span> properties
+            </div>
+
+            {/* Active Filter Badges */}
+            {searchQuery && (
+              <motion.div
+                className="flex items-center gap-2 bg-brand-blue/10 text-brand-blue px-4 py-2 rounded-full"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+              >
+                <span className="text-sm font-medium">Search: "{searchQuery}"</span>
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="hover:bg-brand-blue/20 rounded-full p-1 transition-colors"
+                >
+                  <X size={14} />
+                </button>
+              </motion.div>
+            )}
+
+            {selectedType !== "All" && (
+              <motion.div
+                className="flex items-center gap-2 bg-brand-orange/10 text-brand-orange px-4 py-2 rounded-full"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+              >
+                <span className="text-sm font-medium">Type: {selectedType}</span>
+                <button
+                  onClick={() => setSelectedType("All")}
+                  className="hover:bg-brand-orange/20 rounded-full p-1 transition-colors"
+                >
+                  <X size={14} />
+                </button>
+              </motion.div>
+            )}
+
+            {selectedStatus !== "All" && (
+              <motion.div
+                className="flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+              >
+                <span className="text-sm font-medium">Status: {selectedStatus}</span>
+                <button
+                  onClick={() => setSelectedStatus("All")}
+                  className="hover:bg-purple-200 rounded-full p-1 transition-colors"
+                >
+                  <X size={14} />
+                </button>
+              </motion.div>
+            )}
+
+            {priceRange !== "All" && (
+              <motion.div
+                className="flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+              >
+                <span className="text-sm font-medium">Price: {priceRange}</span>
+                <button
+                  onClick={() => setPriceRange("All")}
+                  className="hover:bg-green-200 rounded-full p-1 transition-colors"
+                >
+                  <X size={14} />
+                </button>
+              </motion.div>
+            )}
+          </div>
+        </motion.div>
+
+        {/* Properties Grid */}
+        {filteredProperties.length === 0 ? (
+          <motion.div
+            className="text-center py-20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="text-6xl mb-4">🔍</div>
+            <h3 className="font-montserrat font-bold text-2xl text-gray-700 mb-2">
+              No properties found
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Try adjusting your filters or search terms
+            </p>
+            {activeFiltersCount > 0 && (
+              <motion.button
+                onClick={clearFilters}
+                className="bg-brand-orange text-white px-6 py-3 rounded-full font-montserrat font-bold hover:bg-orange-600 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Clear all filters
+              </motion.button>
+            )}
+          </motion.div>
+        ) : (
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            {displayProperties.map((property, index) => (
             <motion.div key={property.id} variants={cardVariants}>
               <Link href={`/properties/${property.id}`}>
                 <div className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col cursor-pointer">
@@ -215,7 +514,8 @@ const Properties = () => {
               </Link>
             </motion.div>
           ))}
-        </motion.div>
+          </motion.div>
+        )}
 
         {/* CTA Section */}
         <motion.div
