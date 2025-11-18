@@ -49,6 +49,130 @@ export default function Home() {
       <Navbar />
       <Hero />
 
+      {/* Investment Opportunity Banner */}
+      <section className="relative bg-gradient-to-br from-brand-blue via-blue-900 to-brand-blue py-16 overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="/images/Smart Investors.jpeg"
+            alt="Smart Investors"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/90 to-blue-900/80" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              className="text-center md:text-left"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.div
+                className="inline-flex items-center gap-2 bg-brand-orange text-white px-6 py-3 rounded-full font-montserrat font-bold mb-6"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, type: "spring" }}
+              >
+                🚀 INVESTMENT OPPORTUNITY
+              </motion.div>
+
+              <motion.h2
+                className="font-montserrat font-extrabold text-3xl md:text-5xl text-white mb-4"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+              >
+                US$3,000,000 Capital Raise
+              </motion.h2>
+
+              <motion.p
+                className="text-blue-100 text-lg md:text-xl mb-6 max-w-3xl"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+              >
+                A landmark development combining{" "}
+                <strong className="text-white">mountain resort</strong>,{" "}
+                <strong className="text-white">residential housing</strong>, and{" "}
+                <strong className="text-white">integrated agriculture</strong> in
+                Ogun State — transforming real estate, tourism, and local food
+                supply.
+              </motion.p>
+
+              <motion.div
+                className="flex flex-wrap gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+              >
+                <Link href="/investment-opportunity">
+                  <motion.button
+                    className="bg-brand-orange hover:bg-orange-600 text-white px-8 py-4 rounded-full font-montserrat font-bold shadow-xl flex items-center gap-2"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Learn More
+                    <ArrowRight size={20} />
+                  </motion.button>
+                </Link>
+
+                <Link href="/downloads">
+                  <motion.button
+                    className="bg-white/10 backdrop-blur-sm border-2 border-white text-white hover:bg-white/20 px-8 py-4 rounded-full font-montserrat font-bold flex items-center gap-2"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Download Prospectus
+                    <ArrowRight size={20} />
+                  </motion.button>
+                </Link>
+              </motion.div>
+
+              {/* Key Highlights */}
+              <motion.div
+                className="grid md:grid-cols-3 gap-6 mt-12"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6 }}
+              >
+                {[
+                  {
+                    label: "Mountain Resort",
+                    value: "Luxury eco-resort with mountain views",
+                  },
+                  {
+                    label: "Estate Expansion",
+                    value: "Prime Haven & Wura Garden",
+                  },
+                  {
+                    label: "Immovables Farm",
+                    value: "Integrated agriculture supply",
+                  },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4"
+                  >
+                    <div className="text-brand-orange font-bold text-sm mb-1">
+                      {item.label}
+                    </div>
+                    <div className="text-white text-sm">{item.value}</div>
+                  </div>
+                ))}
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Quick Links Section */}
       <section className="py-20 bg-white relative overflow-hidden">
         {/* Decorative Background Elements */}

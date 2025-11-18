@@ -9,6 +9,8 @@ import {
   TrendingUp,
   Shield,
   CheckCircle,
+  DollarSign,
+  Mountain,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -27,6 +29,26 @@ const Downloads = () => {
   const [downloading, setDownloading] = useState<string | null>(null);
 
   const downloadItems: DownloadItem[] = [
+    {
+      id: "investor-memorandum",
+      title: "US$3M Investment Information Memorandum",
+      description:
+        "Comprehensive investor documentation for the landmark US$3,000,000 capital raise. This transformative mixed-use project combines mountain resort development, residential housing, and integrated agriculture across Ogun State. Includes fund allocation, return framework, exit strategies, and full due diligence materials.",
+      icon: <Mountain className="w-8 h-8" />,
+      fileSize: "5.7 MB",
+      color: "from-orange-600 to-red-600",
+      features: [
+        "Mountain resort & residential development details",
+        "Estate expansion strategy (Prime Haven Grove, Wura Garden)",
+        "Immovables Farm integration plan",
+        "US$3M fund allocation breakdown",
+        "SPV structure and investor protections",
+        "Equity + Revenue share options explained",
+        "Complete land title verification documents",
+        "Financial projections & ROI analysis",
+      ],
+      requiresAuth: true,
+    },
     {
       id: "private-partner",
       title: "Private Partner Prospectus",
@@ -100,12 +122,21 @@ const Downloads = () => {
 
   const handleDownload = async (itemId: string, requiresAuth: boolean = false) => {
     if (requiresAuth) {
-      // For protected downloads, redirect to contact or show modal
-      const message = encodeURIComponent(
-        "Hello! I'm interested in downloading the Board Participation Prospectus. Please send me the document and additional information."
-      );
+      // For protected downloads, redirect to WhatsApp with specific message
+      let message = "";
+
+      if (itemId === "investor-memorandum") {
+        message = encodeURIComponent(
+          "Hello! I'm interested in the US$3,000,000 investment opportunity with Immovables Realty. Please send me the full Investor Information Memorandum, due diligence documents, and schedule a briefing call. Thank you."
+        );
+      } else if (itemId === "board-participation") {
+        message = encodeURIComponent(
+          "Hello! I'm interested in downloading the Board Participation Prospectus. Please send me the document and additional information."
+        );
+      }
+
       window.open(
-        `https://wa.me/2348167601030?text=${message}`,
+        `https://wa.me/2348132833083?text=${message}`,
         "_blank"
       );
       return;

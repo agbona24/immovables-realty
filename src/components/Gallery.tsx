@@ -44,28 +44,49 @@ const Gallery = () => {
     },
     {
       id: 4,
-      src: "/images/gallery/property-4.jpg",
+      src: "/images/gallery/land-investment.jpg",
       alt: "Land Investment Opportunity",
       category: "Properties",
       title: "Land That Sells Itself",
     },
     {
       id: 5,
-      src: "/images/gallery/property-5.jpg",
+      src: "/images/gallery/location-feature.jpg",
       alt: "Prime Location Property",
       category: "Properties",
       title: "Strategic Location",
     },
     {
       id: 6,
-      src: "/images/gallery/property-6.jpg",
-      alt: "Investment Property",
+      src: "/images/gallery/smart-investors.jpg",
+      alt: "Smart Investors Property",
       category: "Properties",
       title: "Smart Investment Opportunity",
     },
-    // Office
     {
       id: 7,
+      src: "/images/gallery/property-4.jpg",
+      alt: "Prime Property",
+      category: "Properties",
+      title: "Prime Investment",
+    },
+    {
+      id: 8,
+      src: "/images/gallery/property-5.jpg",
+      alt: "Quality Estate",
+      category: "Properties",
+      title: "Premium Estate",
+    },
+    {
+      id: 9,
+      src: "/images/gallery/property-6.jpg",
+      alt: "Investment Opportunity",
+      category: "Properties",
+      title: "Investment Property",
+    },
+    // Office
+    {
+      id: 10,
       src: "/images/gallery/office-1.jpg",
       alt: "IMMOVABLES REALTY Office",
       category: "Office",
@@ -73,7 +94,7 @@ const Gallery = () => {
     },
     // Community
     {
-      id: 8,
+      id: 11,
       src: "/images/gallery/community-1.jpg",
       alt: "Abeokuta Community",
       category: "Community",
