@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import UnitConverter from "@/components/UnitConverter";
 import MortgageCalculator from "@/components/MortgageCalculator";
 import CostBreakdownTool from "@/components/CostBreakdownTool";
+import PropertyDocumentChecklist from "@/components/PropertyDocumentChecklist";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -43,6 +44,11 @@ export default function ToolsPage() {
             {/* Mortgage Calculator */}
             <div id="mortgage-calculator">
               <MortgageCalculator />
+            </div>
+
+            {/* Property Document Checklist */}
+            <div id="document-checklist">
+              <PropertyDocumentChecklist />
             </div>
           </div>
         </div>
