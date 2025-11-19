@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Building2, TrendingUp, Users, MessageSquare, ArrowRight, Heart, Scale, Map, Calculator } from "lucide-react";
+import { Building2, TrendingUp, Users, MessageSquare, ArrowRight, Heart, Scale, Map, Calculator, Wrench } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Testimonials from "@/components/Testimonials";
@@ -488,17 +488,17 @@ export default function Home() {
               </div>
             </Link>
 
-            {/* Properties with Calculator */}
-            <Link href="/properties">
+            {/* Tools & Calculators */}
+            <Link href="/tools">
               <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-brand-orange">
                 <div className="w-14 h-14 bg-gradient-to-br from-brand-orange to-orange-600 rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
-                  <Calculator size={28} />
+                  <Wrench size={28} />
                 </div>
                 <h3 className="font-montserrat font-bold text-xl text-brand-blue mb-2 group-hover:text-brand-orange transition">
-                  Smart Filters
+                  Tools & Calculators
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  Advanced search with price, location, bedrooms, and more filters
+                  Unit converter, mortgage calculator, and more helpful tools
                 </p>
               </div>
             </Link>
