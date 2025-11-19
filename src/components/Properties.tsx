@@ -7,6 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { properties } from "@/data/properties";
 import MobileFilterDrawer from "./MobileFilterDrawer";
+import FavoriteButton from "./FavoriteButton";
+import CompareButton from "./CompareButton";
 
 const Properties = () => {
   const ref = useRef(null);
@@ -529,6 +531,16 @@ const Properties = () => {
                       >
                         {property.status}
                       </motion.div>
+                    </div>
+
+                    {/* Favorite and Compare Buttons */}
+                    <div className="absolute top-4 left-4 flex gap-2 z-10">
+                      <div onClick={(e) => e.preventDefault()}>
+                        <FavoriteButton propertyId={property.id} size="md" />
+                      </div>
+                      <div onClick={(e) => e.preventDefault()}>
+                        <CompareButton propertyId={property.id} variant="icon" />
+                      </div>
                     </div>
 
                     {/* Overlay on Hover */}
