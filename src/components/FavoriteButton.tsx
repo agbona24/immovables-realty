@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Heart } from "lucide-react";
-import { useFavorites } from "@/hooks/useFavorites";
+import { useFavoritesWithCollections } from "@/hooks/useFavoritesWithCollections";
 
 interface FavoriteButtonProps {
   propertyId: string;
@@ -15,7 +15,7 @@ export default function FavoriteButton({
   className = "",
   size = "md",
 }: FavoriteButtonProps) {
-  const { isFavorite, toggleFavorite, isLoaded } = useFavorites();
+  const { isFavorite, toggleFavorite, isLoaded } = useFavoritesWithCollections();
   const favorite = isFavorite(propertyId);
 
   const sizeClasses = {
