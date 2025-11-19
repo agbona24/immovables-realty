@@ -31,6 +31,7 @@ import VideoTour from "@/components/VideoTour";
 import VirtualTour360 from "@/components/VirtualTour360";
 import ComparisonBar from "@/components/ComparisonBar";
 import MobilePropertyActionBar from "@/components/MobilePropertyActionBar";
+import PropertyGallery from "@/components/PropertyGallery";
 import { getPropertyById, getRelatedProperties } from "@/data/properties";
 import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
 
@@ -171,6 +172,24 @@ export default function PropertyDetailPage() {
                 >
                   <LivePropertyStats propertyId={property.id} showRecentActivity={true} />
                 </motion.div>
+
+                {/* Property Gallery */}
+                {property.gallery && property.gallery.length > 0 && (
+                  <motion.div
+                    className="bg-white rounded-2xl p-6 md:p-8 shadow-lg"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.42 }}
+                  >
+                    <h2 className="font-montserrat font-bold text-2xl text-brand-blue mb-6">
+                      Property Gallery
+                    </h2>
+                    <PropertyGallery
+                      images={property.gallery}
+                      propertyTitle={property.title}
+                    />
+                  </motion.div>
+                )}
 
                 {/* Description */}
                 <motion.div

@@ -62,6 +62,11 @@ export const properties: Property[] = [
     image: "/images/properties/prime-haven-grove.jpg",
     gallery: [
       "/images/properties/prime-haven-grove.jpg",
+      "/images/properties/wura-gardens.jpg",
+      "/images/properties/the-peninsula.jpg",
+      "/images/properties/serenity-heights.jpg",
+      "/images/properties/golden-palm-estate.jpg",
+      "/images/properties/victoria-court.jpg",
     ],
     coordinates: {
       lat: 7.1475,
@@ -102,6 +107,10 @@ export const properties: Property[] = [
     image: "/images/properties/wura-gardens.jpg",
     gallery: [
       "/images/properties/wura-gardens.jpg",
+      "/images/properties/prime-haven-grove.jpg",
+      "/images/properties/serenity-heights.jpg",
+      "/images/properties/victoria-court.jpg",
+      "/images/properties/golden-palm-estate.jpg",
     ],
     coordinates: {
       lat: 7.1575,
