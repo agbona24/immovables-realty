@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import UnitConverter from "@/components/UnitConverter";
 import MortgageCalculator from "@/components/MortgageCalculator";
+import CostBreakdownTool from "@/components/CostBreakdownTool";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -32,6 +33,11 @@ export default function ToolsPage() {
             {/* Unit Converter */}
             <div id="unit-converter">
               <UnitConverter />
+            </div>
+
+            {/* Cost Breakdown Tool */}
+            <div id="cost-breakdown">
+              <CostBreakdownTool />
             </div>
 
             {/* Mortgage Calculator */}
