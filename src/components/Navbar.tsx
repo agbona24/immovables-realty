@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import Image from "next/image";
+import ThemeToggle from "./ThemeToggle";
+import RecentlyViewed from "./RecentlyViewed";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -104,7 +106,9 @@ const Navbar = () => {
             </motion.a>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-4">
+              <RecentlyViewed />
+              <ThemeToggle />
               {navLinks.map((link, index) => (
                 <motion.a
                   key={link.name}

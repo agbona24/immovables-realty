@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
+import { useEffect } from "react";
 import {
   MapPin,
   Home,
@@ -31,6 +32,7 @@ import VirtualTour360 from "@/components/VirtualTour360";
 import ComparisonBar from "@/components/ComparisonBar";
 import MobilePropertyActionBar from "@/components/MobilePropertyActionBar";
 import { getPropertyById, getRelatedProperties } from "@/data/properties";
+import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
 
 export default function PropertyDetailPage() {
   const params = useParams();
@@ -38,6 +40,14 @@ export default function PropertyDetailPage() {
   const propertyId = params.id as string;
   const property = getPropertyById(propertyId);
   const relatedProperties = getRelatedProperties(propertyId, 3);
+  const { addToRecentlyViewed } = useRecentlyViewed();
+
+  // Track property view
+  useEffect(() => {
+    if (propertyId) {
+      addToRecentlyViewed(propertyId);
+    }
+  }, [propertyId, addToRecentlyViewed]);
 
   if (!property) {
     return (
