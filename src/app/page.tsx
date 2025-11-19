@@ -21,6 +21,11 @@ import ComparisonBar from "@/components/ComparisonBar";
 
 export default function Home() {
   const [refreshKey, setRefreshKey] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleRefresh = async () => {
     // Simulate refresh
@@ -142,9 +147,8 @@ export default function Home() {
             <div className="text-center md:text-left">
               <motion.div
                 className="inline-flex items-center gap-2 bg-brand-orange text-white px-6 py-3 rounded-full font-montserrat font-bold mb-6"
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
+                initial={mounted ? { scale: 0.8, opacity: 0 } : { scale: 1, opacity: 1 }}
+                animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.2, type: "spring" }}
               >
                 🚀 INVESTMENT OPPORTUNITY
@@ -152,20 +156,18 @@ export default function Home() {
 
               <motion.h2
                 className="font-montserrat font-extrabold text-3xl md:text-5xl text-white mb-4"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: 0.1 }}
+                initial={mounted ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
               >
                 US$3,000,000 Capital Raise
               </motion.h2>
 
               <motion.p
                 className="text-blue-100 text-lg md:text-xl mb-6 max-w-3xl"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: 0.2 }}
+                initial={mounted ? { opacity: 0 } : { opacity: 1 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
               >
                 A landmark development combining{" "}
                 <strong className="text-white">mountain resort</strong>,{" "}
@@ -177,10 +179,9 @@ export default function Home() {
 
               <motion.div
                 className="flex flex-wrap gap-4"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: 0.3 }}
+                initial={mounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
               >
                 <Link href="/investment-opportunity">
                   <motion.button
@@ -208,10 +209,9 @@ export default function Home() {
               {/* Key Highlights */}
               <motion.div
                 className="grid md:grid-cols-3 gap-6 mt-12"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: 0.4 }}
+                initial={mounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
               >
                 {[
                   {
@@ -274,10 +274,9 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
+            initial={mounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
           >
             <h2 className="font-montserrat font-extrabold text-4xl md:text-5xl text-brand-blue mb-6">
               Explore Our <span className="text-brand-orange">Services</span>
@@ -291,10 +290,9 @@ export default function Home() {
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+                initial={mounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.0 + index * 0.1, duration: 0.5 }}
               >
                 <Link href={feature.link}>
                   <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 h-full cursor-pointer border-2 border-transparent hover:border-brand-orange">
