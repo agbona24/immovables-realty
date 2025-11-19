@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Building2, TrendingUp, Users, MessageSquare, ArrowRight } from "lucide-react";
+import { Building2, TrendingUp, Users, MessageSquare, ArrowRight, Heart, Scale, Map, Calculator } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Testimonials from "@/components/Testimonials";
@@ -427,6 +427,100 @@ export default function Home() {
               </motion.button>
             </Link>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Advanced Features Section */}
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="font-montserrat font-extrabold text-4xl md:text-5xl text-brand-blue mb-6">
+              Advanced <span className="text-brand-orange">Features</span>
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Powerful tools to help you find, compare, and manage your dream property
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Favorites Feature */}
+            <Link href="/favorites">
+              <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-red-500">
+                <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
+                  <Heart size={28} />
+                </div>
+                <h3 className="font-montserrat font-bold text-xl text-brand-blue mb-2 group-hover:text-red-500 transition">
+                  My Favorites
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Save and organize your favorite properties in one place
+                </p>
+              </div>
+            </Link>
+
+            {/* Compare Feature */}
+            <Link href="/compare">
+              <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-purple-500">
+                <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
+                  <Scale size={28} />
+                </div>
+                <h3 className="font-montserrat font-bold text-xl text-brand-blue mb-2 group-hover:text-purple-500 transition">
+                  Compare Properties
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Compare up to 3 properties side-by-side to make informed decisions
+                </p>
+              </div>
+            </Link>
+
+            {/* Map View Feature */}
+            <Link href="/map">
+              <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-green-500">
+                <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
+                  <Map size={28} />
+                </div>
+                <h3 className="font-montserrat font-bold text-xl text-brand-blue mb-2 group-hover:text-green-500 transition">
+                  Map View
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Explore all properties on an interactive map with locations
+                </p>
+              </div>
+            </Link>
+
+            {/* Properties with Calculator */}
+            <Link href="/properties">
+              <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-brand-orange">
+                <div className="w-14 h-14 bg-gradient-to-br from-brand-orange to-orange-600 rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
+                  <Calculator size={28} />
+                </div>
+                <h3 className="font-montserrat font-bold text-xl text-brand-blue mb-2 group-hover:text-brand-orange transition">
+                  Smart Filters
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Advanced search with price, location, bedrooms, and more filters
+                </p>
+              </div>
+            </Link>
+          </div>
+
+          {/* Feature Highlights */}
+          <div className="mt-12 bg-gradient-to-r from-brand-blue to-blue-800 rounded-3xl p-8 md:p-12 text-white">
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="text-4xl font-montserrat font-bold mb-2">360°</div>
+                <div className="text-blue-200">Virtual Tours Available</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-montserrat font-bold mb-2">📹</div>
+                <div className="text-blue-200">Video Property Tours</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-montserrat font-bold mb-2">💰</div>
+                <div className="text-blue-200">Mortgage Calculator</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
