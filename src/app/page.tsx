@@ -179,7 +179,7 @@ export default function Home() {
                     <ArrowRight size={20} />
                   </motion.button>
                 </Link>
-              </motion.div>
+              </div>
 
               {/* Key Highlights */}
               <div className="grid md:grid-cols-3 gap-6 mt-12">
