@@ -2,13 +2,16 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { MapPin, Maximize, TrendingUp, ArrowRight, Search, Filter, X } from "lucide-react";
+import { MapPin, Maximize, TrendingUp, ArrowRight, Search, Filter, X, Bookmark } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { properties } from "@/data/properties";
 import MobileFilterDrawer from "./MobileFilterDrawer";
 import FavoriteButton from "./FavoriteButton";
 import CompareButton from "./CompareButton";
+import SaveSearchModal from "./SaveSearchModal";
+import SavedSearchesDropdown from "./SavedSearchesDropdown";
+import { useSavedSearches, SearchCriteria } from "@/hooks/useSavedSearches";
 
 const Properties = () => {
   const ref = useRef(null);
@@ -21,6 +24,29 @@ const Properties = () => {
   const [priceRange, setPriceRange] = useState<string>("All");
   const [selectedBedrooms, setSelectedBedrooms] = useState<string>("All");
   const [showFilters, setShowFilters] = useState(false);
+
+  // Saved searches
+  const { hasActiveFilters } = useSavedSearches();
+  const [saveSearchModalOpen, setSaveSearchModalOpen] = useState(false);
+
+  // Get current search criteria
+  const getCurrentCriteria = (): SearchCriteria => ({
+    searchQuery,
+    selectedType,
+    selectedStatus,
+    priceRange,
+    selectedBedrooms,
+  });
+
+  // Load a saved search
+  const handleLoadSearch = (criteria: SearchCriteria) => {
+    setSearchQuery(criteria.searchQuery);
+    setSelectedType(criteria.selectedType);
+    setSelectedStatus(criteria.selectedStatus);
+    setPriceRange(criteria.priceRange);
+    setSelectedBedrooms(criteria.selectedBedrooms);
+    setShowFilters(hasActiveFilters(criteria));
+  };
 
   // Color gradients for property cards
   const gradients = [
@@ -225,7 +251,7 @@ const Properties = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ delay: 0.5 }}
         >
-          {/* Search Bar */}
+          {/* Search Bar with Saved Searches */}
           <div className="flex flex-col md:flex-row gap-4 mb-6">
             <div className="flex-1 relative">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
@@ -237,24 +263,39 @@ const Properties = () => {
                 className="w-full pl-12 pr-4 py-4 rounded-2xl border-2 border-gray-200 focus:border-brand-blue focus:outline-none transition-colors"
               />
             </div>
-            <motion.button
-              onClick={() => setShowFilters(!showFilters)}
-              className={`flex items-center gap-2 px-6 py-4 rounded-2xl font-montserrat font-bold transition-all ${
-                showFilters || activeFiltersCount > 0
-                  ? "bg-brand-orange text-white"
-                  : "bg-white border-2 border-gray-200 text-gray-700 hover:border-brand-blue"
-              }`}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Filter size={20} />
-              <span>Filters</span>
+            <div className="flex gap-3">
+              <SavedSearchesDropdown onLoadSearch={handleLoadSearch} />
               {activeFiltersCount > 0 && (
-                <span className="bg-white text-brand-orange rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
-                  {activeFiltersCount}
-                </span>
+                <motion.button
+                  onClick={() => setSaveSearchModalOpen(true)}
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border-2 border-green-200 text-green-700 hover:bg-green-100 transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="Save current search"
+                >
+                  <Bookmark size={18} />
+                  <span className="hidden sm:inline text-sm font-medium">Save Search</span>
+                </motion.button>
               )}
-            </motion.button>
+              <motion.button
+                onClick={() => setShowFilters(!showFilters)}
+                className={`flex items-center gap-2 px-6 py-4 rounded-2xl font-montserrat font-bold transition-all ${
+                  showFilters || activeFiltersCount > 0
+                    ? "bg-brand-orange text-white"
+                    : "bg-white border-2 border-gray-200 text-gray-700 hover:border-brand-blue"
+                }`}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Filter size={20} />
+                <span>Filters</span>
+                {activeFiltersCount > 0 && (
+                  <span className="bg-white text-brand-orange rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+                    {activeFiltersCount}
+                  </span>
+                )}
+              </motion.button>
+            </div>
           </div>
 
           {/* Filter Panel */}
@@ -622,6 +663,13 @@ const Properties = () => {
           </motion.a>
         </motion.div>
       </div>
+
+      {/* Save Search Modal */}
+      <SaveSearchModal
+        isOpen={saveSearchModalOpen}
+        onClose={() => setSaveSearchModalOpen(false)}
+        currentCriteria={getCurrentCriteria()}
+      />
     </section>
   );
 };
