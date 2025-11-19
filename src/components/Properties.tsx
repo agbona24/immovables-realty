@@ -6,6 +6,7 @@ import { MapPin, Maximize, TrendingUp, ArrowRight, Search, Filter, X } from "luc
 import Image from "next/image";
 import Link from "next/link";
 import { properties } from "@/data/properties";
+import MobileFilterDrawer from "./MobileFilterDrawer";
 
 const Properties = () => {
   const ref = useRef(null);
@@ -445,6 +446,22 @@ const Properties = () => {
             )}
           </div>
         </motion.div>
+
+        {/* Mobile Filter Drawer */}
+        <MobileFilterDrawer
+          isOpen={showFilters}
+          onClose={() => setShowFilters(false)}
+          selectedType={selectedType}
+          setSelectedType={setSelectedType}
+          selectedStatus={selectedStatus}
+          setSelectedStatus={setSelectedStatus}
+          priceRange={priceRange}
+          setPriceRange={setPriceRange}
+          selectedBedrooms={selectedBedrooms}
+          setSelectedBedrooms={setSelectedBedrooms}
+          activeFiltersCount={activeFiltersCount}
+          clearFilters={clearFilters}
+        />
 
         {/* Properties Grid */}
         {filteredProperties.length === 0 ? (

@@ -25,7 +25,7 @@ export default function ComparisonBar() {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 100, opacity: 0 }}
-        className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-brand-blue to-blue-900 text-white shadow-2xl border-t-4 border-brand-orange"
+        className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-brand-blue to-blue-900 text-white shadow-2xl border-t-4 border-brand-orange pb-safe"
       >
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between flex-wrap gap-4">
@@ -90,7 +90,7 @@ export default function ComparisonBar() {
           </div>
 
           {/* Mobile Property List */}
-          <div className="md:hidden mt-4 flex gap-2 overflow-x-auto pb-2">
+          <div className="md:hidden mt-3 flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
             {comparisonProperties.map((property) => (
               <motion.div
                 key={property.id}

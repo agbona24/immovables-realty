@@ -29,6 +29,7 @@ import ScheduleTourForm from "@/components/ScheduleTourForm";
 import VideoTour from "@/components/VideoTour";
 import VirtualTour360 from "@/components/VirtualTour360";
 import ComparisonBar from "@/components/ComparisonBar";
+import MobilePropertyActionBar from "@/components/MobilePropertyActionBar";
 import { getPropertyById, getRelatedProperties } from "@/data/properties";
 
 export default function PropertyDetailPage() {
@@ -522,6 +523,13 @@ export default function PropertyDetailPage() {
         )}
       </main>
       <ComparisonBar />
+      <MobilePropertyActionBar
+        propertyId={property.id}
+        propertyTitle={property.title}
+        propertyPrice={property.price}
+        whatsappUrl={whatsappUrl}
+        phoneNumber={property.contactInfo.phone}
+      />
       <Footer />
       <WhatsAppButton />
     </>
