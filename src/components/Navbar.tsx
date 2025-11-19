@@ -9,8 +9,10 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [logoError, setLogoError] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -33,8 +35,8 @@ const Navbar = () => {
     <>
       {/* Top Bar */}
       <motion.div
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
+        initial={isMounted ? { y: -100 } : false}
+        animate={isMounted ? { y: 0 } : {}}
         className="bg-brand-blue text-white py-2 px-4 hidden md:block"
       >
         <div className="container mx-auto flex justify-between items-center text-sm">
@@ -61,8 +63,8 @@ const Navbar = () => {
             ? "bg-white shadow-lg py-3"
             : "bg-white/95 backdrop-blur-sm py-4"
         }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
+        initial={isMounted ? { y: -100 } : false}
+        animate={isMounted ? { y: 0 } : {}}
         transition={{ delay: 0.1 }}
       >
         <div className="container mx-auto px-4">
@@ -110,8 +112,8 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   className="font-montserrat font-semibold text-gray-700 hover:text-brand-orange transition relative group"
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={isMounted ? { opacity: 0, y: -20 } : false}
+                  animate={isMounted ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.1 * index }}
                   whileHover={{ scale: 1.05 }}
                 >

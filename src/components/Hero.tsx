@@ -1,9 +1,15 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin, Home, TrendingUp } from "lucide-react";
 
 const Hero = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
@@ -126,8 +132,8 @@ const Hero = () => {
           {/* Left Content */}
           <motion.div
             variants={staggerContainer}
-            initial="initial"
-            animate="animate"
+            initial={isMounted ? "initial" : false}
+            animate={isMounted ? "animate" : undefined}
             className="text-white"
           >
             <motion.div variants={fadeInUp} className="inline-block mb-4">
@@ -222,8 +228,8 @@ const Hero = () => {
 
           {/* Right Content - Feature Cards */}
           <motion.div
-            initial="initial"
-            animate="animate"
+            initial={isMounted ? "initial" : false}
+            animate={isMounted ? "animate" : undefined}
             variants={staggerContainer}
             className="relative hidden lg:block"
           >
@@ -254,8 +260,8 @@ const Hero = () => {
 
             {/* Floating Card 1 */}
             <motion.div
-              initial={{ opacity: 0, x: 50, y: -50 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
+              initial={isMounted ? { opacity: 0, x: 50, y: -50 } : false}
+              animate={isMounted ? { opacity: 1, x: 0, y: 0 } : {}}
               transition={{ delay: 0.5, duration: 0.6 }}
               className="absolute -top-8 -right-8 bg-brand-orange text-white rounded-2xl p-6 shadow-xl z-20"
               whileHover={{ scale: 1.05, rotate: 2 }}
@@ -267,8 +273,8 @@ const Hero = () => {
 
             {/* Floating Card 2 */}
             <motion.div
-              initial={{ opacity: 0, x: -50, y: 50 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
+              initial={isMounted ? { opacity: 0, x: -50, y: 50 } : false}
+              animate={isMounted ? { opacity: 1, x: 0, y: 0 } : {}}
               transition={{ delay: 0.6, duration: 0.6 }}
               className="absolute -bottom-8 -left-8 bg-white rounded-2xl p-6 shadow-xl z-20"
               whileHover={{ scale: 1.05, rotate: -2 }}

@@ -8,6 +8,7 @@ import { ChevronDown, Sparkles, TrendingUp, MapPin, ArrowRight } from "lucide-re
 
 const MobileHero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 300], [0, 150]);
   const opacity = useTransform(scrollY, [0, 200], [1, 0]);
@@ -37,6 +38,10 @@ const MobileHero = () => {
   ];
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
@@ -54,9 +59,9 @@ const MobileHero = () => {
           <motion.div
             key={currentSlide}
             className="absolute inset-0"
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
+            initial={isMounted ? { opacity: 0, scale: 1.1 } : false}
+            animate={isMounted ? { opacity: 1, scale: 1 } : {}}
+            exit={isMounted ? { opacity: 0, scale: 0.9 } : {}}
             transition={{ duration: 0.7 }}
           >
             {/* Background Image */}
@@ -81,8 +86,8 @@ const MobileHero = () => {
               {/* Floating Badge */}
               <motion.div
                 className="mb-4"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+                initial={isMounted ? { y: 20, opacity: 0 } : false}
+                animate={isMounted ? { y: 0, opacity: 1 } : {}}
                 transition={{ delay: 0.3 }}
               >
                 <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 px-4 py-2 rounded-full">
@@ -96,8 +101,8 @@ const MobileHero = () => {
               {/* Title */}
               <motion.h1
                 className="font-montserrat font-extrabold text-5xl text-white mb-3 leading-tight"
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+                initial={isMounted ? { y: 30, opacity: 0 } : false}
+                animate={isMounted ? { y: 0, opacity: 1 } : {}}
                 transition={{ delay: 0.4 }}
               >
                 {slides[currentSlide].title}
@@ -106,8 +111,8 @@ const MobileHero = () => {
               {/* Subtitle */}
               <motion.p
                 className="text-white/90 text-lg mb-6"
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+                initial={isMounted ? { y: 30, opacity: 0 } : false}
+                animate={isMounted ? { y: 0, opacity: 1 } : {}}
                 transition={{ delay: 0.5 }}
               >
                 {slides[currentSlide].subtitle}
@@ -115,8 +120,8 @@ const MobileHero = () => {
 
               {/* CTA Button */}
               <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+                initial={isMounted ? { y: 30, opacity: 0 } : false}
+                animate={isMounted ? { y: 0, opacity: 1 } : {}}
                 transition={{ delay: 0.6 }}
               >
                 <Link href="/properties">
@@ -163,16 +168,16 @@ const MobileHero = () => {
       {/* Quick Stats Bar */}
       <motion.div
         className="relative -mt-8 mx-4 bg-white rounded-3xl shadow-2xl p-4 z-10"
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={isMounted ? { y: 50, opacity: 0 } : false}
+        animate={isMounted ? { y: 0, opacity: 1 } : {}}
         transition={{ delay: 0.8 }}
       >
         <div className="grid grid-cols-3 divide-x divide-gray-200">
           <div className="text-center px-2">
             <motion.div
               className="font-montserrat font-bold text-2xl text-brand-blue"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
+              initial={isMounted ? { scale: 0 } : false}
+              animate={isMounted ? { scale: 1 } : {}}
               transition={{ delay: 1, type: "spring" }}
             >
               500+
@@ -182,8 +187,8 @@ const MobileHero = () => {
           <div className="text-center px-2">
             <motion.div
               className="font-montserrat font-bold text-2xl text-brand-orange"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
+              initial={isMounted ? { scale: 0 } : false}
+              animate={isMounted ? { scale: 1 } : {}}
               transition={{ delay: 1.1, type: "spring" }}
             >
               1000+
@@ -193,8 +198,8 @@ const MobileHero = () => {
           <div className="text-center px-2">
             <motion.div
               className="font-montserrat font-bold text-2xl text-green-600"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
+              initial={isMounted ? { scale: 0 } : false}
+              animate={isMounted ? { scale: 1 } : {}}
               transition={{ delay: 1.2, type: "spring" }}
             >
               95%
@@ -207,8 +212,8 @@ const MobileHero = () => {
       {/* Featured Badge */}
       <motion.div
         className="mx-4 mt-4"
-        initial={{ y: 30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={isMounted ? { y: 30, opacity: 0 } : false}
+        animate={isMounted ? { y: 0, opacity: 1 } : {}}
         transition={{ delay: 1 }}
       >
         <Link href="/investment-opportunity">
