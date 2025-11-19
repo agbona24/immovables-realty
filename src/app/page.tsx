@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -21,11 +21,6 @@ import ComparisonBar from "@/components/ComparisonBar";
 
 export default function Home() {
   const [refreshKey, setRefreshKey] = useState(0);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleRefresh = async () => {
     // Simulate refresh
@@ -145,44 +140,24 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="text-center md:text-left">
-              <motion.div
-                className="inline-flex items-center gap-2 bg-brand-orange text-white px-6 py-3 rounded-full font-montserrat font-bold mb-6"
-                initial={mounted ? { scale: 0.8, opacity: 0 } : { scale: 1, opacity: 1 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.2, type: "spring" }}
-              >
+              <div className="inline-flex items-center gap-2 bg-brand-orange text-white px-6 py-3 rounded-full font-montserrat font-bold mb-6">
                 🚀 INVESTMENT OPPORTUNITY
-              </motion.div>
+              </div>
 
-              <motion.h2
-                className="font-montserrat font-extrabold text-3xl md:text-5xl text-white mb-4"
-                initial={mounted ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
-              >
+              <h2 className="font-montserrat font-extrabold text-3xl md:text-5xl text-white mb-4">
                 US$3,000,000 Capital Raise
-              </motion.h2>
+              </h2>
 
-              <motion.p
-                className="text-blue-100 text-lg md:text-xl mb-6 max-w-3xl"
-                initial={mounted ? { opacity: 0 } : { opacity: 1 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-              >
+              <p className="text-blue-100 text-lg md:text-xl mb-6 max-w-3xl">
                 A landmark development combining{" "}
                 <strong className="text-white">mountain resort</strong>,{" "}
                 <strong className="text-white">residential housing</strong>, and{" "}
                 <strong className="text-white">integrated agriculture</strong> in
                 Ogun State — transforming real estate, tourism, and local food
                 supply.
-              </motion.p>
+              </p>
 
-              <motion.div
-                className="flex flex-wrap gap-4"
-                initial={mounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-              >
+              <div className="flex flex-wrap gap-4">
                 <Link href="/investment-opportunity">
                   <motion.button
                     className="bg-brand-orange hover:bg-orange-600 text-white px-8 py-4 rounded-full font-montserrat font-bold shadow-xl flex items-center gap-2"
@@ -207,12 +182,7 @@ export default function Home() {
               </motion.div>
 
               {/* Key Highlights */}
-              <motion.div
-                className="grid md:grid-cols-3 gap-6 mt-12"
-                initial={mounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-              >
+              <div className="grid md:grid-cols-3 gap-6 mt-12">
                 {[
                   {
                     label: "Mountain Resort",
@@ -237,7 +207,7 @@ export default function Home() {
                     <div className="text-white text-sm">{item.value}</div>
                   </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
@@ -272,28 +242,18 @@ export default function Home() {
         />
 
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            className="text-center max-w-3xl mx-auto mb-16"
-            initial={mounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-          >
+          <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="font-montserrat font-extrabold text-4xl md:text-5xl text-brand-blue mb-6">
               Explore Our <span className="text-brand-orange">Services</span>
             </h2>
             <p className="text-gray-600 text-lg">
               Your trusted partner for real estate investment in Ogun State
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={mounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.0 + index * 0.1, duration: 0.5 }}
-              >
+              <div key={index}>
                 <Link href={feature.link}>
                   <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 h-full cursor-pointer border-2 border-transparent hover:border-brand-orange">
                     <div
@@ -311,7 +271,7 @@ export default function Home() {
                     </div>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
