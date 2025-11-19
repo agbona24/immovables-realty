@@ -94,10 +94,10 @@ const PullToRefresh = ({ onRefresh, children }: PullToRefreshProps) => {
   }
 
   return (
-    <div ref={containerRef} className="relative md:hidden">
+    <div ref={containerRef} className="relative">
       {/* Pull to Refresh Indicator */}
       <motion.div
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center pointer-events-none"
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center pointer-events-none md:hidden"
         style={{
           height: pullDistance,
         }}
