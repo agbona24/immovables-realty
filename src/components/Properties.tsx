@@ -16,6 +16,7 @@ const Properties = () => {
   const [selectedType, setSelectedType] = useState<string>("All");
   const [selectedStatus, setSelectedStatus] = useState<string>("All");
   const [priceRange, setPriceRange] = useState<string>("All");
+  const [selectedBedrooms, setSelectedBedrooms] = useState<string>("All");
   const [showFilters, setShowFilters] = useState(false);
 
   // Color gradients for property cards
@@ -41,6 +42,7 @@ const Properties = () => {
     "₦20M - ₦50M",
     "Above ₦50M",
   ];
+  const bedroomOptions = ["All", "1", "2", "3", "4", "5+"];
 
   // Parse price string to number for comparison
   const parsePrice = (priceStr: string): number => {
@@ -84,7 +86,21 @@ const Properties = () => {
       }
     }
 
-    return matchesSearch && matchesType && matchesStatus && matchesPrice;
+    // Bedrooms filter
+    let matchesBedrooms = true;
+    if (selectedBedrooms !== "All" && property.details.bedrooms !== undefined) {
+      const bedrooms = property.details.bedrooms;
+      if (selectedBedrooms === "5+") {
+        matchesBedrooms = bedrooms >= 5;
+      } else {
+        matchesBedrooms = bedrooms === parseInt(selectedBedrooms);
+      }
+    } else if (selectedBedrooms !== "All" && property.details.bedrooms === undefined) {
+      // If filter is active but property doesn't have bedrooms info, exclude it
+      matchesBedrooms = false;
+    }
+
+    return matchesSearch && matchesType && matchesStatus && matchesPrice && matchesBedrooms;
   });
 
   // Enhance filtered properties with display data
@@ -99,6 +115,7 @@ const Properties = () => {
     setSelectedType("All");
     setSelectedStatus("All");
     setPriceRange("All");
+    setSelectedBedrooms("All");
   };
 
   // Count active filters
@@ -106,6 +123,7 @@ const Properties = () => {
     (selectedType !== "All" ? 1 : 0) +
     (selectedStatus !== "All" ? 1 : 0) +
     (priceRange !== "All" ? 1 : 0) +
+    (selectedBedrooms !== "All" ? 1 : 0) +
     (searchQuery !== "" ? 1 : 0);
 
   const containerVariants = {
@@ -244,7 +262,7 @@ const Properties = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
             >
-              <div className="grid md:grid-cols-3 gap-4 mb-4">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                 {/* Property Type Filter */}
                 <div>
                   <label className="block text-sm font-montserrat font-bold text-gray-700 mb-2">
@@ -294,6 +312,24 @@ const Properties = () => {
                     {priceRanges.map((range) => (
                       <option key={range} value={range}>
                         {range}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Bedrooms Filter */}
+                <div>
+                  <label className="block text-sm font-montserrat font-bold text-gray-700 mb-2">
+                    Bedrooms
+                  </label>
+                  <select
+                    value={selectedBedrooms}
+                    onChange={(e) => setSelectedBedrooms(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-brand-blue focus:outline-none transition-colors"
+                  >
+                    {bedroomOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option === "All" ? "All" : `${option} Bedroom${option !== "1" ? "s" : ""}`}
                       </option>
                     ))}
                   </select>
@@ -384,6 +420,24 @@ const Properties = () => {
                 <button
                   onClick={() => setPriceRange("All")}
                   className="hover:bg-green-200 rounded-full p-1 transition-colors"
+                >
+                  <X size={14} />
+                </button>
+              </motion.div>
+            )}
+
+            {selectedBedrooms !== "All" && (
+              <motion.div
+                className="flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+              >
+                <span className="text-sm font-medium">
+                  Bedrooms: {selectedBedrooms === "5+" ? "5+" : selectedBedrooms}
+                </span>
+                <button
+                  onClick={() => setSelectedBedrooms("All")}
+                  className="hover:bg-blue-200 rounded-full p-1 transition-colors"
                 >
                   <X size={14} />
                 </button>

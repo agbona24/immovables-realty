@@ -17,6 +17,7 @@ import MobileBottomNav from "@/components/MobileBottomNav";
 import MobilePropertyCards from "@/components/MobilePropertyCards";
 import MobileFAB from "@/components/MobileFAB";
 import PullToRefresh from "@/components/PullToRefresh";
+import ComparisonBar from "@/components/ComparisonBar";
 
 export default function Home() {
   const [refreshKey, setRefreshKey] = useState(0);
@@ -480,6 +481,9 @@ export default function Home() {
       <Testimonials />
 
       <Footer />
+
+      {/* Comparison Bar */}
+      <ComparisonBar />
 
       {/* Desktop WhatsApp Button - Hidden on Mobile */}
       <div className="hidden md:block">
