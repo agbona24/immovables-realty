@@ -329,7 +329,7 @@ const Footer = () => {
                 ⚡
               </motion.span>
               <span className="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent group-hover:from-white group-hover:to-orange-100 transition-all font-extrabold tracking-wide">
-                HARZOTECH
+                IDS
               </span>
               <motion.svg
                 className="w-5 h-5"

@@ -17,6 +17,7 @@ import MobileBottomNav from "@/components/MobileBottomNav";
 import MobilePropertyCards from "@/components/MobilePropertyCards";
 import MobileFAB from "@/components/MobileFAB";
 import PullToRefresh from "@/components/PullToRefresh";
+import FeaturedEstates from "@/components/FeaturedEstates";
 
 export default function Home() {
   const [refreshKey, setRefreshKey] = useState(0);
@@ -331,6 +332,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Featured Estates Section */}
+      <FeaturedEstates />
 
       {/* Quick Links Section */}
       <section className="py-20 bg-white relative overflow-hidden">
