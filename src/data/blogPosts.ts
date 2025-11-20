@@ -85,9 +85,9 @@ Ogun State hosts numerous manufacturing and industrial facilities, creating jobs
 
 A premium, secure & fast-appreciating estate in Abeokuta offering verified ownership with freehold titles, registered survey, and deed of assignment. Features 100% dry table land, flexible payment plans (40% deposit), and multiple plot sizes (300sqm-900sqm). Perfect for families, investors, and diaspora clients seeking ready-to-build plots in a fast-developing corridor.
 
-### Wura Gardens Estate
+### Wura Garden Estate
 
-Affordable plots in a rapidly developing area, perfect for first-time investors and homebuilders.
+A serene, secure & fast-developing residential estate offering comfort and long-term investment value. Features 100% dry land ready for construction, verified documentation (freehold title, registered survey & deed), and flexible payment plans (40% deposit). Available plot sizes: 300sqm-900sqm. Perfect for first-time buyers, families, investors, and diaspora clients seeking peaceful, family-friendly community with high appreciation potential.
 
 ### Commercial Corridors
 
