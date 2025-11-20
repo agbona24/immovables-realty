@@ -534,6 +534,54 @@ export const properties: Property[] = [
       whatsapp: "2348132833083",
     },
   },
+  {
+    id: "oke-ata-2br-flat",
+    title: "Fully Completed Standard 2-Bedroom Flat - Oke-Ata",
+    location: "Oke-Ata, Ita Oshin, Abeokuta",
+    price: "₦35M Per Building",
+    priceNumeric: 35000000,
+    description: "Fully completed standard 2-bedroom flat ready for immediate occupation. These fully ensuite flats are located in the serene Oke-Ata area of Ita Oshin, Abeokuta. Each building features quality finishing with fully furnished kitchen, electricity, clean borehole water, good drainage and sewage systems. Currently 4 units available. Perfect for families seeking ready-to-move-in homes or investors looking for rental-ready properties. Payment plan available with 60% first deposit.",
+    type: "House",
+    status: "Available",
+    features: [
+      "Fully Ensuite & Ready to Move In",
+      "4 Currently Available",
+      "Fully Furnished Kitchen",
+      "Quality Standard Finishing",
+      "Payment Plan Available (60% First Deposit)",
+      "Located in Serene Environment",
+      "Ready for Immediate Occupation",
+      "Perfect for Families or Investment",
+    ],
+    details: {
+      bedrooms: 2,
+      bathrooms: 2,
+      units: 4,
+    },
+    amenities: [
+      "Kitchen Full Furnished",
+      "Electricity Available",
+      "Good Sewage System",
+      "Clean Water Available (Borehole)",
+      "Good Drainage System",
+      "Serene Environment",
+      "Ready-to-Move-In Condition",
+      "Quality Finishing Throughout",
+    ],
+    image: "/images/properties/oke-ata-2br.jpg",
+    gallery: [
+      "/images/properties/oke-ata-2br.jpg",
+    ],
+    coordinates: {
+      lat: 7.1720,
+      lng: 3.3580,
+    },
+    address: "Oke-Ata, Ita Oshin, Abeokuta, Ogun State",
+    contactInfo: {
+      phone: "+234 813 283 3083",
+      whatsapp: "2348132833083",
+    },
+  },
 ];
 
 // Helper function to get property by ID
