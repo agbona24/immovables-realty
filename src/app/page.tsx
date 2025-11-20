@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Building2, TrendingUp, Users, MessageSquare, ArrowRight } from "lucide-react";
+import { Building2, TrendingUp, Users, MessageSquare, ArrowRight, Heart, Scale, Map, Calculator, Wrench } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Testimonials from "@/components/Testimonials";
@@ -17,6 +17,7 @@ import MobileBottomNav from "@/components/MobileBottomNav";
 import MobilePropertyCards from "@/components/MobilePropertyCards";
 import MobileFAB from "@/components/MobileFAB";
 import PullToRefresh from "@/components/PullToRefresh";
+import ComparisonBar from "@/components/ComparisonBar";
 
 export default function Home() {
   const [refreshKey, setRefreshKey] = useState(0);
@@ -138,55 +139,25 @@ export default function Home() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto">
-            <motion.div
-              className="text-center md:text-left"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <motion.div
-                className="inline-flex items-center gap-2 bg-brand-orange text-white px-6 py-3 rounded-full font-montserrat font-bold mb-6"
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, type: "spring" }}
-              >
+            <div className="text-center md:text-left">
+              <div className="inline-flex items-center gap-2 bg-brand-orange text-white px-6 py-3 rounded-full font-montserrat font-bold mb-6">
                 🚀 INVESTMENT OPPORTUNITY
-              </motion.div>
+              </div>
 
-              <motion.h2
-                className="font-montserrat font-extrabold text-3xl md:text-5xl text-white mb-4"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-              >
+              <h2 className="font-montserrat font-extrabold text-3xl md:text-5xl text-white mb-4">
                 US$3,000,000 Capital Raise
-              </motion.h2>
+              </h2>
 
-              <motion.p
-                className="text-blue-100 text-lg md:text-xl mb-6 max-w-3xl"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-              >
+              <p className="text-blue-100 text-lg md:text-xl mb-6 max-w-3xl">
                 A landmark development combining{" "}
                 <strong className="text-white">mountain resort</strong>,{" "}
                 <strong className="text-white">residential housing</strong>, and{" "}
                 <strong className="text-white">integrated agriculture</strong> in
                 Ogun State — transforming real estate, tourism, and local food
                 supply.
-              </motion.p>
+              </p>
 
-              <motion.div
-                className="flex flex-wrap gap-4"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-              >
+              <div className="flex flex-wrap gap-4">
                 <Link href="/investment-opportunity">
                   <motion.button
                     className="bg-brand-orange hover:bg-orange-600 text-white px-8 py-4 rounded-full font-montserrat font-bold shadow-xl flex items-center gap-2"
@@ -208,16 +179,10 @@ export default function Home() {
                     <ArrowRight size={20} />
                   </motion.button>
                 </Link>
-              </motion.div>
+              </div>
 
               {/* Key Highlights */}
-              <motion.div
-                className="grid md:grid-cols-3 gap-6 mt-12"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-              >
+              <div className="grid md:grid-cols-3 gap-6 mt-12">
                 {[
                   {
                     label: "Mountain Resort",
@@ -242,8 +207,8 @@ export default function Home() {
                     <div className="text-white text-sm">{item.value}</div>
                   </div>
                 ))}
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -277,29 +242,18 @@ export default function Home() {
         />
 
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            className="text-center max-w-3xl mx-auto mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+          <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="font-montserrat font-extrabold text-4xl md:text-5xl text-brand-blue mb-6">
               Explore Our <span className="text-brand-orange">Services</span>
             </h2>
             <p className="text-gray-600 text-lg">
               Your trusted partner for real estate investment in Ogun State
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
+              <div key={index}>
                 <Link href={feature.link}>
                   <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 h-full cursor-pointer border-2 border-transparent hover:border-brand-orange">
                     <div
@@ -317,7 +271,7 @@ export default function Home() {
                     </div>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -476,10 +430,107 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Advanced Features Section */}
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="font-montserrat font-extrabold text-4xl md:text-5xl text-brand-blue mb-6">
+              Advanced <span className="text-brand-orange">Features</span>
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Powerful tools to help you find, compare, and manage your dream property
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Favorites Feature */}
+            <Link href="/favorites">
+              <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-red-500">
+                <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
+                  <Heart size={28} />
+                </div>
+                <h3 className="font-montserrat font-bold text-xl text-brand-blue mb-2 group-hover:text-red-500 transition">
+                  My Favorites
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Save and organize your favorite properties in one place
+                </p>
+              </div>
+            </Link>
+
+            {/* Compare Feature */}
+            <Link href="/compare">
+              <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-purple-500">
+                <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
+                  <Scale size={28} />
+                </div>
+                <h3 className="font-montserrat font-bold text-xl text-brand-blue mb-2 group-hover:text-purple-500 transition">
+                  Compare Properties
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Compare up to 3 properties side-by-side to make informed decisions
+                </p>
+              </div>
+            </Link>
+
+            {/* Map View Feature */}
+            <Link href="/map">
+              <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-green-500">
+                <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
+                  <Map size={28} />
+                </div>
+                <h3 className="font-montserrat font-bold text-xl text-brand-blue mb-2 group-hover:text-green-500 transition">
+                  Map View
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Explore all properties on an interactive map with locations
+                </p>
+              </div>
+            </Link>
+
+            {/* Tools & Calculators */}
+            <Link href="/tools">
+              <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-brand-orange">
+                <div className="w-14 h-14 bg-gradient-to-br from-brand-orange to-orange-600 rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
+                  <Wrench size={28} />
+                </div>
+                <h3 className="font-montserrat font-bold text-xl text-brand-blue mb-2 group-hover:text-brand-orange transition">
+                  Tools & Calculators
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Unit converter, mortgage calculator, and more helpful tools
+                </p>
+              </div>
+            </Link>
+          </div>
+
+          {/* Feature Highlights */}
+          <div className="mt-12 bg-gradient-to-r from-brand-blue to-blue-800 rounded-3xl p-8 md:p-12 text-white">
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="text-4xl font-montserrat font-bold mb-2">360°</div>
+                <div className="text-blue-200">Virtual Tours Available</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-montserrat font-bold mb-2">📹</div>
+                <div className="text-blue-200">Video Property Tours</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-montserrat font-bold mb-2">💰</div>
+                <div className="text-blue-200">Mortgage Calculator</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <Testimonials />
 
       <Footer />
+
+      {/* Comparison Bar */}
+      <ComparisonBar />
 
       {/* Desktop WhatsApp Button - Hidden on Mobile */}
       <div className="hidden md:block">

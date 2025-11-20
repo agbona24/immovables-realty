@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import Properties from "@/components/Properties";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ComparisonBar from "@/components/ComparisonBar";
 
 export const metadata = {
   title: "Properties | IMMOVABLES REALTY",
@@ -24,6 +25,7 @@ export default function PropertiesPage() {
       />
       <Properties />
       <Footer />
+      <ComparisonBar />
       <WhatsAppButton />
     </main>
   );

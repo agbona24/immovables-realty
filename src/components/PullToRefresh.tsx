@@ -12,6 +12,7 @@ interface PullToRefreshProps {
 const PullToRefresh = ({ onRefresh, children }: PullToRefreshProps) => {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [startY, setStartY] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const pullDistance = useMotionValue(0);
   const rotate = useTransform(pullDistance, [0, 100], [0, 360]);
   const opacity = useTransform(pullDistance, [0, 80], [0, 1]);
@@ -19,6 +20,18 @@ const PullToRefresh = ({ onRefresh, children }: PullToRefreshProps) => {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const threshold = 80;
+
+  useEffect(() => {
+    // Detect if we're on mobile after mount
+    setIsMobile(window.innerWidth < 768);
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleTouchStart = (e: TouchEvent) => {
     if (window.scrollY === 0) {
@@ -60,7 +73,7 @@ const PullToRefresh = ({ onRefresh, children }: PullToRefreshProps) => {
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
+    if (!container || !isMobile) return;
 
     container.addEventListener("touchstart", handleTouchStart, {
       passive: true,
@@ -73,13 +86,18 @@ const PullToRefresh = ({ onRefresh, children }: PullToRefreshProps) => {
       container.removeEventListener("touchmove", handleTouchMove);
       container.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [startY, isRefreshing]);
+  }, [startY, isRefreshing, isMobile]);
+
+  // On desktop or during SSR, just render children directly
+  if (!isMobile) {
+    return <>{children}</>;
+  }
 
   return (
     <div ref={containerRef} className="relative">
       {/* Pull to Refresh Indicator */}
       <motion.div
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center pointer-events-none"
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center pointer-events-none md:hidden"
         style={{
           height: pullDistance,
         }}

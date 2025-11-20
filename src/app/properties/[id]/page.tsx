@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useParams, useRouter } from "next/navigation";
+import { useEffect } from "react";
 import {
   MapPin,
   Home,
@@ -21,7 +22,18 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import PropertyMap from "@/components/PropertyMap";
+import FavoriteButton from "@/components/FavoriteButton";
+import CompareButton from "@/components/CompareButton";
+import LivePropertyStats from "@/components/LivePropertyStats";
+import MortgageCalculator from "@/components/MortgageCalculator";
+import ScheduleTourForm from "@/components/ScheduleTourForm";
+import VideoTour from "@/components/VideoTour";
+import VirtualTour360 from "@/components/VirtualTour360";
+import ComparisonBar from "@/components/ComparisonBar";
+import MobilePropertyActionBar from "@/components/MobilePropertyActionBar";
+import PropertyGallery from "@/components/PropertyGallery";
 import { getPropertyById, getRelatedProperties } from "@/data/properties";
+import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
 
 export default function PropertyDetailPage() {
   const params = useParams();
@@ -29,6 +41,14 @@ export default function PropertyDetailPage() {
   const propertyId = params.id as string;
   const property = getPropertyById(propertyId);
   const relatedProperties = getRelatedProperties(propertyId, 3);
+  const { addToRecentlyViewed } = useRecentlyViewed();
+
+  // Track property view
+  useEffect(() => {
+    if (propertyId) {
+      addToRecentlyViewed(propertyId);
+    }
+  }, [propertyId, addToRecentlyViewed]);
 
   if (!property) {
     return (
@@ -76,15 +96,26 @@ export default function PropertyDetailPage() {
 
           <div className="container mx-auto px-4 h-full flex items-end pb-12 relative z-10">
             <div className="text-white max-w-4xl">
-              <motion.button
-                onClick={() => router.back()}
-                className="flex items-center gap-2 mb-6 hover:text-brand-orange transition"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-              >
-                <ArrowLeft size={20} />
-                Back
-              </motion.button>
+              <div className="flex items-center justify-between mb-6">
+                <motion.button
+                  onClick={() => router.back()}
+                  className="flex items-center gap-2 hover:text-brand-orange transition"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                >
+                  <ArrowLeft size={20} />
+                  Back
+                </motion.button>
+
+                <motion.div
+                  className="flex items-center gap-2"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                >
+                  <FavoriteButton propertyId={property.id} size="lg" />
+                  <CompareButton propertyId={property.id} variant="icon" />
+                </motion.div>
+              </div>
 
               <motion.div
                 className="inline-block bg-brand-orange px-4 py-1 rounded-full text-sm font-bold mb-4"
@@ -133,12 +164,39 @@ export default function PropertyDetailPage() {
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Left Column - Main Details */}
               <div className="lg:col-span-2 space-y-8">
+                {/* Live Property Stats */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <LivePropertyStats propertyId={property.id} showRecentActivity={true} />
+                </motion.div>
+
+                {/* Property Gallery */}
+                {property.gallery && property.gallery.length > 0 && (
+                  <motion.div
+                    className="bg-white rounded-2xl p-6 md:p-8 shadow-lg"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.42 }}
+                  >
+                    <h2 className="font-montserrat font-bold text-2xl text-brand-blue mb-6">
+                      Property Gallery
+                    </h2>
+                    <PropertyGallery
+                      images={property.gallery}
+                      propertyTitle={property.title}
+                    />
+                  </motion.div>
+                )}
+
                 {/* Description */}
                 <motion.div
                   className="bg-white rounded-2xl p-8 shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
+                  transition={{ delay: 0.45 }}
                 >
                   <h2 className="font-montserrat font-bold text-2xl text-brand-blue mb-4">
                     Property Description
@@ -297,17 +355,67 @@ export default function PropertyDetailPage() {
                   </div>
                 </motion.div>
 
+                {/* Video Tour */}
+                {property.videoUrl && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.95 }}
+                  >
+                    <VideoTour
+                      videoUrl={property.videoUrl}
+                      title={`${property.title} Video Tour`}
+                      thumbnail={property.image}
+                    />
+                  </motion.div>
+                )}
+
+                {/* 360° Tour */}
+                {property.tour360Url && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.0 }}
+                  >
+                    <VirtualTour360
+                      tourUrl={property.tour360Url}
+                      title={`${property.title} Virtual Tour`}
+                    />
+                  </motion.div>
+                )}
+
                 {/* Location Map */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.0 }}
+                  transition={{ delay: 1.05 }}
                 >
                   <PropertyMap
                     title={property.title}
                     location={property.location}
                     coordinates={property.coordinates}
                     address={property.address}
+                  />
+                </motion.div>
+
+                {/* Mortgage Calculator */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.1 }}
+                >
+                  <MortgageCalculator defaultPrice={property.priceNumeric} />
+                </motion.div>
+
+                {/* Schedule Tour Form */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.15 }}
+                >
+                  <ScheduleTourForm
+                    propertyTitle={property.title}
+                    propertyId={property.id}
                   />
                 </motion.div>
               </div>
@@ -443,6 +551,14 @@ export default function PropertyDetailPage() {
           </section>
         )}
       </main>
+      <ComparisonBar />
+      <MobilePropertyActionBar
+        propertyId={property.id}
+        propertyTitle={property.title}
+        propertyPrice={property.price}
+        whatsappUrl={whatsappUrl}
+        phoneNumber={property.contactInfo.phone}
+      />
       <Footer />
       <WhatsAppButton />
     </>
