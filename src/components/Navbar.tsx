@@ -120,7 +120,9 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <motion.a
-                href="#contact"
+                href="https://api.whatsapp.com/send/?phone=2348132833083&text=Hello+IMMOVABLES+REALTY%2C+I+would+like+to+schedule+a+free+consultation+to+discuss+real+estate+investment+opportunities.&type=phone_number&app_absent=0"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-brand-orange text-white px-6 py-2.5 rounded-full font-montserrat font-bold hover:bg-brand-blue transition shadow-lg hover:shadow-xl"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -165,7 +167,9 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <motion.a
-                href="#contact"
+                href="https://api.whatsapp.com/send/?phone=2348132833083&text=Hello+IMMOVABLES+REALTY%2C+I+would+like+to+schedule+a+free+consultation+to+discuss+real+estate+investment+opportunities.&type=phone_number&app_absent=0"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block bg-brand-orange text-white px-6 py-3 rounded-full font-montserrat font-bold text-center hover:bg-brand-blue transition"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
