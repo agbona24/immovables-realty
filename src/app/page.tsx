@@ -42,7 +42,7 @@ export default function Home() {
     {
       id: 2,
       title: "Olomore 9-Unit Mixed",
-      price: "₦75M",
+      price: "₦100M",
       location: "Olomore behind SADEEP Filling Station",
       type: "House for Sale",
       image: "/images/land for sale 2.jpeg",
@@ -104,6 +104,61 @@ export default function Home() {
       badge: "NEW LISTING",
       features: ["4 Bedrooms", "Registered Survey", "Building Approval"],
       description: "Title: Registered Survey, Deed of Assignment, Receipt & Building Approval",
+    },
+    {
+      id: 8,
+      title: "6 Units 3BR Flats + Car Wash",
+      price: "₦100M",
+      location: "Olomore, Abeokuta",
+      type: "House for Sale",
+      image: "/images/house for sale 4.jpeg",
+      badge: "PREMIUM",
+      features: ["6 Units 3BR", "Functional Car Wash", "Dual Income", "Prime Location"],
+      description: "Exceptional mixed-use property with 6 units of 3BR flats and operational car wash. Dual income streams.",
+    },
+    {
+      id: 9,
+      title: "Prime Haven Grove - 2BR Semi-Detached",
+      price: "₦22M - ₦40M",
+      location: "Prime Haven Grove Estate, Abeokuta",
+      type: "House for Sale",
+      image: "/images/prime haven 2.jpeg",
+      badge: "ESTATE LIVING",
+      features: ["2 Bedrooms", "Gated Estate", "24/7 Security", "Flexible Payment"],
+      description: "Carcass: ₦22M | Fully Completed: ₦40M. Modern semi-detached home in secure estate.",
+    },
+    {
+      id: 10,
+      title: "Prime Haven Grove - 3BR Fully Detached",
+      price: "₦25M - ₦55M",
+      location: "Prime Haven Grove Estate, Abeokuta",
+      type: "House for Sale",
+      image: "/images/prime haven 4.jpeg",
+      badge: "ESTATE LIVING",
+      features: ["3 Bedrooms", "Fully Detached", "Master En-Suite", "Private Backyard"],
+      description: "Carcass: ₦25M | Fully Completed: ₦55M. Spacious fully detached home for families.",
+    },
+    {
+      id: 11,
+      title: "Prime Haven Grove - 4BR + Recreational Centre",
+      price: "₦35M - ₦65M",
+      location: "Prime Haven Grove Estate, Abeokuta",
+      type: "House for Sale",
+      image: "/images/prime haven 3.jpeg",
+      badge: "LUXURY",
+      features: ["4 Bedrooms", "Recreational Centre", "Walk-in Closet", "Family Lounge"],
+      description: "Carcass: ₦35M | Fully Completed: ₦65M. Luxury home with recreational centre.",
+    },
+    {
+      id: 12,
+      title: "Wura Garden Estate",
+      price: "Contact for Pricing",
+      location: "Abeokuta, Ogun State",
+      type: "Land for Sale",
+      image: "/images/wura gardens.jpeg",
+      badge: "NEW ESTATE",
+      features: ["300-900 sqm plots", "Freehold Title", "40% Deposit", "Dry Land"],
+      description: "Serene residential estate with flexible payment. Registered Survey & Deed of Assignment.",
     },
   ];
 
@@ -410,7 +465,7 @@ export default function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {mobileProperties.slice(0, 3).map((property, index) => (
+            {mobileProperties.slice(0, 9).map((property, index) => (
               <Link key={index} href={`/properties/${property.id}`}>
                 <motion.div
                   className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer"
