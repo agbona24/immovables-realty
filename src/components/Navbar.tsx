@@ -124,7 +124,7 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <motion.a
-                href="#contact"
+                href="/contact"
                 className="bg-brand-orange text-white px-6 py-2.5 rounded-full font-montserrat font-bold hover:bg-brand-blue transition shadow-lg hover:shadow-xl"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -169,7 +169,7 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <motion.a
-                href="#contact"
+                href="/contact"
                 className="block bg-brand-orange text-white px-6 py-3 rounded-full font-montserrat font-bold text-center hover:bg-brand-blue transition"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
