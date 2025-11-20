@@ -582,6 +582,56 @@ export const properties: Property[] = [
       whatsapp: "2348132833083",
     },
   },
+  {
+    id: "olomore-9units-mixed",
+    title: "7 Units Room & Parlour + 2 Units 2BR Flat - Olomore",
+    location: "Olomore behind SADEEP Filling Station, Abeokuta",
+    price: "₦75M (Slightly Negotiable)",
+    priceNumeric: 75000000,
+    description: "Exceptional investment property in Olomore featuring 7 units of room and parlour self-contain plus 2 units of 2-bedroom flats. Total of 9 rental units offering excellent monthly income potential. Located behind SADEEP Filling Station (just 1 minute drive to the property). Property comes with complete documentation including Receipts, Deed of Land Purchase Contract, Registered Survey, and Building Approval. Features full POP finishing throughout, kitchen cabinets, ceramic tiles everywhere, borehole water, secure fencing with gate, and quality aluminum step-tiles. 30 seconds from tarred road with 100% good road access. Perfect for group investment or individual investors seeking strong rental returns.",
+    type: "Commercial",
+    status: "Available",
+    features: [
+      "7 Units Room & Parlour Self Contain",
+      "2 Units of 2-Bedroom Flats",
+      "Total 9 Rental Units",
+      "Slightly Negotiable Price",
+      "Complete Documentation Available",
+      "1 Min Drive from SADEEP Filling Station",
+      "30 Sec from Tarred Road",
+      "Perfect for Group Investment",
+    ],
+    details: {
+      units: 9,
+      bedrooms: 2,
+      bathrooms: 2,
+    },
+    amenities: [
+      "Fully Pop Everything",
+      "Kitchen Cabinet",
+      "3 Toilets and 2 Toilets (per unit)",
+      "30 Sec Off Tarred Road",
+      "Good Road 100%",
+      "Borehole Water",
+      "Ceramic Tiles Everywhere",
+      "Fence with Gate",
+      "Freshly Painted",
+      "Aluminum Step-Tiles",
+    ],
+    image: "/images/properties/olomore-9units.jpg",
+    gallery: [
+      "/images/properties/olomore-9units.jpg",
+    ],
+    coordinates: {
+      lat: 7.1610,
+      lng: 3.3455,
+    },
+    address: "Olomore behind SADEEP Filling Station, Abeokuta, Ogun State",
+    contactInfo: {
+      phone: "+234 813 283 3083",
+      whatsapp: "2348132833083",
+    },
+  },
 ];
 
 // Helper function to get property by ID
