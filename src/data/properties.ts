@@ -413,55 +413,15 @@ export const properties: Property[] = [
       "Good Access Road",
       "Verified Documentation",
     ],
-    image: "/images/properties/3-units.jpg",
+    image: "/images/properties/land-for-sale-1.jpg",
     gallery: [
-      "/images/properties/3-units.jpg",
+      "/images/properties/land-for-sale-1.jpg",
     ],
     coordinates: {
       lat: 7.1555,
       lng: 3.3549,
     },
     address: "Ire Akari, Olomore, After Federal Housing Estate, Abeokuta, Ogun State",
-    contactInfo: {
-      phone: "+234 813 283 3083",
-      whatsapp: "2348132833083",
-    },
-  },
-  {
-    id: "blocks-of-flats",
-    title: "Blocks of Flats - Prime Area",
-    location: "Prime Area, Abeokuta, Ogun State",
-    price: "₦65M",
-    priceNumeric: 65000000,
-    description: "Premium commercial property in a prime location. Multiple units offering excellent returns on investment with consistent rental income.",
-    type: "Commercial",
-    status: "Available",
-    features: [
-      "Prime Location",
-      "Multiple Units",
-      "High Occupancy Rate",
-      "Excellent ROI",
-      "Well Maintained",
-    ],
-    details: {
-      units: 8,
-    },
-    amenities: [
-      "Parking Area",
-      "Security",
-      "Water Supply",
-      "Power Supply",
-      "Generator",
-    ],
-    image: "/images/properties/blocks-of-flats.jpg",
-    gallery: [
-      "/images/properties/blocks-of-flats.jpg",
-    ],
-    coordinates: {
-      lat: 7.1525,
-      lng: 3.3589,
-    },
-    address: "Prime Area, Abeokuta, Ogun State",
     contactInfo: {
       phone: "+234 813 283 3083",
       whatsapp: "2348132833083",
@@ -497,9 +457,9 @@ export const properties: Property[] = [
       "Road Access",
       "Fast-Developing Area",
     ],
-    image: "/images/properties/gbokoniyi-plots.jpg",
+    image: "/images/properties/land-for-sale-4.jpg",
     gallery: [
-      "/images/properties/gbokoniyi-plots.jpg",
+      "/images/properties/land-for-sale-4.jpg",
     ],
     coordinates: {
       lat: 7.1435,
@@ -543,9 +503,9 @@ export const properties: Property[] = [
       "Perfect for Residential or Commercial",
       "Verified Complete Documentation",
     ],
-    image: "/images/properties/2-plots.jpg",
+    image: "/images/properties/land-for-sale-3.jpg",
     gallery: [
-      "/images/properties/2-plots.jpg",
+      "/images/properties/land-for-sale-3.jpg",
     ],
     coordinates: {
       lat: 7.1655,
@@ -591,9 +551,9 @@ export const properties: Property[] = [
       "Ready-to-Move-In Condition",
       "Quality Finishing Throughout",
     ],
-    image: "/images/properties/oke-ata-2br.jpg",
+    image: "/images/properties/house-for-sale-2.jpg",
     gallery: [
-      "/images/properties/oke-ata-2br.jpg",
+      "/images/properties/house-for-sale-2.jpg",
     ],
     coordinates: {
       lat: 7.1720,
@@ -641,9 +601,9 @@ export const properties: Property[] = [
       "Freshly Painted",
       "Aluminum Step-Tiles",
     ],
-    image: "/images/properties/olomore-9units.jpg",
+    image: "/images/properties/land-for-sale-2.jpg",
     gallery: [
-      "/images/properties/olomore-9units.jpg",
+      "/images/properties/land-for-sale-2.jpg",
     ],
     coordinates: {
       lat: 7.1610,
@@ -690,9 +650,9 @@ export const properties: Property[] = [
       "Perfect for Commercial Rental",
       "High ROI Potential",
     ],
-    image: "/images/properties/liberty-estate-7blocks.jpg",
+    image: "/images/properties/house-for-sale-1.jpg",
     gallery: [
-      "/images/properties/liberty-estate-7blocks.jpg",
+      "/images/properties/house-for-sale-1.jpg",
     ],
     coordinates: {
       lat: 7.2150,
@@ -737,9 +697,9 @@ export const properties: Property[] = [
       "Spacious Living Areas",
       "Verified Complete Documentation",
     ],
-    image: "/images/properties/navy-school-4bd.jpg",
+    image: "/images/properties/house-for-sale-3.jpg",
     gallery: [
-      "/images/properties/navy-school-4bd.jpg",
+      "/images/properties/house-for-sale-3.jpg",
     ],
     coordinates: {
       lat: 7.1580,

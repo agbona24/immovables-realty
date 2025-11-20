@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 interface Property {
-  id: number;
+  id: string | number;
   title: string;
   price: string;
   location: string;

@@ -30,37 +30,37 @@ export default function Home() {
 
   const mobileProperties = [
     {
-      id: 1,
+      id: "3-units",
       title: "3 Units of 2BR Flats + Room & Parlour Self Contain",
       price: "₦37M",
       location: "Ire Akari, Olomore, Abeokuta",
       type: "House for Sale",
-      image: "/images/properties/house-sale-1.jpg",
+      image: "/images/properties/land-for-sale-1.jpg",
       badge: "NEW LISTING",
       features: ["4 Units", "Investment", "High ROI"],
     },
     {
-      id: 2,
+      id: "olomore-9units-mixed",
       title: "7 Units Room & Parlour + 2 Units 2BR Flat",
       price: "₦75M",
       location: "Olomore behind SADEEP, Abeokuta",
       type: "House for Sale",
-      image: "/images/properties/house-sale-2.jpg",
+      image: "/images/properties/land-for-sale-2.jpg",
       badge: "NEW LISTING",
       features: ["9 Units", "Negotiable", "Prime Location"],
     },
     {
-      id: 3,
+      id: "2-plots",
       title: "Land For Sale - 2 Plots",
       price: "₦45M",
       location: "Ibara GRA Extension, Abeokuta",
       type: "Land for Sale",
-      image: "/images/properties/land-sale-3.jpg",
+      image: "/images/properties/land-for-sale-3.jpg",
       badge: "HOT DEAL",
       features: ["C of O", "GRA", "Prime Location"],
     },
     {
-      id: 4,
+      id: "prime-haven-grove",
       title: "Prime Haven Grove Estate",
       price: "From ₦3M",
       location: "Abeokuta, Ogun State",
@@ -69,7 +69,7 @@ export default function Home() {
       features: ["Estate", "Affordable", "Flexible Payment"],
     },
     {
-      id: 5,
+      id: "wura-gardens",
       title: "Wura Garden Estate",
       price: "From ₦2.5M",
       location: "Abeokuta, Ogun State",
@@ -337,65 +337,69 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
+                id: "3-units",
                 title: "3 Units of 2BR Flats + Room & Parlour Self Contain",
                 price: "₦37M",
                 location: "Ire Akari, Olomore, Abeokuta",
                 type: "House for Sale",
-                image: "/images/properties/house-sale-1.jpg",
+                image: "/images/properties/land-for-sale-1.jpg",
                 badge: "NEW LISTING",
               },
               {
+                id: "olomore-9units-mixed",
                 title: "7 Units Room & Parlour + 2 Units 2BR Flat",
                 price: "₦75M (Negotiable)",
                 location: "Olomore behind SADEEP, Abeokuta",
                 type: "House for Sale",
-                image: "/images/properties/house-sale-2.jpg",
+                image: "/images/properties/land-for-sale-2.jpg",
                 badge: "NEW LISTING",
               },
               {
+                id: "2-plots",
                 title: "Land For Sale - 2 Plots at Ibara GRA Extension",
                 price: "₦45M",
                 location: "Ibara GRA Extension, Abeokuta",
                 type: "Land for Sale",
-                image: "/images/properties/land-sale-3.jpg",
+                image: "/images/properties/land-for-sale-3.jpg",
                 badge: "HOT DEAL",
               },
             ].map((property, index) => (
-              <motion.div
-                key={index}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="relative h-48 bg-gray-200 overflow-hidden">
-                  <Image
-                    src={property.image}
-                    alt={property.title}
-                    fill
-                    className="object-cover transition-transform duration-300 hover:scale-110"
-                  />
-                  {property.badge && (
-                    <div className="absolute top-4 right-4 bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">
-                      {property.badge}
+              <Link key={index} href={`/properties/${property.id}`}>
+                <motion.div
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="relative h-48 bg-gray-200 overflow-hidden">
+                    <Image
+                      src={property.image}
+                      alt={property.title}
+                      fill
+                      className="object-cover transition-transform duration-300 hover:scale-110"
+                    />
+                    {property.badge && (
+                      <div className="absolute top-4 right-4 bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">
+                        {property.badge}
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-6">
+                    <div className="text-xs font-bold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full inline-block mb-3">
+                      {property.type}
                     </div>
-                  )}
-                </div>
-                <div className="p-6">
-                  <div className="text-xs font-bold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full inline-block mb-3">
-                    {property.type}
+                    <h3 className="font-montserrat font-bold text-lg text-brand-blue mb-2">
+                      {property.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-4">{property.location}</p>
+                    <div className="text-brand-orange font-bold text-2xl">
+                      {property.price}
+                    </div>
                   </div>
-                  <h3 className="font-montserrat font-bold text-lg text-brand-blue mb-2">
-                    {property.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4">{property.location}</p>
-                  <div className="text-brand-orange font-bold text-2xl">
-                    {property.price}
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
