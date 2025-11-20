@@ -30,51 +30,80 @@ export default function Home() {
   const mobileProperties = [
     {
       id: 1,
-      title: "3 Units of 2 Bedroom Flat + Room & Parlour",
-      price: "₦37M",
-      location: "Asabi Olomore, Abeokuta",
+      title: "Oke-Ata 2BR Flat",
+      price: "₦35M",
+      location: "Oke-Ata, Ita Oshin, Abeokuta",
       type: "House for Sale",
-      image: "/images/properties/house-sale-1.jpg",
+      image: "/images/house for sale 2.jpeg",
       badge: "NEW LISTING",
-      features: ["3 Units", "2 Bedrooms", "Modern"],
+      features: ["2 Bedrooms", "4 Units Available", "Fully Furnished Kitchen", "POP", "Borehole"],
+      description: "Fully Completed Standard 2-Bedroom Flat. 60% first deposit required.",
     },
     {
       id: 2,
-      title: "Massive Building for Sale",
+      title: "Olomore 9-Unit Mixed",
       price: "₦75M",
-      location: "Abeokuta, Ogun State",
+      location: "Olomore behind SADEEP Filling Station",
       type: "House for Sale",
-      image: "/images/properties/house-sale-2.jpg",
-      badge: "NEW LISTING",
-      features: ["Commercial", "Prime Location"],
+      image: "/images/land for sale 2.jpeg",
+      badge: "NEGOTIABLE",
+      features: ["7 Units Room & Parlour", "2 Units 2BR", "Full POP", "Ceramic Tiles", "Borehole"],
+      description: "Complete documentation. Features full POP, ceramic tiles, borehole, aluminum step-tiles.",
     },
     {
       id: 3,
-      title: "Prime Land for Sale",
-      price: "₦45M",
-      location: "Rykra GRA Extension, Abeokuta",
+      title: "Land For Sale (3 Plots)",
+      price: "₦18M",
+      location: "Gbokoniyi after Powering Abeokuta",
       type: "Land for Sale",
-      image: "/images/properties/land-sale-3.jpg",
+      image: "/images/land for sale 4.jpeg",
       badge: "HOT DEAL",
-      features: ["GRA", "Investment"],
+      features: ["3 Plots", "Registered Survey", "Deed of Assignment"],
+      description: "Title: Registered Survey, Deed of Assignment and Receipt",
     },
     {
       id: 4,
-      title: "Prime Haven Grove Estate",
-      price: "₦4.5M",
-      location: "Abeokuta, Ogun State",
-      type: "Estate",
-      image: "/images/properties/prime-haven-grove.jpg",
-      features: ["Estate", "Affordable"],
+      title: "7 Blocks of Flats - Liberty Estate",
+      price: "₦145M",
+      location: "Liberty Estate, Laderin, Abeokuta",
+      type: "House for Sale",
+      image: "/images/house for sale 1.jpeg",
+      badge: "PREMIUM",
+      features: ["7 x 2BR + 1 x 3BR", "2 Plots", "24/7 Electricity", "Very Secured", "Good Road"],
+      description: "Perfect for Short Let/Service Apt. Survey and Deed of Assignment available. Videos on request.",
     },
     {
       id: 5,
-      title: "Wura Gardens Estate",
-      price: "₦3.2M",
-      location: "Abeokuta, Ogun State",
-      type: "Estate",
-      image: "/images/properties/wura-gardens.jpg",
-      features: ["Garden", "Family Home"],
+      title: "Land For Sale (2 Plots) - GRA",
+      price: "₦45M",
+      location: "Ibara GRA Extension, Abeokuta",
+      type: "Land for Sale",
+      image: "/images/land for sale 3.jpeg",
+      badge: "PREMIUM",
+      features: ["2 Plots", "C of O", "GRA Location", "Registered Survey"],
+      description: "Title: C of O, Deed of Assignment, Registered Survey, Receipt",
+    },
+    {
+      id: 6,
+      title: "3 Units + Room & Parlour",
+      price: "₦37M",
+      location: "Ire Akari, Olomore, After Federal Housing Estate",
+      type: "House for Sale",
+      image: "/images/land for sale 1.jpeg",
+      badge: "NEW LISTING",
+      features: ["3 Units 2BR", "Room & Parlour", "Deed of Assignment"],
+      description: "Title: Deed of Assignment and Receipt",
+    },
+    {
+      id: 7,
+      title: "4 Bedroom Flat",
+      price: "₦53M",
+      location: "Behind Navy School, Adigbe Road, Abeokuta",
+      type: "House for Sale",
+      image: "/images/house for sale 3.jpeg",
+      badge: "NEW LISTING",
+      features: ["4 Bedrooms", "Registered Survey", "Building Approval"],
+      description: "Title: Registered Survey, Deed of Assignment, Receipt & Building Approval",
     },
   ];
 
@@ -381,67 +410,43 @@ export default function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "3 Units of 2 Bedroom Flat + Room & Parlour",
-                price: "₦37M",
-                location: "Asabi Olomore, Abeokuta",
-                type: "House for Sale",
-                image: "/images/properties/house-sale-1.jpg",
-                badge: "NEW LISTING",
-              },
-              {
-                title: "Massive Building for Sale",
-                price: "₦75M",
-                location: "Abeokuta, Ogun State",
-                type: "House for Sale",
-                image: "/images/properties/house-sale-2.jpg",
-                badge: "NEW LISTING",
-              },
-              {
-                title: "Prime Land for Sale",
-                price: "₦45M",
-                location: "Rykra GRA Extension, Abeokuta",
-                type: "Land for Sale",
-                image: "/images/properties/land-sale-3.jpg",
-                badge: "HOT DEAL",
-              },
-            ].map((property, index) => (
-              <motion.div
-                key={index}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="relative h-48 bg-gray-200 overflow-hidden">
-                  <Image
-                    src={property.image}
-                    alt={property.title}
-                    fill
-                    className="object-cover transition-transform duration-300 hover:scale-110"
-                  />
-                  {property.badge && (
-                    <div className="absolute top-4 right-4 bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">
-                      {property.badge}
+            {mobileProperties.slice(0, 3).map((property, index) => (
+              <Link key={index} href={`/properties/${property.id}`}>
+                <motion.div
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="relative h-48 bg-gray-200 overflow-hidden">
+                    <Image
+                      src={property.image}
+                      alt={property.title}
+                      fill
+                      className="object-cover transition-transform duration-300 hover:scale-110"
+                    />
+                    {property.badge && (
+                      <div className="absolute top-4 right-4 bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">
+                        {property.badge}
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-6">
+                    <div className="text-xs font-bold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full inline-block mb-3">
+                      {property.type}
                     </div>
-                  )}
-                </div>
-                <div className="p-6">
-                  <div className="text-xs font-bold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full inline-block mb-3">
-                    {property.type}
+                    <h3 className="font-montserrat font-bold text-lg text-brand-blue mb-2">
+                      {property.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-4">{property.location}</p>
+                    <div className="text-brand-orange font-bold text-2xl">
+                      {property.price}
+                    </div>
                   </div>
-                  <h3 className="font-montserrat font-bold text-lg text-brand-blue mb-2">
-                    {property.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4">{property.location}</p>
-                  <div className="text-brand-orange font-bold text-2xl">
-                    {property.price}
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
