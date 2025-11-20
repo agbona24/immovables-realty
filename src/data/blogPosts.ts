@@ -36,7 +36,7 @@ The establishment of an international airport typically triggers a ripple effect
 
 ### Strategic Locations to Consider
 
-- Prime Haven Grove Estate - Well-positioned for airport accessibility
+- Prime Haven Grove Estate - Premium plots (300-900sqm) with verified titles in fast-developing corridor
 - Emerging communities along major access roads
 - Commercial plots in developing business districts
 
@@ -83,7 +83,7 @@ Ogun State hosts numerous manufacturing and industrial facilities, creating jobs
 
 ### Prime Haven Grove Estate
 
-A flagship development offering modern amenities and strategic location with excellent appreciation potential.
+A premium, secure & fast-appreciating estate in Abeokuta offering verified ownership with freehold titles, registered survey, and deed of assignment. Features 100% dry table land, flexible payment plans (40% deposit), and multiple plot sizes (300sqm-900sqm). Perfect for families, investors, and diaspora clients seeking ready-to-build plots in a fast-developing corridor.
 
 ### Wura Gardens Estate
 
