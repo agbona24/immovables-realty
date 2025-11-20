@@ -9,12 +9,6 @@ import PageHero from "@/components/PageHero";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-export const metadata = {
-  title: "Partner With Us - Realtor Commission Structure | IMMOVABLES REALTY",
-  description:
-    "Join our network of successful real estate partners. Competitive commission structure, performance incentives, and dedicated support. Become a partner today.",
-};
-
 export default function PartnerPage() {
   const benefits = [
     {
