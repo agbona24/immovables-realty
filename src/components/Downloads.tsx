@@ -144,13 +144,24 @@ const Downloads = () => {
 
     setDownloading(itemId);
 
+    // Map download IDs to actual file names
+    const fileMap: Record<string, string> = {
+      "private-partner": "private partner and board participation prospectus PDF.pdf",
+      "board-participation": "private partner and board participation prospectus PDF.pdf",
+      "investment-guide": "PRODUCT KNOWLEDGE 2.pdf",
+      "product-knowledge": "PRODUCT KNOWKLEDGE DOCUMENT.pdf",
+    };
+
     // Simulate download (in production, this would trigger actual PDF download)
     setTimeout(() => {
-      // Create a download link (placeholder - actual PDFs should be uploaded to /public/downloads/)
+      // Create a download link with actual file names
+      const fileName = fileMap[itemId] || `${itemId}.pdf`;
       const link = document.createElement("a");
-      link.href = `/downloads/${itemId}.pdf`;
-      link.download = `${itemId}-prospectus.pdf`;
+      link.href = `/resources/${fileName}`;
+      link.download = fileName;
+      document.body.appendChild(link);
       link.click();
+      document.body.removeChild(link);
 
       setDownloading(null);
     }, 1500);

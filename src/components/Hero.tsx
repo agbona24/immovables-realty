@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin, Home, TrendingUp } from "lucide-react";
+import Image from "next/image";
 
 const Hero = () => {
   const fadeInUp = {
@@ -234,8 +235,14 @@ const Hero = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="aspect-video bg-gradient-to-br from-brand-blue to-blue-800 rounded-2xl mb-6 flex items-center justify-center">
-                <Home size={80} className="text-white opacity-50" />
+              <div className="aspect-video bg-gradient-to-br from-brand-blue to-blue-800 rounded-2xl mb-6 relative overflow-hidden">
+                <Image
+                  src="/images/prime haven 3.jpeg"
+                  alt="Premium Property"
+                  fill
+                  className="object-cover rounded-2xl"
+                  priority
+                />
               </div>
               <h3 className="font-montserrat font-bold text-2xl mb-3 text-brand-blue">
                 Premium Locations
