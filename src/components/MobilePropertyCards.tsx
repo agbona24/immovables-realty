@@ -30,12 +30,12 @@ interface MobilePropertyCardsProps {
 
 const MobilePropertyCards = ({ properties }: MobilePropertyCardsProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [liked, setLiked] = useState<number[]>([]);
+  const [liked, setLiked] = useState<(string | number)[]>([]);
   const [exitDirection, setExitDirection] = useState<"left" | "right" | null>(
     null
   );
 
-  const handleLike = (id: number) => {
+  const handleLike = (id: string | number) => {
     if (liked.includes(id)) {
       setLiked(liked.filter((item) => item !== id));
     } else {
@@ -161,7 +161,7 @@ interface PropertyCardProps {
   index: number;
   currentIndex: number;
   onSwipe: (direction: "left" | "right") => void;
-  onLike: (id: number) => void;
+  onLike: (id: string | number) => void;
   isLiked: boolean;
   exitDirection: "left" | "right" | null;
 }
