@@ -2,7 +2,6 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 import {
   Mail,
   Phone,
@@ -17,7 +16,6 @@ import {
 
 const Contact = () => {
   const ref = useRef(null);
-  const formRef = useRef<HTMLFormElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [formState, setFormState] = useState({
     name: "",
@@ -34,29 +32,27 @@ const Contact = () => {
     setSubmitStatus("idle");
 
     try {
-      // EmailJS configuration
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+      // Prepare WhatsApp message with form data
+      const whatsappMessage = `*New Contact Form Submission*\n\n` +
+        `*Name:* ${formState.name}\n` +
+        `*Email:* ${formState.email}\n` +
+        `*Phone:* ${formState.phone}\n` +
+        `*Message:*\n${formState.message}`;
 
-      // If EmailJS is not configured, show success message anyway
-      if (!serviceId || !templateId || !publicKey) {
-        console.log("EmailJS not configured. Form data:", formState);
-        setSubmitStatus("success");
-        setFormState({ name: "", email: "", phone: "", message: "" });
-        setIsSubmitting(false);
-        return;
-      }
+      // WhatsApp number
+      const whatsappNumber = "2348132833083";
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
-      // Send email using EmailJS
-      if (formRef.current) {
-        await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
-      }
+      // Simulate processing delay
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // Open WhatsApp
+      window.open(whatsappUrl, "_blank");
 
       setSubmitStatus("success");
       setFormState({ name: "", email: "", phone: "", message: "" });
     } catch (error) {
-      console.error("Email submission error:", error);
+      console.error("Form submission error:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -245,7 +241,6 @@ const Contact = () => {
             transition={{ delay: 0.7 }}
           >
             <form
-              ref={formRef}
               onSubmit={handleSubmit}
               className="bg-white rounded-3xl p-8 shadow-2xl"
             >
@@ -258,7 +253,7 @@ const Contact = () => {
                 >
                   <CheckCircle className="w-5 h-5 text-green-600" />
                   <p className="text-green-800 font-medium">
-                    Thank you! We'll get back to you soon.
+                    Thank you! Your message has been sent via WhatsApp.
                   </p>
                 </motion.div>
               )}
