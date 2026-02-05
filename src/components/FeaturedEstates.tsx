@@ -13,7 +13,7 @@ const FeaturedEstates = () => {
       tagline: "A Premium, Secure & Fast-Appreciating Estate",
       description:
         "Modern residential estate offering comfort, security, and profitable investment. Strategically located in a fast-developing corridor of Abeokuta with verified ownership and flexible payment plans.",
-      image: "/images/prime price update.jpeg",
+      image: "/images/primepriceupdate2026.jpeg",
       features: [
         "Freehold Title",
         "40% Deposit + 60% Balance",
@@ -29,7 +29,7 @@ const FeaturedEstates = () => {
       tagline: "A Serene, Secure & Fast-Developing Residential Estate",
       description:
         "Beautifully planned residential estate created for comfort, security, and long-term investment value. Located in a peaceful and fast-growing area of Abeokuta with verified documentation.",
-      image: "/images/wura price update.jpeg",
+      image: "/images/wurapriceupdate2026.jpeg",
       features: [
         "Registered Survey",
         "Flexible Payment Plan",

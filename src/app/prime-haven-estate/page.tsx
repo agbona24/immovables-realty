@@ -74,7 +74,7 @@ export default function PrimeHavenEstatePage() {
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-brand-blue/10">
               <div className="relative w-full" style={{ minHeight: "800px" }}>
                 <Image
-                  src="/images/prime price update.jpeg"
+                  src="/images/primepriceupdate2026.jpeg"
                   alt="Prime Haven Grove Estate - Full Pricing and Details"
                   fill
                   className="object-contain"

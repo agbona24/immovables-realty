@@ -79,7 +79,7 @@ export default function WuraGardenEstatePage() {
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-brand-orange/10">
               <div className="relative w-full" style={{ minHeight: "800px" }}>
                 <Image
-                  src="/images/wura price update.jpeg"
+                  src="/images/wurapriceupdate2026.jpeg"
                   alt="Wura Garden Estate - Full Pricing and Details"
                   fill
                   className="object-contain"

@@ -336,6 +336,224 @@ export default function Home() {
       {/* Featured Estates Section */}
       <FeaturedEstates />
 
+      {/* 5% Premium Cashback Program Section */}
+      <section className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-br from-brand-blue via-blue-900 to-brand-blue">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="absolute top-10 left-10 w-72 h-72 bg-brand-orange rounded-full opacity-10 blur-3xl"
+            animate={{
+              scale: [1, 1.3, 1],
+              x: [0, 30, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-10 right-10 w-96 h-96 bg-blue-400 rounded-full opacity-10 blur-3xl"
+            animate={{
+              scale: [1.2, 1, 1.2],
+              y: [0, -40, 0],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          {/* Money/Coins floating animation */}
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute text-4xl"
+              style={{
+                left: `${10 + i * 12}%`,
+                top: `${20 + (i % 3) * 25}%`,
+              }}
+              animate={{
+                y: [0, -20, 0],
+                rotate: [0, 10, -10, 0],
+                opacity: [0.3, 0.6, 0.3],
+              }}
+              transition={{
+                duration: 3 + i * 0.5,
+                repeat: Infinity,
+                delay: i * 0.3,
+              }}
+            >
+              💰
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Left Side - Images */}
+            <motion.div
+              className="relative order-2 lg:order-1"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="relative flex justify-center items-center min-h-[400px] md:min-h-[550px]">
+                {/* Main Image */}
+                <motion.div
+                  className="relative w-72 h-80 md:w-[400px] md:h-[450px] rounded-3xl overflow-hidden shadow-2xl border-4 border-brand-orange z-10"
+                  whileHover={{ scale: 1.03, rotate: -1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <Image
+                    src="/images/5percent.jpeg"
+                    alt="5% Premium Cashback"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                </motion.div>
+                
+                {/* Secondary Image - Offset */}
+                <motion.div
+                  className="absolute -right-2 -bottom-2 md:-right-6 md:-bottom-6 w-56 h-64 md:w-72 md:h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                  whileHover={{ scale: 1.03, rotate: 1 }}
+                >
+                  <Image
+                    src="/images/5percent2.jpeg"
+                    alt="5% Cashback Rewards"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                </motion.div>
+
+                {/* Floating Badge */}
+                <motion.div
+                  className="absolute -top-2 -right-2 md:top-2 md:right-2 bg-gradient-to-r from-brand-orange to-orange-600 text-white font-extrabold text-xl md:text-3xl px-4 md:px-6 py-2 md:py-3 rounded-full shadow-xl z-20"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    rotate: [-5, 5, -5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  5% 💵
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Right Side - Content */}
+            <motion.div
+              className="order-1 lg:order-2 text-center lg:text-left"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <motion.div
+                className="inline-flex items-center gap-2 bg-brand-orange text-white px-4 md:px-6 py-2 md:py-3 rounded-full font-montserrat font-bold mb-4 md:mb-6 text-sm md:text-base"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, type: "spring" }}
+              >
+                🎉 INTRODUCING NEW PROGRAM
+              </motion.div>
+
+              <h2 className="font-montserrat font-extrabold text-3xl md:text-4xl lg:text-5xl text-white mb-4 md:mb-6 leading-tight">
+                THE IMMOVABLES REALTY{" "}
+                <span className="text-brand-orange">5% PREMIUM</span>{" "}
+                <span className="bg-gradient-to-r from-brand-orange to-orange-400 bg-clip-text text-transparent">
+                  CASH BACK PROGRAM!
+                </span>
+              </h2>
+
+              <p className="text-blue-100 text-base md:text-xl mb-6 md:mb-8">
+                Now you earn more every time you invest or refer friends and family.
+              </p>
+
+              {/* How It Works */}
+              <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
+                {[
+                  { icon: "🏠", text: "Buy property worth ₦3M and above", highlight: "Earn 5% cashback" },
+                  { icon: "👥", text: "Refer anyone who buys ₦3M+", highlight: "Earn 5% cashback" },
+                  { icon: "💎", text: "Redeem as instant cash, discount, or accumulate for more land", highlight: "" },
+                  { icon: "🚀", text: "No limits — the more you buy or refer, the more you earn!", highlight: "" },
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex items-start gap-3 md:gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-white/20"
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + index * 0.1 }}
+                    whileHover={{ x: 5, backgroundColor: "rgba(255,255,255,0.15)" }}
+                  >
+                    <span className="text-xl md:text-2xl flex-shrink-0">{item.icon}</span>
+                    <div className="text-left">
+                      <span className="text-white text-sm md:text-base">{item.text}</span>
+                      {item.highlight && (
+                        <span className="text-brand-orange font-bold ml-2 text-sm md:text-base">— {item.highlight}</span>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7 }}
+              >
+                <Link href="/contact">
+                  <motion.button
+                    className="bg-brand-orange hover:bg-orange-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-montserrat font-bold shadow-xl flex items-center justify-center gap-2 w-full sm:w-auto"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Start Earning Now
+                    <ArrowRight size={20} />
+                  </motion.button>
+                </Link>
+                <Link href="/properties">
+                  <motion.button
+                    className="bg-white/10 backdrop-blur-sm border-2 border-white text-white hover:bg-white/20 px-6 md:px-8 py-3 md:py-4 rounded-full font-montserrat font-bold flex items-center justify-center gap-2 w-full sm:w-auto"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Browse Properties
+                    <ArrowRight size={20} />
+                  </motion.button>
+                </Link>
+              </motion.div>
+
+              {/* Tagline */}
+              <motion.p
+                className="mt-6 md:mt-8 text-blue-200 italic text-base md:text-lg font-medium"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.9 }}
+              >
+                Invest smart. Earn continuously. <span className="text-brand-orange font-bold">Grow with IMMOVABLES REALTY.</span>
+              </motion.p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Quick Links Section */}
       <section className="py-20 bg-white relative overflow-hidden">
         {/* Decorative Background Elements */}
