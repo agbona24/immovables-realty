@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Building2, TrendingUp, Users, MessageSquare, ArrowRight } from "lucide-react";
+import { Building2, TrendingUp, Users, MessageSquare, ArrowRight, X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Testimonials from "@/components/Testimonials";
@@ -21,6 +21,7 @@ import FeaturedEstates from "@/components/FeaturedEstates";
 
 export default function Home() {
   const [refreshKey, setRefreshKey] = useState(0);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   const handleRefresh = async () => {
     // Simulate refresh
@@ -340,6 +341,7 @@ export default function Home() {
       <section className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-br from-brand-blue via-blue-900 to-brand-blue">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
+          {/* Gradient Orbs */}
           <motion.div
             className="absolute top-10 left-10 w-72 h-72 bg-brand-orange rounded-full opacity-10 blur-3xl"
             animate={{
@@ -364,6 +366,81 @@ export default function Home() {
               ease: "easeInOut",
             }}
           />
+
+          {/* Animated Sparkles */}
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={`sparkle-${i}`}
+              className="absolute"
+              style={{
+                left: `${5 + i * 8}%`,
+                top: `${10 + (i % 4) * 22}%`,
+              }}
+              animate={{
+                scale: [0, 1, 0],
+                opacity: [0, 1, 0],
+                rotate: [0, 180, 360],
+              }}
+              transition={{
+                duration: 2 + i * 0.3,
+                repeat: Infinity,
+                delay: i * 0.4,
+              }}
+            >
+              <svg className="w-4 h-4 md:w-6 md:h-6 text-brand-orange" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+              </svg>
+            </motion.div>
+          ))}
+
+          {/* Floating Dollar Signs */}
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={`dollar-${i}`}
+              className="absolute text-brand-orange/20 font-bold text-4xl md:text-6xl"
+              style={{
+                left: `${15 + i * 14}%`,
+                top: `${30 + (i % 2) * 40}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                x: [0, 10, 0],
+                rotate: [0, 5, -5, 0],
+              }}
+              transition={{
+                duration: 4 + i * 0.5,
+                repeat: Infinity,
+                delay: i * 0.5,
+              }}
+            >
+              $
+            </motion.div>
+          ))}
+
+          {/* Animated Circles/Rings */}
+          {[...Array(4)].map((_, i) => (
+            <motion.div
+              key={`ring-${i}`}
+              className="absolute border-2 border-white/10 rounded-full"
+              style={{
+                width: `${100 + i * 60}px`,
+                height: `${100 + i * 60}px`,
+                left: `${10 + i * 20}%`,
+                top: `${20 + i * 15}%`,
+              }}
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.1, 0.3, 0.1],
+                rotate: [0, 360],
+              }}
+              transition={{
+                duration: 8 + i * 2,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+          ))}
+
           {/* Money/Coins floating animation */}
           {[...Array(8)].map((_, i) => (
             <motion.div
@@ -387,6 +464,140 @@ export default function Home() {
               💰
             </motion.div>
           ))}
+
+          {/* Floating Coins */}
+          {[...Array(5)].map((_, i) => (
+            <motion.div
+              key={`coin-${i}`}
+              className="absolute"
+              style={{
+                right: `${5 + i * 10}%`,
+                top: `${15 + i * 18}%`,
+              }}
+              animate={{
+                y: [0, -25, 0],
+                rotateY: [0, 360],
+                opacity: [0.4, 0.8, 0.4],
+              }}
+              transition={{
+                duration: 3 + i * 0.4,
+                repeat: Infinity,
+                delay: i * 0.6,
+              }}
+            >
+              <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center text-xs font-bold text-amber-800 shadow-lg">
+                ₦
+              </div>
+            </motion.div>
+          ))}
+
+          {/* Percentage Signs */}
+          {[...Array(4)].map((_, i) => (
+            <motion.div
+              key={`percent-${i}`}
+              className="absolute text-white/10 font-extrabold text-5xl md:text-7xl"
+              style={{
+                left: `${20 + i * 20}%`,
+                bottom: `${10 + i * 10}%`,
+              }}
+              animate={{
+                scale: [0.8, 1, 0.8],
+                opacity: [0.05, 0.15, 0.05],
+                y: [0, -10, 0],
+              }}
+              transition={{
+                duration: 5 + i,
+                repeat: Infinity,
+                delay: i * 0.8,
+              }}
+            >
+              5%
+            </motion.div>
+          ))}
+
+          {/* Animated Lines/Rays */}
+          <motion.div
+            className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-orange/30 to-transparent"
+            animate={{
+              scaleX: [0, 1, 0],
+              opacity: [0, 0.5, 0],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute top-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+            animate={{
+              scaleX: [0, 1, 0],
+              opacity: [0, 0.3, 0],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              delay: 1,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Corner Decorations */}
+          <motion.svg
+            className="absolute top-4 right-4 w-16 h-16 md:w-24 md:h-24 text-brand-orange/20"
+            viewBox="0 0 100 100"
+            animate={{
+              rotate: [0, 360],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40" fill="currentColor" />
+          </motion.svg>
+
+          <motion.svg
+            className="absolute bottom-4 left-4 w-12 h-12 md:w-20 md:h-20 text-white/10"
+            viewBox="0 0 100 100"
+            animate={{
+              rotate: [360, 0],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            <polygon points="50,5 61,40 98,40 68,62 79,97 50,75 21,97 32,62 2,40 39,40" fill="currentColor" />
+          </motion.svg>
+
+          {/* Floating Arrows */}
+          {[...Array(3)].map((_, i) => (
+            <motion.div
+              key={`arrow-${i}`}
+              className="absolute text-brand-orange/30"
+              style={{
+                left: `${30 + i * 20}%`,
+                top: `${60 + i * 10}%`,
+              }}
+              animate={{
+                y: [0, -20, 0],
+                opacity: [0.2, 0.5, 0.2],
+              }}
+              transition={{
+                duration: 2 + i * 0.5,
+                repeat: Infinity,
+                delay: i * 0.3,
+              }}
+            >
+              <svg className="w-6 h-6 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+              </svg>
+            </motion.div>
+          ))}
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -402,9 +613,10 @@ export default function Home() {
               <div className="relative flex justify-center items-center min-h-[400px] md:min-h-[550px]">
                 {/* Main Image */}
                 <motion.div
-                  className="relative w-72 h-80 md:w-[400px] md:h-[450px] rounded-3xl overflow-hidden shadow-2xl border-4 border-brand-orange z-10"
+                  className="relative w-72 h-80 md:w-[400px] md:h-[450px] rounded-3xl overflow-hidden shadow-2xl border-4 border-brand-orange z-10 cursor-pointer"
                   whileHover={{ scale: 1.03, rotate: -1 }}
                   transition={{ type: "spring", stiffness: 300 }}
+                  onClick={() => setLightboxImage("/images/5percent.jpeg")}
                 >
                   <Image
                     src="/images/5percent.jpeg"
@@ -413,16 +625,20 @@ export default function Home() {
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-black/20">
+                    <span className="text-white text-sm font-medium bg-black/50 px-3 py-1 rounded-full">Click to zoom</span>
+                  </div>
                 </motion.div>
                 
                 {/* Secondary Image - Offset */}
                 <motion.div
-                  className="absolute -right-2 -bottom-2 md:-right-6 md:-bottom-6 w-56 h-64 md:w-72 md:h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white"
+                  className="absolute -right-2 -bottom-2 md:-right-6 md:-bottom-6 w-56 h-64 md:w-72 md:h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white cursor-pointer"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3, duration: 0.6 }}
                   whileHover={{ scale: 1.03, rotate: 1 }}
+                  onClick={() => setLightboxImage("/images/5percent2.jpeg")}
                 >
                   <Image
                     src="/images/5percent2.jpeg"
@@ -431,6 +647,9 @@ export default function Home() {
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-black/20">
+                    <span className="text-white text-sm font-medium bg-black/50 px-3 py-1 rounded-full">Click to zoom</span>
+                  </div>
                 </motion.div>
 
                 {/* Floating Badge */}
@@ -773,6 +992,48 @@ export default function Home() {
 
       {/* Mobile Bottom Navigation - Only visible on Mobile */}
       <MobileBottomNav />
+
+      {/* Image Lightbox Modal */}
+      {lightboxImage && (
+        <motion.div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setLightboxImage(null)}
+        >
+          {/* Close Button */}
+          <button
+            className="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-brand-orange transition-colors z-10"
+            onClick={() => setLightboxImage(null)}
+          >
+            <X size={32} />
+          </button>
+
+          {/* Image Container */}
+          <motion.div
+            className="relative w-full max-w-4xl h-[80vh] rounded-2xl overflow-hidden"
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.5, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={lightboxImage}
+              alt="5% Premium Cashback Program"
+              fill
+              className="object-contain"
+              sizes="(max-width: 768px) 100vw, 80vw"
+            />
+          </motion.div>
+
+          {/* Tap to close hint */}
+          <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm">
+            Tap anywhere to close
+          </p>
+        </motion.div>
+      )}
     </main>
     </PullToRefresh>
   );
