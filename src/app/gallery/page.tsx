@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import Gallery from "@/components/Gallery";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { getGalleryImagesWithFallback } from "@/sanity/lib/sanity-data";
 
 export const metadata = {
   title: "Gallery | IMMOVABLES REALTY",
@@ -18,7 +19,20 @@ export const metadata = {
   },
 };
 
-export default function GalleryPage() {
+export const revalidate = 60;
+
+export default async function GalleryPage() {
+  const images = await getGalleryImagesWithFallback();
+
+  // Transform images to Gallery component format
+  const formattedImages = images.length > 0 ? images.map((img, index) => ({
+    id: img.id || index + 1,
+    src: img.src,
+    alt: img.alt || img.title,
+    category: img.category,
+    title: img.title,
+  })) : undefined; // Pass undefined to use fallback
+
   return (
     <main className="min-h-screen">
       <Navbar />
@@ -30,7 +44,7 @@ export default function GalleryPage() {
           { name: "Gallery", href: "/gallery" },
         ]}
       />
-      <Gallery />
+      <Gallery images={formattedImages} />
       <Footer />
       <WhatsAppButton />
     </main>
