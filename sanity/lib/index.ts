@@ -6,3 +6,6 @@ export * from './queries'
 
 // Fetch functions and types
 export * from './fetch'
+
+// Data fetching with fallbacks
+export * from './sanity-data'

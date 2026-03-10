@@ -4,6 +4,7 @@ import Properties from "@/components/Properties";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import FeaturedEstates from "@/components/FeaturedEstates";
+import { getPropertiesWithFallback, getEstatesWithFallback } from "@/../sanity/lib/sanity-data";
 
 export const metadata = {
   title: "Properties | IMMOVABLES REALTY",
@@ -11,7 +12,12 @@ export const metadata = {
     "Explore our curated selection of investment properties in Ogun State. From prime estates to income-generating properties and land for development.",
 };
 
-export default function PropertiesPage() {
+export default async function PropertiesPage() {
+  const [properties, estates] = await Promise.all([
+    getPropertiesWithFallback(),
+    getEstatesWithFallback(),
+  ]);
+
   return (
     <main className="min-h-screen">
       <Navbar />
@@ -23,8 +29,8 @@ export default function PropertiesPage() {
           { name: "Properties", href: "/properties" },
         ]}
       />
-      <FeaturedEstates />
-      <Properties />
+      <FeaturedEstates estates={estates} />
+      <Properties properties={properties} />
       <Footer />
       <WhatsAppButton />
     </main>

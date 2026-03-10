@@ -5,41 +5,58 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin, Home, Shield, TrendingUp } from "lucide-react";
 
-const FeaturedEstates = () => {
-  const estates = [
-    {
-      id: "prime-haven-estate",
-      name: "Prime Haven Grove Estate",
-      tagline: "A Premium, Secure & Fast-Appreciating Estate",
-      description:
-        "Modern residential estate offering comfort, security, and profitable investment. Strategically located in a fast-developing corridor of Abeokuta with verified ownership and flexible payment plans.",
-      image: "/images/primepriceupdate2026.jpeg",
-      features: [
-        "Freehold Title",
-        "40% Deposit + 60% Balance",
-        "300/600/900 sqm Plots",
-        "100% Dry Table Land",
-      ],
-      badge: "PREMIUM ESTATE",
-      color: "from-brand-blue to-blue-800",
-    },
-    {
-      id: "wura-garden-estate",
-      name: "Wura Garden Estate",
-      tagline: "A Serene, Secure & Fast-Developing Residential Estate",
-      description:
-        "Beautifully planned residential estate created for comfort, security, and long-term investment value. Located in a peaceful and fast-growing area of Abeokuta with verified documentation.",
-      image: "/images/wurapriceupdate2026.jpeg",
-      features: [
-        "Registered Survey",
-        "Flexible Payment Plan",
-        "Gated & Secured",
-        "Family-Friendly Community",
-      ],
-      badge: "SERENE LIVING",
-      color: "from-brand-orange to-orange-600",
-    },
-  ];
+interface Estate {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  image: string;
+  features: string[];
+  badge: string;
+  color: string;
+}
+
+const fallbackEstates: Estate[] = [
+  {
+    id: "prime-haven-estate",
+    name: "Prime Haven Grove Estate",
+    tagline: "A Premium, Secure & Fast-Appreciating Estate",
+    description:
+      "Modern residential estate offering comfort, security, and profitable investment. Strategically located in a fast-developing corridor of Abeokuta with verified ownership and flexible payment plans.",
+    image: "/images/primepriceupdate2026.jpeg",
+    features: [
+      "Freehold Title",
+      "40% Deposit + 60% Balance",
+      "300/600/900 sqm Plots",
+      "100% Dry Table Land",
+    ],
+    badge: "PREMIUM ESTATE",
+    color: "from-brand-blue to-blue-800",
+  },
+  {
+    id: "wura-garden-estate",
+    name: "Wura Garden Estate",
+    tagline: "A Serene, Secure & Fast-Developing Residential Estate",
+    description:
+      "Beautifully planned residential estate created for comfort, security, and long-term investment value. Located in a peaceful and fast-growing area of Abeokuta with verified documentation.",
+    image: "/images/wurapriceupdate2026.jpeg",
+    features: [
+      "Registered Survey",
+      "Flexible Payment Plan",
+      "Gated & Secured",
+      "Family-Friendly Community",
+    ],
+    badge: "SERENE LIVING",
+    color: "from-brand-orange to-orange-600",
+  },
+];
+
+interface FeaturedEstatesProps {
+  estates?: Estate[];
+}
+
+const FeaturedEstates = ({ estates: propEstates }: FeaturedEstatesProps) => {
+  const estates = propEstates || fallbackEstates;
 
   return (
     <section className="py-20 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">

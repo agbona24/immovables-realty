@@ -3,24 +3,28 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 interface GalleryImage {
-  id: number;
+  id: number | string;
   src: string;
   alt: string;
   category: string;
   title: string;
 }
 
-const Gallery = () => {
+interface GalleryProps {
+  images?: GalleryImage[];
+}
+
+const Gallery = ({ images: propImages }: GalleryProps) => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imageLoading, setImageLoading] = useState(true);
 
-  // Gallery images - Real property images
-  const galleryImages: GalleryImage[] = [
+  // Fallback gallery images - Real property images
+  const fallbackGalleryImages: GalleryImage[] = [
     // Houses for Sale - NEW
     {
       id: 1,
@@ -295,7 +299,13 @@ const Gallery = () => {
     },
   ];
 
-  const categories = ["All", "Houses for Sale", "Land for Sale", "Properties", "Office", "Community"];
+  // Use provided images or fallback
+  const galleryImages = propImages && propImages.length > 0 ? propImages : fallbackGalleryImages;
+
+  const categories = useMemo(() => {
+    const uniqueCategories = new Set(galleryImages.map(img => img.category));
+    return ["All", ...Array.from(uniqueCategories)];
+  }, [galleryImages]);
 
   const filteredImages =
     selectedCategory === "All"

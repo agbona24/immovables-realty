@@ -5,9 +5,14 @@ import { useRef, useState } from "react";
 import { MapPin, Maximize, TrendingUp, ArrowRight, Search, Filter, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { properties } from "@/data/properties";
+import { properties as fallbackProperties, type Property } from "@/data/properties";
 
-const Properties = () => {
+interface PropertiesProps {
+  properties?: Property[];
+}
+
+const Properties = ({ properties: propProperties }: PropertiesProps) => {
+  const properties = propProperties || fallbackProperties;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 

@@ -14,8 +14,37 @@ import {
 import Image from "next/image";
 import { useState } from "react";
 
-const Footer = () => {
+interface SiteSettings {
+  contactInfo?: {
+    phone?: string;
+    whatsapp?: string;
+    email?: string;
+    address?: string;
+    officeHours?: string;
+  };
+  socialLinks?: {
+    facebook?: string;
+    instagram?: string;
+    twitter?: string;
+    linkedin?: string;
+  };
+  footerText?: string;
+}
+
+interface FooterProps {
+  siteSettings?: SiteSettings;
+}
+
+const Footer = ({ siteSettings }: FooterProps) => {
   const [logoError, setLogoError] = useState(false);
+
+  // Use provided settings or fallback
+  const contactInfo = {
+    phone: siteSettings?.contactInfo?.phone || '+234 813 283 3083',
+    email: siteSettings?.contactInfo?.email || 'immovablesrealty@gmail.com',
+    address: siteSettings?.contactInfo?.address || 'Abeokuta, Ogun State, Nigeria',
+    officeHours: siteSettings?.contactInfo?.officeHours || 'Mon - Sat: 9:00 AM - 6:00 PM',
+  };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -42,10 +71,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: <Facebook size={20} />, href: "https://www.facebook.com/immovablesrealty?mibextid=kFxxJD", label: "Facebook" },
-    { icon: <Twitter size={20} />, href: "https://x.com/immovablesrealt?t=MmJjqxvf3GmMUkZtIIF8UQ&s=09", label: "Twitter" },
-    { icon: <Instagram size={20} />, href: "https://www.instagram.com/immovables_realty/profilecard/?igsh=MTZ2NnFvY2cwNzlvZA==", label: "Instagram" },
-    { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/", label: "LinkedIn" },
+    { icon: <Facebook size={20} />, href: siteSettings?.socialLinks?.facebook || "https://www.facebook.com/immovablesrealty?mibextid=kFxxJD", label: "Facebook" },
+    { icon: <Twitter size={20} />, href: siteSettings?.socialLinks?.twitter || "https://x.com/immovablesrealt?t=MmJjqxvf3GmMUkZtIIF8UQ&s=09", label: "Twitter" },
+    { icon: <Instagram size={20} />, href: siteSettings?.socialLinks?.instagram || "https://www.instagram.com/immovables_realty/profilecard/?igsh=MTZ2NnFvY2cwNzlvZA==", label: "Instagram" },
+    { icon: <Linkedin size={20} />, href: siteSettings?.socialLinks?.linkedin || "https://www.linkedin.com/", label: "LinkedIn" },
   ];
 
   return (
@@ -195,7 +224,7 @@ const Footer = () => {
             </h3>
             <div className="space-y-4">
               <a
-                href="tel:+2348132833083"
+                href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}
                 className="flex items-start gap-3 text-gray-300 hover:text-brand-orange transition group"
               >
                 <Phone
@@ -204,12 +233,12 @@ const Footer = () => {
                 />
                 <div>
                   <div className="text-sm text-gray-400">Phone</div>
-                  <div>+234 813 283 3083</div>
+                  <div>{contactInfo.phone}</div>
                 </div>
               </a>
 
               <a
-                href="mailto:info@immovablesrealty.com"
+                href={`mailto:${contactInfo.email}`}
                 className="flex items-start gap-3 text-gray-300 hover:text-brand-orange transition group"
               >
                 <Mail
@@ -218,7 +247,7 @@ const Footer = () => {
                 />
                 <div>
                   <div className="text-sm text-gray-400">Email</div>
-                  <div className="break-all">info@immovablesrealty.com</div>
+                  <div className="break-all">{contactInfo.email}</div>
                 </div>
               </a>
 
@@ -226,7 +255,7 @@ const Footer = () => {
                 <MapPin size={20} className="mt-1" />
                 <div>
                   <div className="text-sm text-gray-400">Office</div>
-                  <div>12, Obasanjo Way off Akin Olugbade,<br />Ita Eko, Abeokuta, Ogun State</div>
+                  <div>{contactInfo.address}</div>
                 </div>
               </div>
             </div>

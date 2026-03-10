@@ -4,59 +4,73 @@ import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import { useState } from "react";
 
-const Testimonials = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+interface Testimonial {
+  name: string;
+  role: string;
+  location: string;
+  image: string;
+  rating: number;
+  text: string;
+}
 
-  const testimonials = [
-    {
-      name: "Adebayo Okonkwo",
-      role: "Real Estate Investor",
-      location: "Lagos",
-      image: "AO",
-      rating: 5,
-      text: "IMMOVABLES REALTY helped me purchase my first investment property in Abeokuta. Their team guided me through every step, from selection to documentation. Six months later, my property value has already appreciated by 15%. Highly recommended!",
-    },
-    {
-      name: "Mrs. Funmilayo Adeleke",
-      role: "Business Owner",
-      location: "Ibadan",
-      image: "FA",
-      rating: 5,
-      text: "I was skeptical about investing in real estate outside Lagos, but IMMOVABLES REALTY changed my perspective. Their market analytics were spot-on, and the flexible payment plan made it achievable. Now I own three properties through them!",
-    },
-    {
-      name: "Engr. Chukwudi Nwosu",
-      role: "Civil Engineer",
-      location: "Abeokuta",
-      image: "CN",
-      rating: 5,
-      text: "As an engineer, I appreciate attention to detail. IMMOVABLES REALTY's thorough due diligence and legal verification gave me complete confidence. The team is professional, responsive, and truly committed to client success.",
-    },
-    {
-      name: "Dr. Aminat Bello",
-      role: "Medical Practitioner",
-      location: "Ogun State",
-      image: "AB",
-      rating: 5,
-      text: "The best real estate experience I've ever had! From the initial consultation to property handover, everything was seamless. The team's expertise in Ogun State's property market is unmatched. My rental income started flowing within two months!",
-    },
-    {
-      name: "Mr. Taiwo Johnson",
-      role: "Entrepreneur",
-      location: "Abuja",
-      image: "TJ",
-      rating: 5,
-      text: "I invested from Abuja without visiting the property physically, thanks to IMMOVABLES REALTY's virtual tours and transparent processes. The documentation was flawless, and their after-sales support is exceptional. True professionals!",
-    },
-    {
-      name: "Pastor & Mrs. Olumide",
-      role: "Church Leaders",
-      location: "Ogun State",
-      image: "PO",
-      rating: 5,
-      text: "We wanted to invest wisely for our children's future. IMMOVABLES REALTY provided personalized advice and found us the perfect property within our budget. Their integrity and honesty shine through in every interaction. God bless this team!",
-    },
-  ];
+const fallbackTestimonials: Testimonial[] = [
+  {
+    name: "Adebayo Okonkwo",
+    role: "Real Estate Investor",
+    location: "Lagos",
+    image: "AO",
+    rating: 5,
+    text: "IMMOVABLES REALTY helped me purchase my first investment property in Abeokuta. Their team guided me through every step, from selection to documentation. Six months later, my property value has already appreciated by 15%. Highly recommended!",
+  },
+  {
+    name: "Mrs. Funmilayo Adeleke",
+    role: "Business Owner",
+    location: "Ibadan",
+    image: "FA",
+    rating: 5,
+    text: "I was skeptical about investing in real estate outside Lagos, but IMMOVABLES REALTY changed my perspective. Their market analytics were spot-on, and the flexible payment plan made it achievable. Now I own three properties through them!",
+  },
+  {
+    name: "Engr. Chukwudi Nwosu",
+    role: "Civil Engineer",
+    location: "Abeokuta",
+    image: "CN",
+    rating: 5,
+    text: "As an engineer, I appreciate attention to detail. IMMOVABLES REALTY's thorough due diligence and legal verification gave me complete confidence. The team is professional, responsive, and truly committed to client success.",
+  },
+  {
+    name: "Dr. Aminat Bello",
+    role: "Medical Practitioner",
+    location: "Ogun State",
+    image: "AB",
+    rating: 5,
+    text: "The best real estate experience I've ever had! From the initial consultation to property handover, everything was seamless. The team's expertise in Ogun State's property market is unmatched. My rental income started flowing within two months!",
+  },
+  {
+    name: "Mr. Taiwo Johnson",
+    role: "Entrepreneur",
+    location: "Abuja",
+    image: "TJ",
+    rating: 5,
+    text: "I invested from Abuja without visiting the property physically, thanks to IMMOVABLES REALTY's virtual tours and transparent processes. The documentation was flawless, and their after-sales support is exceptional. True professionals!",
+  },
+  {
+    name: "Pastor & Mrs. Olumide",
+    role: "Church Leaders",
+    location: "Ogun State",
+    image: "PO",
+    rating: 5,
+    text: "We wanted to invest wisely for our children's future. IMMOVABLES REALTY provided personalized advice and found us the perfect property within our budget. Their integrity and honesty shine through in every interaction. God bless this team!",
+  },
+];
+
+interface TestimonialsProps {
+  testimonials?: Testimonial[];
+}
+
+const Testimonials = ({ testimonials: propTestimonials }: TestimonialsProps) => {
+  const testimonials = propTestimonials || fallbackTestimonials;
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const nextTestimonial = () => {
     setActiveIndex((prev) => (prev + 1) % testimonials.length);
