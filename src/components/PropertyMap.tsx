@@ -17,10 +17,13 @@ interface PropertyMapProps {
 const PropertyMap: React.FC<PropertyMapProps> = ({
   title,
   location,
-  coordinates = { lat: 7.1475, lng: 3.3619 }, // Default to Abeokuta, Ogun State
+  coordinates,
   address,
 }) => {
   const [mapError, setMapError] = useState(false);
+  
+  // Use default coordinates if not provided
+  const finalCoordinates = coordinates || { lat: 7.1475, lng: 3.3619 }; // Default to Abeokuta, Ogun State
 
   // Generate Google Maps URLs
   const getMapEmbedUrl = () => {
@@ -30,11 +33,11 @@ const PropertyMap: React.FC<PropertyMapProps> = ({
   };
 
   const getDirectionsUrl = () => {
-    return `https://www.google.com/maps/dir/?api=1&destination=${coordinates.lat},${coordinates.lng}`;
+    return `https://www.google.com/maps/dir/?api=1&destination=${finalCoordinates.lat},${finalCoordinates.lng}`;
   };
 
   const getMapViewUrl = () => {
-    return `https://www.google.com/maps?q=${coordinates.lat},${coordinates.lng}`;
+    return `https://www.google.com/maps?q=${finalCoordinates.lat},${finalCoordinates.lng}`;
   };
 
   return (
@@ -128,7 +131,7 @@ const PropertyMap: React.FC<PropertyMapProps> = ({
                     <div>
                       <div className="font-medium text-gray-700">Coordinates</div>
                       <div className="text-gray-600 font-mono text-sm">
-                        {coordinates.lat.toFixed(6)}, {coordinates.lng.toFixed(6)}
+                        {finalCoordinates.lat.toFixed(6)}, {finalCoordinates.lng.toFixed(6)}
                       </div>
                     </div>
                   </div>

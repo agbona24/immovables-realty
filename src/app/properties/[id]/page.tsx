@@ -8,11 +8,12 @@ import { getPropertyByIdWithFallback, getPropertiesWithFallback } from "@/../san
 import type { Metadata } from "next";
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const property = await getPropertyByIdWithFallback(params.id);
+  const { id } = await params;
+  const property = await getPropertyByIdWithFallback(id);
   
   if (!property) {
     return {
@@ -27,7 +28,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function PropertyDetailPage({ params }: PageProps) {
-  const property = await getPropertyByIdWithFallback(params.id);
+  const { id } = await params;
+  const property = await getPropertyByIdWithFallback(id);
 
   if (!property) {
     return (
